@@ -49,7 +49,7 @@ function socials() {
     gsap.from(glassicon.current, {
       opacity: 0,
       scale: 0,
-      duration: 1,
+      duration: 5,
       ease: "elastic.out(1,0.5)",
       scrollTrigger: {
         trigger: sectionRef.current,
