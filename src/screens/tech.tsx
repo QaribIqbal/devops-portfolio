@@ -22,8 +22,8 @@ function tech() {
   //     duration: 2,
   //     scrollTrigger: {
   //       trigger: sectionRef.current,
-  //       start: "top 30%",
-  //       end: "top -5%",
+  //       start: "top 45%",
+  //       end: "top -55%",
   //   //       scrub: 1.3,
   //     },
   //   });
@@ -34,8 +34,8 @@ function tech() {
   //     duration: 2,
   //     scrollTrigger: {
   //       trigger: sectionRef.current,
-  //       start: "top 30%",
-  //       end: "top -5%",
+  //       start: "top 45%",
+  //       end: "top -55%",
   //   //       scrub: 1.3,
   //     },
   //   });
@@ -46,8 +46,8 @@ function tech() {
   //     duration: 2,
   //     scrollTrigger: {
   //       trigger: sectionRef.current,
-  //       start: "top 30%",
-  //       end: "top -5%",
+  //       start: "top 45%",
+  //       end: "top -55%",
   //   //       scrub: 1.3,
   //     },
   //   });
@@ -58,8 +58,8 @@ function tech() {
   //     duration: 2,
   //     scrollTrigger: {
   //       trigger: sectionRef.current,
-  //       start: "top 30%",
-  //       end: "top -5%",
+  //       start: "top 45%",
+  //       end: "top -55%",
   //   //       scrub: 1.3,
   //     },
   //   });
@@ -70,12 +70,12 @@ function tech() {
     opacity: 0,
     x: -100,
     rotationX: -180,
-    duration: 5,
+    duration: 2,
 ease: "power4.out",      // subtle overshoot then settle
     scrollTrigger: {
       trigger: sectionRef.current,
-      start: "top 30%",
-      end: "top -5%",
+      start: "top 45%",
+      end: "top -55%",
       scrub: 1.3,
     },
   });
@@ -85,13 +85,14 @@ ease: "power4.out",      // subtle overshoot then settle
     opacity: 0,
     y: -100,
     rotationY: -180,
-    duration: 5,
+    duration: 2,
     ease: "power4.out",         // smooth, snappy finish
     scrollTrigger: {
       trigger: sectionRef.current,
-      start: "top 30%",
-      end: "top -5%",
+      start: "top 45%",
+      end: "top -55%",
       scrub: 1.3,
+      markers: true
     },
   });
 
@@ -100,12 +101,12 @@ ease: "power4.out",      // subtle overshoot then settle
     opacity: 0,
     y: 100,
     rotationY: 180,
-    duration: 5,
+    duration: 2,
     ease: "power4.out",
     scrollTrigger: {
       trigger: sectionRef.current,
-      start: "top 30%",
-      end: "top -5%",
+      start: "top 45%",
+      end: "top -55%",
       scrub: 1.3,
     },
   });
@@ -115,20 +116,20 @@ ease: "power4.out",      // subtle overshoot then settle
     opacity: 0,
     x: 100,
     rotateX: 180,
-    duration: 5,
+    duration: 2,
 ease: "power4.out",
     scrollTrigger: {
       trigger: sectionRef.current,
-      start: "top 30%",
-      end: "top -5%",
+      start: "top 45%",
+      end: "top -55%",
       scrub: 0.5,
     },
   });
 });
 
   return (
-    <div ref={sectionRef} className="flex flex-col items-center  w-full min-h-[80vh] overflow-x-hidden mt-0 lg">
-      <div className=" text-center m-auto mb-10 mt-20">
+    <div ref={sectionRef} className="flex flex-col items-center  w-full min-h-[100vh] overflow-hidden mt-0 lg pt-30">
+      <div className=" text-center m-auto mb-10 mt-30">
         <BlurText
           text="Technologies I Use"
           delay={150}
@@ -189,7 +190,7 @@ ease: "power4.out",
             className="custom-spotlight-tech-card"
             spotlightColor="rgba(6, 96, 206, 0.25)"
           >
-            <h3 className="text-lg font-semibold mb-1">Backend</h3>
+            <h3 className="mb-1">Backend</h3>
             <div className="flex flex-row flex-wrap items-center justify-center gap-3 overflow-hidden">
               <span>
                 <img
@@ -243,7 +244,7 @@ ease: "power4.out",
             className="custom-spotlight-tech-card"
             spotlightColor="rgba(6, 96, 206, 0.25)"
           >
-            <h3 className="text-lg font-semibold mb-1">Cross-Platform App</h3>
+            <h3 className="mb-1">Cross-Platform App</h3>
             <div className="flex flex-row flex-wrap items-center justify-center gap-2 overflow-hidden">
               <span>
                 <img

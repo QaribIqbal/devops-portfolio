@@ -122,7 +122,8 @@ body #root {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    /* @apply bg-background text-foreground; */
+    background-color: rgb(0, 0, 0);
   }
 }
 .center {
@@ -148,7 +149,7 @@ html body {
 
 }
 .lg {
-  background-image: radial-gradient(circle at center, #0D0716, #0000);
+  background-image: radial-gradient(circle at center, #00014bb0, #6da5fe00);
 }
 
 /* services screen */
@@ -205,7 +206,7 @@ html body {
   @apply text-white text-center uppercase;
   letter-spacing: 1.5;
   font-size:small;
-  font-weight:700;
+  font-weight:600;
   
 }
 

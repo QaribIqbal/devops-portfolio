@@ -56,7 +56,7 @@ const services = () => {
   return (
     <div
       ref={sectionRef}
-      className="flex flex-col items-center w-full h-[100vh]  overflow-x-hidden mt-0 lg "
+      className="flex flex-col items-center w-full min-h-[100vh]  overflow-x-hidden mt-0 lg "
     >
       {/* Heading Section */}
       <div className=" text-center m-auto mb-10 mt-50">

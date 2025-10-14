@@ -49,32 +49,31 @@ function socials() {
     gsap.from(glassicon.current, {
       opacity: 0,
       scale: 0,
-      duration: 5,
-      ease: "elastic.out(1,0.5)",
+      duration: 1,
       scrollTrigger: {
         trigger: sectionRef.current,
         start: "top 30%",
         end: "top -5%",
-        scrub: 2,
+        scrub: 1,
       },
     });
     gsap.from(textmain.current, {
       opacity: 0,
       scale: 0,
       duration: 1,
-      ease: "elastic.out(1,0.5)",
+    //   ease: "elastic.out(1,2)",
       scrollTrigger: {
         trigger: sectionRef.current,
         start: "top 30%",
         end: "top -5%",
-        scrub: 2,
+        scrub: 1,
       },
     });
   });
   return (
     <div
       ref={sectionRef}
-      className="flex flex-col items-center justify-center w-full h-[100vh]  overflow-x-hidden mt-0 pt-40 lg "
+      className="flex flex-col items-center justify-center w-full h-[100vh]  overflow-x-hidden mt-0 pt-0 lg "
     >
       <div ref={textmain}>
         <GradientText

@@ -87,8 +87,7 @@ function tools() {
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-[100vh]  overflow-x-hidden mt-0 lg ">
-      {" "}
-      <div className="justify-center text-center mx-auto mb-10 mt-20">
+      <div className="justify-center text-center mx-auto mb-10 mt-0">
         <BlurText
           text="Tools I Use"
           delay={150}

@@ -10,13 +10,16 @@ export default function Home() {
       <LightRays
         raysOrigin="top-center"
         raysColor="#4191ff"
-        raysSpeed={0.5}
-        lightSpread={0.1}
-        rayLength={9.3}
+        raysSpeed={0}
+        lightSpread={0.025}
+        rayLength={2}
         followMouse={true}
         mouseInfluence={0.3}
         noiseAmount={0}
         distortion={0}
+        fadeDistance={50}
+        saturation={9}
+        pulsating={false}  
         className=""
       />
       <div className="absolute top-0 left-0 w-full">
