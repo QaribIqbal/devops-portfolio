@@ -154,7 +154,7 @@ html body {
 
 /* services screen */
 .custom-spotlight-card {
-  @apply flex flex-col items-center justify-start bg-[#1a1a2e] rounded-xl p-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-2xl;
+  @apply flex flex-col items-center justify-start bg-[#02035078] backdrop-blur-lg rounded-xl p-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-2xl;
   width: 280px; /* fixed card width */
   min-height: 220px; /* optional for consistent height */
   will-change: transform, opacity;
@@ -185,13 +185,14 @@ html body {
 
 /* tech screen */
 .custom-spotlight-tech-card {
-  @apply flex flex-col items-center justify-start bg-[#1a1a2e] rounded-xl p-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-2xl;
+  @apply flex flex-col items-center justify-start backdrop-blur-md rounded-xl p-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-2xl;
   width: 280px; /* fixed card width */
   min-height: 220px; /* optional for consistent height */
   will-change: transform, opacity;
   backface-visibility: hidden;
   justify-content: space-between;
   transform: translateZ(0);
+  background-color: #12147278
 }
 
 .custom-spotlight-tech-card img {
@@ -221,4 +222,81 @@ html body {
 }
 .custom-spotlight-card{
   cursor: pointer;
+}
+.transition{
+  /* transition-duration: 0.6s; */
+  transition: 0.2s;
+}
+.transition:hover
+{
+    transition: 0.2s;
+    transform: scale(1.05);
+}
+.animated-gradient-text {
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  max-width: fit-content;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1.25rem;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  transition: box-shadow 0.5s ease-out;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 300% 100%;
+  animation: gradient linear infinite;
+  border-radius: inherit;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.gradient-overlay::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: inherit;
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #060010;
+  z-index: -1;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.text-content {
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradient linear infinite;
 }

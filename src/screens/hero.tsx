@@ -65,7 +65,7 @@ const hero = () => {
         <CardNav
           logoAlt="Company Logo"
           items={items}
-          baseColor="#c6d3f1ff"
+          baseColor="#acc5fe89"
           menuColor="#132159ff"
           buttonBgColor="#132159ff"
           buttonTextColor="#fff"

@@ -13,57 +13,6 @@ function tech() {
   const techCard3 = useRef(null);
   const techCard4 = useRef(null);
 
-  // useGSAP(() => {
-  //   // Animate heading
-  //   gsap.from(techCard1.current, {
-  //     opacity: 0,
-  //     x: -100,
-  //     rotationX:-180,
-  //     duration: 2,
-  //     scrollTrigger: {
-  //       trigger: sectionRef.current,
-  //       start: "top 45%",
-  //       end: "top -55%",
-  //   //       scrub: 1.3,
-  //     },
-  //   });
-  //   gsap.from(techCard2.current, {
-  //     opacity: 0,
-  //     y: -100,
-  //     rotationY:-180,
-  //     duration: 2,
-  //     scrollTrigger: {
-  //       trigger: sectionRef.current,
-  //       start: "top 45%",
-  //       end: "top -55%",
-  //   //       scrub: 1.3,
-  //     },
-  //   });
-  //   gsap.from(techCard3.current, {
-  //     opacity: 0,
-  //     y: 100,
-  //     rotationY:180,
-  //     duration: 2,
-  //     scrollTrigger: {
-  //       trigger: sectionRef.current,
-  //       start: "top 45%",
-  //       end: "top -55%",
-  //   //       scrub: 1.3,
-  //     },
-  //   });
-  //    gsap.from(techCard4.current, {
-  //     opacity: 0,
-  //     x: 100,
-  //     rotateX:180,
-  //     duration: 2,
-  //     scrollTrigger: {
-  //       trigger: sectionRef.current,
-  //       start: "top 45%",
-  //       end: "top -55%",
-  //   //       scrub: 1.3,
-  //     },
-  //   });
-  // });
   useGSAP(() => {
   // left in from x (little overshoot)
   gsap.from(techCard1.current, {

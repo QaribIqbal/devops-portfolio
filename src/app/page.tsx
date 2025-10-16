@@ -1,12 +1,13 @@
 import LightRays from "@/components/LightRays";
 import Hero from "@/screens/hero";
+import Projects from "@/screens/projects";
 import Services from "@/screens/services";
 import Socials from "@/screens/socials";
 import Tech from "@/screens/tech";
 import Tools from "@/screens/tools";
 export default function Home() {
   return (
-    <div style={{ width: "100%", height: "500vh", position: "relative" }}>
+    <div style={{ width: "100%", height: "700vh", position: "relative" }}>
       <LightRays
         raysOrigin="top-center"
         raysColor="#4191ff"
@@ -27,6 +28,7 @@ export default function Home() {
         <Services />
         <Tech />
         <Tools/>
+        <Projects />
         <Socials />
       </div>
     </div>

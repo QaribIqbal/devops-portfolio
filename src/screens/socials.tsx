@@ -78,7 +78,7 @@ function socials() {
       <div ref={textmain}>
         <GradientText
           colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
-          animationSpeed={3}
+          animationSpeed={8}
           showBorder={false}
           className="custom-class text-4xl font-black mb-10"
         >
