@@ -84,8 +84,10 @@ ease: "power4.out",
           delay={150}
           animateBy="words"
           direction="top"
-          className="text-4xl font-bold"
+          className="text-4xl md:text-6xl font-extrabold tracking-tight"
         />
+                <div className="w-20 h-[3px] bg-indigo-500 mx-auto mt-3 rounded-full"></div>
+
       </div>
       <div className="flex flex-wrap justify-center items-start gap-6 mt-10 px-4">
         <div ref={techCard1}>

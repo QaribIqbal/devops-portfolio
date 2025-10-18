@@ -26,7 +26,7 @@ const imageLogos = [
     href: "https://company2.com",
   },
   {
-    src: "/icons/C++ (CPlusPlus).png",
+    src: "/icons/C++.png",
     alt: "Company 7",
     href: "https://company3.com",
   },
@@ -93,8 +93,10 @@ function tools() {
           delay={150}
           animateBy="words"
           direction="top"
-          className="text-4xl font-bold"
+          className="text-4xl md:text-6xl font-extrabold tracking-tight"
         />
+                <div className="w-20 h-[3px] bg-indigo-500 mx-auto mt-3 rounded-full"></div>
+
       </div>
       <LogoLoop
         logos={imageLogos}

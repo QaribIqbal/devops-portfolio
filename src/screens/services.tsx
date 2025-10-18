@@ -59,14 +59,17 @@ const services = () => {
       className="flex flex-col items-center w-full min-h-[100vh]  overflow-x-hidden mt-0 lg "
     >
       {/* Heading Section */}
-      <div className=" text-center m-auto mb-10 mt-50">
+      <div className=" text-center m-auto mb-10 mt-50 ">
         <BlurText
           text="Services I'm Providing"
           delay={150}
           animateBy="words"
           direction="top"
-          className="text-4xl font-bold"
+          className="text-4xl md:text-6xl font-extrabold tracking-tight"
+          
         />
+                <div className="w-20 h-[3px] bg-indigo-500 mx-auto mt-3 rounded-full"></div>
+
       </div>
 
       {/* Cards Section */}

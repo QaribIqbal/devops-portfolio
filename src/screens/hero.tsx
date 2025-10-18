@@ -61,11 +61,11 @@ const hero = () => {
     },
   ];
   return (
- <div className=" flex flex-col justify-center items-center w-full h-[100vh] mb-0">
+ <div className=" flex flex-col justify-center items-center w-full min-h-[100vh] mb-0">
         <CardNav
           logoAlt="Company Logo"
           items={items}
-          baseColor="#acc5fe89"
+          baseColor="#84adef99"
           menuColor="#132159ff"
           buttonBgColor="#132159ff"
           buttonTextColor="#fff"

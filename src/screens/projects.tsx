@@ -66,8 +66,10 @@ function Projects() {
           delay={150}
           animateBy="words"
           direction="top"
-          className="text-4xl font-bold"
+          className="text-4xl md:text-6xl font-extrabold tracking-tight"
         />
+                <div className="w-20 h-[3px] bg-indigo-500 mx-auto mt-3 rounded-full"></div>
+
       </div>
       <div  className="flex flex-col items-center w-full max-h-[80vh] overflow-none mt-0">
         <ScrollStack

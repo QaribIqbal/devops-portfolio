@@ -80,7 +80,7 @@ function socials() {
           colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
           animationSpeed={8}
           showBorder={false}
-          className="custom-class text-4xl font-black mb-10"
+          className="mb-10 text-4xl md:text-6xl font-extrabold tracking-tight"
         >
           Let's Get In Touch!
         </GradientText>

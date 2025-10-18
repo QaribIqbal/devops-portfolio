@@ -1,10 +1,30 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { ReactLenis } from 'lenis/react';
+import React, { useEffect } from "react";
+import { ReactLenis } from "lenis/react";
 
-export default function LenisProvider({ children }: { children: React.ReactNode }) {
-  // ReactLenis must be used in a client component
-  // pass options to ReactLenis if needed: <ReactLenis root options={{ lerp: 0.1 }}>
-  return <ReactLenis root options={{ lerp: 0.05 }}>{children}</ReactLenis>;
+export default function LenisProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  // useEffect(() => {
+  //   // Force smooth scrolling by disabling native scroll
+  //   document.documentElement.style.scrollBehavior = "smooth";
+  //   document.body.style.overflowX = "hidden";
+  // }, []);
+
+  return (
+    <ReactLenis
+      root
+      options={{
+        lerp: 0.1,
+        // wheelMultiplier:1.5,
+        smoothWheel: true,
+        syncTouch: true, // Slightly increase for smoother motion
+      }}
+    >
+      {children}
+    </ReactLenis>
+  );
 }

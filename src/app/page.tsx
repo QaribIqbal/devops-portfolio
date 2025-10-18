@@ -5,6 +5,7 @@ import Services from "@/screens/services";
 import Socials from "@/screens/socials";
 import Tech from "@/screens/tech";
 import Tools from "@/screens/tools";
+import AboutMe from "@/screens/aboutme";
 export default function Home() {
   return (
     <div style={{ width: "100%", height: "700vh", position: "relative" }}>
@@ -20,14 +21,15 @@ export default function Home() {
         distortion={0}
         fadeDistance={50}
         saturation={9}
-        pulsating={false}  
+        pulsating={false}
         className=""
       />
       <div className="absolute top-0 left-0 w-full">
         <Hero />
+        <AboutMe />
         <Services />
         <Tech />
-        <Tools/>
+        <Tools />
         <Projects />
         <Socials />
       </div>
