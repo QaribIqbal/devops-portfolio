@@ -19,7 +19,7 @@ export default function LenisProvider({
       root
       options={{
         lerp: 0.03,
-        wheelMultiplier:1.5,
+        wheelMultiplier:1.2,
         smoothWheel: true,
         syncTouch: true, // Slightly increase for smoother motion
       }}

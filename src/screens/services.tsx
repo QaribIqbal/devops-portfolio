@@ -24,7 +24,7 @@ const services = () => {
         start: "top 30%",
         end: "top -5%",
 
-        scrub : 1
+        scrub: 1,
       },
     });
     gsap.from(card2.current, {
@@ -36,7 +36,7 @@ const services = () => {
         start: "top 30%",
         end: "top -5%",
 
-        scrub : 1
+        scrub: 1,
       },
     });
     gsap.from(card3.current, {
@@ -66,10 +66,8 @@ const services = () => {
           animateBy="words"
           direction="top"
           className="text-4xl md:text-6xl font-extrabold tracking-tight"
-          
         />
-                <div className="w-20 h-[3px] bg-indigo-500 mx-auto mt-3 rounded-full"></div>
-
+        <div className="w-20 h-[3px] bg-indigo-500 mx-auto mt-3 rounded-full"></div>
       </div>
 
       {/* Cards Section */}
@@ -86,7 +84,7 @@ const services = () => {
             />
             <h3 className="text-lg font-semibold mb-1">Web Development</h3>
             <p className="text-sm text-gray-300">
-              Build responsive and modern websites with latest technologies.
+              Design and build next-gen websites that adapt to every device.{" "}
             </p>
           </SpotlightCard>
         </div>
@@ -102,7 +100,7 @@ const services = () => {
             />
             <h3 className="text-lg font-semibold mb-1">App Development</h3>
             <p className="text-sm text-gray-300">
-              Create cross-platform apps with Flutter and React Native.
+              Bringing your ideas to life with Flutter cross-platform app{" "}
             </p>
           </SpotlightCard>
         </div>
@@ -112,13 +110,14 @@ const services = () => {
             spotlightColor="rgba(6, 96, 206, 0.25)"
           >
             <img
-              src="/icon-design.svg"
-              alt="UI/UX Design"
+              src="/Ai_automation.svg"
+              alt="Ai Automation"
               className="w-12 h-12 mb-3"
             />
-            <h3 className="text-lg font-semibold mb-1">UI/UX Design</h3>
+            <h3 className="text-lg font-semibold mb-1">AI Automation</h3>
             <p className="text-sm text-gray-300">
-              Design intuitive interfaces and enhance user experience.
+              Automate tasks and enhance productivity with AI solutions built
+              for your business.
             </p>
           </SpotlightCard>
         </div>

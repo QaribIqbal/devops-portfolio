@@ -26,8 +26,9 @@ export default function AboutMe() {
       scrollTrigger: {
         trigger: sectionRef.current,
         start: "top 10%",
-        end: "top -5%",
-        scrub : 1.2
+        end: "top -50%",
+        scrub : 1.2,
+        // markers: true,
       },
     });
    
