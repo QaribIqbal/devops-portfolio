@@ -6,6 +6,7 @@ import Socials from "@/screens/socials";
 import Tech from "@/screens/tech";
 import Tools from "@/screens/tools";
 import AboutMe from "@/screens/aboutme";
+import Cta from "@/screens/Cta";
 export default function Home() {
   return (
     <div style={{ width: "100%" }}>
@@ -34,6 +35,7 @@ export default function Home() {
         <Tech />
         <Tools />
         <Projects />
+        <Cta/>
         <Socials />
     </div>
   );

@@ -69,7 +69,7 @@ What sets me apart is my mindset — I don’t just code; I create solutions tha
 Whether you need a pixel-perfect frontend, a robust backend, or a complete product strategy, I can help you build it from the ground up.
 
 Let’s turn your idea into something remarkable.`}
-animateOn="view"          
+animateOn="hover"          
 className="text-base md:text-lg font-medium leading-relaxed text-gray-300 max-w-3xl mx-auto lg:mx-0"
           />
         </div>
