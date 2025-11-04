@@ -15,8 +15,8 @@ export default function Home() {
     { label: "Contact", href: "/#connect" }, // absolute contact fragment
   ];
   return (
-    <div style={{ width: "100%" }}>
-      <div style={{ width: "100%", height: "100vh", position: "relative" }}>
+  <div className="w-screen min-h-screen overflow-x-hidden">
+  <div className="relative w-full h-screen">
         <LightRays
           raysOrigin="top-center"
           raysColor="#0216c3"
