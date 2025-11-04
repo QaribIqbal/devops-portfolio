@@ -43,7 +43,7 @@ const hero = () => {
     >
       <div className="flex flex-col md:flex-row justify-between items-center min-h-screen md:px-50 mt-0">
     
-        <div
+        {/* <div
           className="absolute top-8 left-1/2 transform -translate-x-1/2 z-50 w-100 px-4 py-0 pointer-events-auto"
           style={{
             display: "flex",
@@ -61,7 +61,7 @@ const hero = () => {
             timeVariance={300}
             colors={[1, 2, 3, 1, 2, 3, 1, 4]}
           />
-        </div>
+        </div> */}
 
         <div className="min-w-[100vw] md:min-w-[55vw] mx-auto">
           <TextType

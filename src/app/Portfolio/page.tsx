@@ -10,7 +10,7 @@ import GooeyNav from "@/components/GooeyNav";
 gsap.registerPlugin(ScrollTrigger);
 
  const items = [
-    { label: "About Me", href: "/#about" },
+    { label: "About Me", href: "/" },
     { label: "Work", href: "/Portfolio" },
     { label: "Contact", href: "/#connect" },
   ];
