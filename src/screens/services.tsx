@@ -5,6 +5,7 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
 import gsap from "gsap";
+import { ServerCog, Workflow, Users } from "lucide-react";
 
 const services = () => {
   gsap.registerPlugin(ScrollTrigger);
@@ -58,67 +59,91 @@ const services = () => {
       ref={sectionRef}
       className="flex flex-col items-center w-full min-h-[100vh]  overflow-x-hidden mt-0 lg "
     >
-      {/* Heading Section */}
-      <div className=" text-center m-auto mb-10 mt-50 ">
+      <div className="text-center w-full max-w-3xl mx-auto px-4 mt-12 md:mt-24 mb-8 md:mb-12">
         <BlurText
-          text="Services I'm Providing"
+          text="Services I Provide"
           delay={150}
           animateBy="words"
           direction="top"
-          className="text-4xl md:text-6xl font-extrabold tracking-tight"
+          className="text-4xl md:text-5xl font-black tracking-tight text-textMain"
         />
-        <div className="w-20 h-[3px] bg-indigo-500 mx-auto mt-3 rounded-full"></div>
+        <div className="w-20 h-[3px] bg-teal mx-auto mt-6 rounded-full shadow-[0_0_10px_rgba(34,197,94,0.5)]"></div>
       </div>
 
       {/* Cards Section */}
-      <div className="flex flex-wrap justify-center items-start gap-6 mt-10 px-4">
-        <div ref={card1}>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 px-4 w-full max-w-6xl mx-auto">
+        <div ref={card1} className="w-full">
           <SpotlightCard
-            className="custom-spotlight-card"
-            spotlightColor="rgba(6, 96, 206, 0.25)"
+            className="w-full h-full bg-elevated border-white/5 border rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:border-teal/50 hover:shadow-[0_0_30px_rgba(34,197,94,0.1)] flex flex-col justify-between"
+            spotlightColor="rgba(34, 197, 94, 0.15)"
           >
-            <img
-              src="/icon-dev.svg"
-              alt="Web Development"
-              className="w-12 h-12 mb-3"
-            />
-            <h3 className="text-lg font-semibold mb-1">Web Development</h3>
-            <p className="text-sm text-gray-300">
-              Design and build next-gen websites that adapt to every device.{" "}
-            </p>
+            <div>
+              <ServerCog className="w-12 h-12 mb-4 text-teal" />
+              <h3 className="text-xl font-bold text-textMain mb-1">Deployment & Server Care</h3>
+              <p className="text-sm text-textMuted mb-4">($300–$600 setup + $250–$500/mo)</p>
+              <p className="text-sm text-textSubtle mb-4">
+                VPS/IIS setup and hardening, CI/CD pipelines, Docker, monitoring basics, and weekly check‑ins.
+              </p>
+              <p className="text-sm font-medium text-teal mb-2">
+                Outcome: Less risky deployments, fewer incidents, and predictable releases.
+              </p>
+              <p className="text-xs text-textSubtle mb-6 flex-grow">
+                Best for: Growing agencies shipping client software frequently.
+              </p>
+            </div>
+            <a href="/#connect" className="bg-teal text-main px-6 py-3 rounded-xl font-bold hover:shadow-[0_0_20px_rgba(34,197,94,0.4)] transition-all mt-auto text-center w-full inline-block">
+              Talk about this service &rarr;
+            </a>
           </SpotlightCard>
         </div>
-        <div ref={card2}>
+        
+        <div ref={card2} className="w-full">
           <SpotlightCard
-            className="custom-spotlight-card"
-            spotlightColor="rgba(6, 96, 206, 0.25)"
+            className="w-full h-full bg-elevated border-white/5 border rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:border-teal/50 hover:shadow-[0_0_30px_rgba(34,197,94,0.1)] flex flex-col justify-between"
+            spotlightColor="rgba(34, 197, 94, 0.15)"
           >
-            <img
-              src="/icon-app.svg"
-              alt="App Development"
-              className="w-12 h-12 mb-3"
-            />
-            <h3 className="text-lg font-semibold mb-1">App Development</h3>
-            <p className="text-sm text-gray-300">
-              Bringing your ideas to life with Flutter cross-platform app{" "}
-            </p>
+            <div>
+              <Workflow className="w-12 h-12 mb-4 text-teal" />
+              <h3 className="text-xl font-bold text-textMain mb-1">Automation Sprint (n8n)</h3>
+              <p className="text-sm text-textMuted mb-4">($250–$450/sprint)</p>
+              <p className="text-sm text-textSubtle mb-4">
+                1–3 n8n workflows to kill repetitive manual tasks like reporting, lead routing, onboarding, and ops.
+              </p>
+              <p className="text-sm font-medium text-teal mb-2">
+                Outcome: Reclaimed hours and near-zero reporting or data-entry errors.
+              </p>
+              <p className="text-xs text-textSubtle mb-6 flex-grow">
+                Best for: Teams drowning in manual admin and copying data.
+              </p>
+            </div>
+            <a href="/#connect" className="bg-teal text-main px-6 py-3 rounded-xl font-bold hover:shadow-[0_0_20px_rgba(34,197,94,0.4)] transition-all mt-auto text-center w-full inline-block">
+              Talk about this service &rarr;
+            </a>
           </SpotlightCard>
         </div>
-        <div ref={card3}>
+
+        <div ref={card3} className="w-full">
           <SpotlightCard
-            className="custom-spotlight-card"
-            spotlightColor="rgba(6, 96, 206, 0.25)"
+            className="w-full h-full bg-elevated border-white/5 border rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:border-teal/50 hover:shadow-[0_0_30px_rgba(34,197,94,0.1)] flex flex-col justify-between"
+            spotlightColor="rgba(34, 197, 94, 0.15)"
           >
-            <img
-              src="/Ai_automation.svg"
-              alt="Ai Automation"
-              className="w-12 h-12 mb-3"
-            />
-            <h3 className="text-lg font-semibold mb-1">AI Automation</h3>
-            <p className="text-sm text-gray-300">
-              Automate tasks and enhance productivity with AI solutions built
-              for your business.
-            </p>
+            <div>
+              <Users className="w-12 h-12 mb-4 text-teal" />
+              <h3 className="text-xl font-bold text-textMain mb-1">White-Label Tech Ops</h3>
+              <p className="text-sm text-textMuted mb-4">($500–$1,000/mo)</p>
+              <p className="text-sm text-textSubtle mb-4">
+                Backend/automation partner for agencies: small automations, bug triage, deployment help, and release support.
+              </p>
+              <p className="text-sm font-medium text-teal mb-2">
+                Outcome: Say yes to more technical projects without hiring full-time devs.
+              </p>
+              <p className="text-xs text-textSubtle mb-6 flex-grow">
+                Best for: Marketing agencies expanding their technical offerings.
+              </p>
+            </div>
+            <a href="/#connect" className="bg-teal text-main px-6 py-3 rounded-xl font-bold hover:shadow-[0_0_20px_rgba(34,197,94,0.4)] transition-all mt-auto text-center w-full inline-block">
+              Talk about this service &rarr;
+            </a>
           </SpotlightCard>
         </div>
       </div>

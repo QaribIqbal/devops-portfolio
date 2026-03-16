@@ -17,88 +17,40 @@ gsap.registerPlugin(ScrollTrigger);
 const projects = [
   {
     id: 1,
-    title: "Schoolage",
+    title: "Marketing Agency Automation",
     image: "/projects/project2.png",
-    video: "/demos/Schoolage.mp4",
+    video: "/demos/campusflow.mp4",
     description:
-      "A complete college and university management system — from attendance tracking to exam management, results, and invoicing, all in one integrated platform.",
-    tech: ["Angular", "Node.js", "MySQL", "Duende"],
-    category: "Full Stack",
+      "Problem: A marketing agency spent hours pulling manual campaign data. \nSolution: Built n8n workflows for automated pipelines, CRM syncs, and email summaries. \nOutcome: Reclaimed hours per week and stopped reporting errors.",
+    tech: ["n8n", "CRMs", "APIs"],
+    category: "Automation",
     liveUrl: "#",
     githubUrl: "#",
   },
   {
     id: 2,
-    title: "StuddyBuddy",
+    title: "SaaS CI/CD Setup",
     image: "/projects/project1.png",
     video: "/demos/lms.mp4",
     description:
-      "A To Do List having advanced features like user management and multi device support.",
-    tech: ["Flutter", "Firebase", "OpenAI API"],
-    category: "Mobile App",
-    liveUrl: "https://studybuddysample.netlify.app/",
-    githubUrl: "https://github.com/QaribIqbal/LMS-REACT",
+      "Problem: Early-stage SaaS team had fragile, manual deployment processes. \nSolution: Configured a CI/CD pipeline via GitHub Actions, VPS environment separation, and zero-downtime updates. \nOutcome: Predictable releases and no more surprise downtime.",
+    tech: ["GitHub Actions", "Docker", "VPS", "Windows / IIS"],
+    category: "DevOps",
+    liveUrl: "#",
+    githubUrl: "#",
   },
   {
     id: 3,
-    title: "Student LMS",
-    image: "/projects/project3.png",
-    video: "#",
-    description:
-      "An OLX-inspired social marketplace with bidding, real-time chat, and a clean modern UI — built to make buying and selling fun and trustworthy.",
-    tech: ["Vue.js", "Express.js", "MongoDB", "Firebase Auth"],
-    category: "Web App",
-    liveUrl: "#",
-    githubUrl: "#",
-  },
-  {
-    id: 4,
-    title: "Taskify Pro",
+    title: "SaaS Backend & Infrastructure",
     image: "/projects/project4.png",
-    video: "#",
+    video: "/demos/taskify.mp4",
     description:
-      "A task and project management tool with analytics, timelines, and real-time team collaboration — designed to boost productivity across organizations.",
-    tech: ["React", "Node.js", "PostgreSQL", "Redis"],
-    category: "Web App",
+      "Problem: A project management tool needed robust backend glue and continuous deployment. \nSolution: Hardened backend setup with Node.js and Azure DevOps pipelines. \nOutcome: Scalable APIs and a secure, monitored deployment pipeline.",
+    tech: ["Node.js", "Azure DevOps", "Docker", "PostgreSQL"],
+    category: "Backend & Infra",
     liveUrl: "#",
     githubUrl: "#",
-  },
-  {
-    id: 5,
-    title: "Shoe Ecommerce Store",
-    image: "/projects/project5.png",
-    video: "/demos/Shoes.mp4",
-    description:
-      "A very simple ecommerce store frontend built using pure HTML, CSS and JavaScript.",
-    tech: ["HTML5", "CSS", "JavaScript"],
-    category: "Full Stack",
-    liveUrl: "#",
-    githubUrl: "#",
-  },
-  {
-    id: 6,
-    title: "Discount Valley App",
-    image: "/projects/project6.png",
-    video: "/demos/discount.mp4",
-    description:
-      "An app that help you find offers around in your cards based on your location and preferences.",
-    tech: ["Flutter", "ExpressJS", "MongoDB"],
-    category: "Mobile App",
-    liveUrl: "#",
-    githubUrl: "#",
-  },
-  // {
-  //   id: 6,
-  //   title: "BlockWave",
-  //   image: "/projects/project6.png",
-  //   video: "/demos/blockwave.mp4",
-  //   description:
-  //     "A web blocker extension that helps users stay focused by dynamically blocking distracting websites using regex-based matching and smart scheduling.",
-  //   tech: ["Chrome API", "JavaScript", "Local Storage"],
-  //   category: "Browser Extension",
-  //   liveUrl: "#",
-  //   githubUrl: "#",
-  // },
+  }
 ];
 
 interface Project {
@@ -494,9 +446,7 @@ export default function ProjectsSection() {
           </h1>
           <div className="w-20 lg:w-24 h-1 bg-gradient-to-r from-blue-500 to-blue-500 mx-auto mb-6 lg:mb-8 rounded-full" />
           <p className="text-lg lg:text-xl xl:text-2xl text-gray-300 max-w-3xl lg:max-w-4xl mx-auto leading-relaxed font-light px-4">
-            Immersive digital experiences that blend cutting-edge technology
-            with exceptional design. Each project tells a unique story of
-            innovation.
+            A look at how I’ve helped teams automate workflows, secure deployments, and replace fragile ops with rock-solid infrastructure.
           </p>
         </div>
       </div>

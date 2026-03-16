@@ -1,14 +1,13 @@
 "use client";
 import BlurText from "@/components/BlurText";
 import DecryptedText from "@/components/DecryptedText";
-import ProfileCard from "@/components/ProfileCard";
 import SplitText from "@/components/SplitText";
+import ProfileCard from "@/components/ProfileCard";
 import { useGSAP } from '@gsap/react';
 import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-useGSAP
 export default function AboutMe() {
     gsap.registerPlugin(ScrollTrigger);
   const sectionRef = useRef(null);
@@ -39,7 +38,7 @@ export default function AboutMe() {
       <div className="text-center mb-26">
         <SplitText
           text="ABOUT ME"
-          className="text-4xl md:text-6xl font-extrabold tracking-tight"
+          className="text-4xl md:text-5xl font-black tracking-tight text-textMain"
           delay={100}
           duration={0.6}
           ease="power3.out"
@@ -49,68 +48,67 @@ export default function AboutMe() {
           threshold={0.1}
           rootMargin="-100px"
         />
-        <div className="w-20 h-[3px] bg-indigo-500 mx-auto mt-3 rounded-full"></div>
+        <div className="w-20 h-[3px] bg-teal mx-auto mt-4 rounded-full shadow-[0_0_10px_rgba(34,197,94,0.5)]"></div>
       </div>
 
       {/* Content Layout */}
       <div  ref={card1} className="flex flex-col-reverse lg:flex-row items-center justify-between w-full gap-12">
         {/* Text Section */}
-       <div className="w-full lg:w-2/3 text-center lg:text-left space-y-5 leading-relaxed text-gray-300">
-  <p className="text-lg font-medium">
-    Hi, I’m <span className="font-semibold text-white">Qarib Iqbal</span> — a passionate Full-Stack Developer and tech enthusiast from Lahore, Pakistan.
-  </p>
+        <div className="w-full lg:w-2/3 text-center lg:text-left space-y-6 leading-relaxed text-textMuted">
+          <p className="text-xl font-medium text-textMain">
+            Hi, I’m <span className="font-bold">Qarib Iqbal</span> — a Tech Ops & Deployment Partner.
+          </p>
 
-  <p>
-    I love transforming ideas into high-performing digital products that solve real-world problems — from concept to code.
-  </p>
+          <p className="text-lg">
+            I help small agencies and lean SaaS teams stop losing time and sleep to fragile deployments, manual workflows, and disconnected tools.
+          </p>
 
-  <p>
-    My journey began during my first semester of Computer Science, and since then, I’ve worked across a wide tech stack including 
-    <span className="text-white font-medium"> Angular, React, Flutter, Node.js, Express, MongoDB,</span> and 
-    <span className="text-white font-medium"> MySQL</span>. I specialize in building modern web apps, cross-platform mobile solutions, and efficient backend systems that are both scalable and user-focused.
-  </p>
+          <p className="text-lg">
+            Instead of fighting servers and spreadsheets, your team gets reliable releases, cleaner data, and fewer production surprises. I build and maintain the infrastructure that keeps your operations running smoothly, specializing in 
+            <span className="text-textMain font-medium"> VPS/IIS setups, CI/CD pipelines with GitHub Actions or Azure DevOps, Docker containerization,</span> and 
+            <span className="text-textMain font-medium"> n8n workflows.</span>
+          </p>
 
-  <p>
-    One of my highlight projects is <span className="text-white font-medium">PBay</span> — a Pakistan-based marketplace built to rival OLX. I co-developed it while leading business development, marketing, and backend strategy.
-  </p>
+          <p className="text-lg">
+            My work often acts as the backend glue between CRMs, project tools, email, and spreadsheets. Most of my solutions are delivered as focused short sprints or lightweight retainers.
+          </p>
 
-  <p>
-    Alongside freelancing and startup building, I’m actively learning <span className="text-white font-medium">AI and Machine Learning</span> to integrate intelligent automation into my future projects.
-  </p>
+          <p className="text-lg">
+            I also have foundational knowledge of cloud infrastructure, bolstered by a 20-hour <span className="text-textMain font-medium">AWS for Beginners</span> certification, giving me the tools to design resilient cloud architectures.
+          </p>
 
-  <p className="text-xl font-semibold text-white mt-6">
-    I don’t just code — I craft solutions that help businesses grow.
-  </p>
+          <div className="border-l-4 border-teal bg-elevated p-6 rounded-r-xl my-8 shadow-lg text-left">
+            <p className="text-xl font-semibold text-textMain">
+              "You stay focused on clients and product — I handle the tech ops glue."
+            </p>
+          </div>
 
-  <p>
-    Whether you need a pixel-perfect frontend, a robust backend, or a complete product strategy — let’s build something remarkable together.
-  </p>
-  <div>
-    <a
-  href="/QaribIqbal_Resume.pdf"
-  download="QaribIqbal_Resume.pdf"
-  className="bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-blue-700 transition-all duration-300"
->
-  Download CV
-</a>
-
-  </div>
-</div>
+          <div>
+            <a
+              href="/QaribIqbal_Resume.pdf"
+              download="QaribIqbal_Resume.pdf"
+              className="bg-elevated border border-white/10 text-textMain px-6 py-3 rounded-xl font-semibold hover:border-teal/50 hover:text-teal transition-all duration-300 inline-block mt-2 shadow-[0_0_15px_rgba(0,0,0,0.5)]"
+            >
+              Download CV
+            </a>
+          </div>
+        </div>
 
 
         {/* Profile Card */}
-        <div className="w-full lg:w-1/3 flex justify-center">
+        <div className="w-full lg:w-1/3 flex justify-center lg:justify-end mt-12 lg:mt-0">
           <ProfileCard
             name="Qarib Iqbal"
-            title="Full-Stack Developer"
+            title="Tech Ops & Deployment Partner"
             handle="qaribiqbal"
             status="Available for Work"
             contactText="Contact Me"
             avatarUrl="/me.png"
             showUserInfo={true}
             enableTilt={true}
-            enableMobileTilt={false}
-            onContactClick={() => console.log("Contact clicked")}
+            enableMobileTilt={true}
+            onContactClick={() => { window.location.href = "/#connect"; }}
+            className="w-full max-w-[340px]"
           />
         </div>
       </div>

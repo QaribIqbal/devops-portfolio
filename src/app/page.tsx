@@ -6,20 +6,36 @@ import Socials from "@/screens/socials";
 import Tech from "@/screens/tech";
 import Tools from "@/screens/tools";
 import AboutMe from "@/screens/aboutme";
-import Cta from "@/screens/Cta";
-import GooeyNav from "@/components/GooeyNav";
+import Link from "next/link";
+
 export default function Home() {
-  const items = [
-    { label: "About Me", href: "/#about" }, // absolute fragment -> always targets home
-    { label: "Work", href: "/Portfolio" }, // use lowercase / correct route path
-    { label: "Contact", href: "/#connect" }, // absolute contact fragment
-  ];
   return (
-  <div className="w-screen min-h-screen overflow-x-hidden">
-  <div className="relative w-full h-screen">
+    <div className="w-screen min-h-screen overflow-x-hidden bg-main">
+      {/* Sticky Top Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-[100] bg-main/80 backdrop-blur-md border-b border-white/5 px-4 md:px-8 py-4 flex items-center justify-between transition-all duration-300">
+        <div className="flex items-center gap-2">
+          <span className="font-bold text-lg tracking-tight text-white flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-teal animate-pulse"></span>
+            Qarib Iqbal
+          </span>
+        </div>
+        <div className="hidden md:flex items-center gap-8">
+          <a href="/#about" className="text-sm font-medium text-textMuted hover:text-white transition-colors">About</a>
+          <a href="/#services" className="text-sm font-medium text-textMuted hover:text-white transition-colors">Services</a>
+          <a href="/Portfolio" className="text-sm font-medium text-textMuted hover:text-white transition-colors">Work</a>
+        </div>
+        <div>
+          <a href="/#connect" className="bg-teal text-main px-4 py-2 sm:px-5 sm:py-2.5 rounded-lg font-bold hover:scale-105 transition-transform shadow-[0_0_15px_rgba(34,197,94,0.3)] text-xs sm:text-sm">
+            Fix My Deployments
+          </a>
+        </div>
+      </nav>
+
+      {/* Hero with rays */}
+      <div className="relative w-full min-h-screen pt-24 pb-12 flex flex-col justify-center">
         <LightRays
           raysOrigin="top-center"
-          raysColor="#0216c3"
+          raysColor="#22C55E" 
           raysSpeed={0.5}
           lightSpread={0.5}
           rayLength={5}
@@ -32,35 +48,16 @@ export default function Home() {
           pulsating={false}
           className="z-0"
         />
-        <div
-          className="absolute top-8 left-1/2 transform -translate-x-1/2 z-50 w-100 px-4 py-0 pointer-events-auto"
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <GooeyNav
-            items={items}
-            particleCount={15}
-            particleDistances={[90, 10]}
-            particleR={100}
-            initialActiveIndex={0}
-            animationTime={600}
-            timeVariance={300}
-            colors={[1, 2, 3, 1, 2, 3, 1, 4]}
-          />
-        </div>
-        <div className="absolute top-30 md:top-10 left-0 w-full">
+        <div className="relative z-10 w-full">
           <Hero />
         </div>
       </div>
-      <AboutMe />
-      <Services />
+
+      <div id="about"><AboutMe /></div>
+      <div id="services"><Services /></div>
       <Tech />
       <Tools />
       <Projects />
-      <Cta />
       <Socials />
     </div>
   );
