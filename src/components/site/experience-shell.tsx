@@ -86,35 +86,59 @@ export function ExperienceShell() {
 
     const horizontalTracks = gsap.utils.toArray<HTMLElement>("[data-force-horizontal='true']");
     const animations: gsap.core.Tween[] = [];
+    const cleanupResizeHandlers: Array<() => void> = [];
+    const delayedHorizontalTimers: number[] = [];
 
-    horizontalTracks.forEach((track) => {
+    horizontalTracks.forEach((track, index) => {
       const section = track.closest("[data-horizontal-section='true']");
       if (!section) return;
 
-      const resizeAndAnimate = () => {
-        if (window.innerWidth < 1024) return;
+      const triggerId = `forced-horizontal-${index}`;
+      let activeTween: gsap.core.Tween | null = null;
 
-        const totalShift = () => Math.max(0, track.scrollWidth - track.clientWidth);
-        if (totalShift() < 12) return;
+      const createOrRefreshHorizontal = () => {
+        activeTween?.kill();
+        activeTween = null;
+        ScrollTrigger.getById(triggerId)?.kill();
+        gsap.set(track, { x: 0 });
 
-        const tween = gsap.to(track, {
-          x: () => -totalShift(),
+        if (window.innerWidth < 768) return;
+
+        const children = Array.from(track.children) as HTMLElement[];
+        const computed = window.getComputedStyle(track);
+        const gapValue = Number.parseFloat(computed.columnGap || computed.gap || "0");
+        const totalChildWidth =
+          children.reduce((sum, child) => sum + child.getBoundingClientRect().width, 0) +
+          Math.max(0, children.length - 1) * gapValue;
+        const totalShift = Math.max(0, totalChildWidth - track.clientWidth);
+        if (totalShift < 12) return;
+
+        activeTween = gsap.to(track, {
+          x: -totalShift,
           ease: "none",
           scrollTrigger: {
-            trigger: track,
+            id: triggerId,
+            trigger: section,
             start: "top top+=80",
-            end: () => `+=${totalShift() + 320}`,
-            scrub: 1.15,
-            pin: section,
+            end: () => `+=${totalShift + 320}`,
+            scrub: 1.16,
+            pin: true,
             anticipatePin: 1,
             invalidateOnRefresh: true,
           },
         });
 
-        animations.push(tween);
+        animations.push(activeTween);
       };
 
-      resizeAndAnimate();
+      createOrRefreshHorizontal();
+
+      const onResize = () => createOrRefreshHorizontal();
+      window.addEventListener("resize", onResize);
+      cleanupResizeHandlers.push(() => window.removeEventListener("resize", onResize));
+
+      delayedHorizontalTimers.push(window.setTimeout(createOrRefreshHorizontal, 360));
+      delayedHorizontalTimers.push(window.setTimeout(createOrRefreshHorizontal, 1100));
     });
 
     const heroVisual = document.querySelector<HTMLElement>(".hero-visual-main");
@@ -203,6 +227,8 @@ export function ExperienceShell() {
     ScrollTrigger.refresh();
 
     return () => {
+      delayedHorizontalTimers.forEach((timer) => window.clearTimeout(timer));
+      cleanupResizeHandlers.forEach((dispose) => dispose());
       animations.forEach((tween) => tween.kill());
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       lenis.destroy();
