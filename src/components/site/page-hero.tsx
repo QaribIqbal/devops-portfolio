@@ -27,9 +27,11 @@ export function PageHero({
             className="max-w-[56rem]"
           />
           {(primaryCta || secondaryCta) && (
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
               {primaryCta ? (
-                <ButtonLink href={primaryCta.href}>{primaryCta.label}</ButtonLink>
+                <ButtonLink href={primaryCta.href} className="max-sm:w-full">
+                  {primaryCta.label}
+                </ButtonLink>
               ) : null}
               {secondaryCta ? (
                 <ButtonLink href={secondaryCta.href} variant="secondary">

@@ -19,8 +19,8 @@ export default function CaseStudiesPage() {
           eyebrow="Case Studies"
           title="Example automation breakdowns for marketing agencies."
           description="These are clearly labeled sample workflow scenarios, not client case studies. They show the kinds of operational bottlenecks the work is designed to solve, the system that would be built, and what a believable operational improvement could look like."
-          primaryCta={{ href: "/checklist", label: siteConfig.primaryCta }}
-          secondaryCta={{ href: "/contact", label: siteConfig.secondaryCta }}
+          primaryCta={{ href: "/checklist#lead-capture-form", label: siteConfig.primaryCta }}
+          secondaryCta={{ href: siteConfig.calendly, label: siteConfig.secondaryCta }}
         />
 
         <section className="page-section pt-0">

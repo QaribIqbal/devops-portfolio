@@ -83,6 +83,19 @@ export default function HomePage() {
                 aria-hidden="true"
                 className="hero-visual hero-visual-main"
               />
+              <div className="hero-trust-chip" aria-hidden="true">
+                <Image
+                  src="/me.png"
+                  alt=""
+                  width={56}
+                  height={56}
+                  className="hero-trust-chip-avatar"
+                />
+                <div className="hero-trust-chip-copy">
+                  <p>Qarib Iqbal</p>
+                  <span>AI Automation Specialist</span>
+                </div>
+              </div>
               <div className="relative z-10 max-w-[58rem]">
                 <p className="section-eyebrow">AI Automation For Marketing Agencies</p>
                 <h1 className="display-title max-w-[15ch] text-balance">
@@ -93,9 +106,11 @@ export default function HomePage() {
                   I design and implement AI automation systems that save time, reduce lead
                   leakage, and help your agency run more smoothly without adding more manual work.
                 </p>
-                <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
-                  <ButtonLink href="/checklist">{siteConfig.primaryCta}</ButtonLink>
-                  <ButtonLink href="/contact" variant="secondary">
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
+                  <ButtonLink href="/checklist#lead-capture-form" className="max-sm:w-full">
+                    {siteConfig.primaryCta}
+                  </ButtonLink>
+                  <ButtonLink href={siteConfig.calendly} variant="secondary">
                     {siteConfig.secondaryCta}
                   </ButtonLink>
                 </div>
@@ -159,7 +174,11 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="page-section section-slice section-slice-services" id="services">
+        <section
+          className="page-section section-slice section-slice-services"
+          id="services"
+          data-horizontal-section="true"
+        >
           <div className="shell">
             <Reveal>
               <SectionHeading
@@ -168,7 +187,10 @@ export default function HomePage() {
                 description="Each service is built around a specific operational pain and a practical outcome: faster lead handling, cleaner reporting, smoother onboarding, better connected systems, and less repeated internal work."
               />
             </Reveal>
-            <div className="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-3 lg:grid lg:overflow-visible lg:pb-0 lg:[grid-template-columns:repeat(2,minmax(0,1fr))">
+            <div
+              className="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-3"
+              data-force-horizontal="true"
+            >
               {services.map((service, index) => {
                 const Icon = serviceIcons[index];
                 const visual = serviceVisuals[index];
@@ -177,7 +199,7 @@ export default function HomePage() {
                   <Reveal
                     key={service.title}
                     delay={index * 0.04}
-                    className={`min-w-[88vw] snap-start sm:min-w-[70vw] lg:min-w-0 ${index === services.length - 1 ? "lg:col-span-2" : ""}`}
+                    className={`min-w-[88vw] snap-start sm:min-w-[70vw] lg:min-w-[44vw] ${index === services.length - 1 ? "lg:min-w-[60vw]" : ""}`}
                   >
                     <article className="panel kinetic-panel relative h-full overflow-hidden">
                       <Image
@@ -187,6 +209,7 @@ export default function HomePage() {
                         height={180}
                         aria-hidden="true"
                         className="service-visual"
+                        data-parallax="asset"
                       />
                       <div className="relative z-10 flex items-start justify-between gap-6">
                         <div className="max-w-[42rem]">
@@ -311,7 +334,11 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="page-section section-slice section-slice-proof" id="proof">
+        <section
+          className="page-section section-slice section-slice-proof"
+          id="proof"
+          data-horizontal-section="true"
+        >
           <div className="shell">
             <Reveal>
               <SectionHeading
@@ -320,9 +347,16 @@ export default function HomePage() {
                 description="Until real client work exists, the most credible thing to show is how the work is scoped, what a sample system looks like, and what a client actually receives in a sprint."
               />
             </Reveal>
-            <div className="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-3 lg:grid lg:overflow-visible lg:pb-0 lg:grid-cols-3">
+            <div
+              className="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-3"
+              data-force-horizontal="true"
+            >
               {proofCards.map((card, index) => (
-                <Reveal key={card.title} delay={index * 0.04} className="min-w-[86vw] snap-start sm:min-w-[66vw] lg:min-w-0">
+                <Reveal
+                  key={card.title}
+                  delay={index * 0.04}
+                  className="min-w-[86vw] snap-start sm:min-w-[66vw] lg:min-w-[36vw]"
+                >
                   <article className="panel kinetic-panel relative h-full overflow-hidden">
                     <Image
                       src={serviceVisuals[index]}
@@ -331,6 +365,7 @@ export default function HomePage() {
                       height={160}
                       aria-hidden="true"
                       className="proof-visual"
+                      data-parallax="asset"
                     />
                     <h3 className="text-[1.45rem] font-semibold tracking-[-0.04em] text-[color:var(--text-main)]">
                       {card.title}
@@ -464,9 +499,11 @@ export default function HomePage() {
                     bottleneck.
                   </p>
                 </div>
-                <div className="flex flex-col gap-4 sm:flex-row lg:flex-col">
-                  <ButtonLink href="/checklist">{siteConfig.primaryCta}</ButtonLink>
-                  <ButtonLink href="/contact" variant="secondary">
+                <div className="flex flex-col gap-3 sm:flex-row sm:gap-4 lg:flex-col">
+                  <ButtonLink href="/checklist#lead-capture-form" className="max-sm:w-full">
+                    {siteConfig.primaryCta}
+                  </ButtonLink>
+                  <ButtonLink href={siteConfig.calendly} variant="secondary">
                     {siteConfig.secondaryCta}
                   </ButtonLink>
                 </div>

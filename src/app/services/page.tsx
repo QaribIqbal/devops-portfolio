@@ -22,8 +22,8 @@ export default function ServicesPage() {
           eyebrow="Services"
           title="AI automation services built specifically for marketing agencies."
           description="This is AI automation for marketing agencies, not generic AI consulting. Each service is designed around the operational bottlenecks agencies feel most: lead follow-up, reporting, onboarding, repetitive admin work, and disconnected systems."
-          primaryCta={{ href: "/checklist", label: siteConfig.primaryCta }}
-          secondaryCta={{ href: "/contact", label: siteConfig.secondaryCta }}
+          primaryCta={{ href: "/checklist#lead-capture-form", label: siteConfig.primaryCta }}
+          secondaryCta={{ href: siteConfig.calendly, label: siteConfig.secondaryCta }}
         />
 
         <section className="page-section pt-0">
@@ -204,7 +204,7 @@ export default function ServicesPage() {
             </div>
 
             <div className="mt-10">
-              <ButtonLink href="/contact">{siteConfig.secondaryCta}</ButtonLink>
+              <ButtonLink href={siteConfig.calendly}>{siteConfig.secondaryCta}</ButtonLink>
             </div>
           </div>
         </section>

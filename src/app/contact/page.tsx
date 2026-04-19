@@ -22,7 +22,7 @@ export default function ContactPage() {
           eyebrow="Contact / Book Audit"
           title="A focused diagnostic for agencies that know something is too manual."
           description="The Free Automation Audit is not a generic discovery chat. It is a focused diagnostic for identifying the highest-value workflow bottleneck, clarifying what better looks like, and deciding whether a sprint makes sense."
-          primaryCta={{ href: "/checklist", label: siteConfig.primaryCta }}
+          primaryCta={{ href: "/checklist#lead-capture-form", label: siteConfig.primaryCta }}
         />
 
         <section className="page-section pt-0">

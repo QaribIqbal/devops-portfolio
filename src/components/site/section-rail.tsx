@@ -9,6 +9,11 @@ type SectionItem = {
 
 export function SectionRail({ sections }: { sections: SectionItem[] }) {
   const [activeId, setActiveId] = useState(sections[0]?.id ?? "");
+  const activeIndex = Math.max(
+    0,
+    sections.findIndex((section) => section.id === activeId),
+  );
+  const progress = sections.length > 1 ? (activeIndex / (sections.length - 1)) * 100 : 0;
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
@@ -41,22 +46,36 @@ export function SectionRail({ sections }: { sections: SectionItem[] }) {
   }, [sections]);
 
   return (
-    <nav aria-label="Section progress" className="section-rail">
-      {sections.map((section) => {
-        const active = section.id === activeId;
+    <>
+      <div className="section-progress-mobile" aria-live="polite">
+        <p className="section-progress-copy">
+          <span>Section</span>
+          <span>
+            {activeIndex + 1}/{sections.length}: {sections[activeIndex]?.label}
+          </span>
+        </p>
+        <div className="section-progress-track" aria-hidden="true">
+          <span className="section-progress-fill" style={{ width: `${progress}%` }} />
+        </div>
+      </div>
 
-        return (
-          <a
-            key={section.id}
-            href={`#${section.id}`}
-            className={`section-rail-item ${active ? "section-rail-item-active" : ""}`}
-            aria-current={active ? "true" : undefined}
-          >
-            <span className="section-rail-dot" aria-hidden="true" />
-            <span className="section-rail-label">{section.label}</span>
-          </a>
-        );
-      })}
-    </nav>
+      <nav aria-label="Section progress" className="section-rail">
+        {sections.map((section) => {
+          const active = section.id === activeId;
+
+          return (
+            <a
+              key={section.id}
+              href={`#${section.id}`}
+              className={`section-rail-item ${active ? "section-rail-item-active" : ""}`}
+              aria-current={active ? "true" : undefined}
+            >
+              <span className="section-rail-dot" aria-hidden="true" />
+              <span className="section-rail-label">{section.label}</span>
+            </a>
+          );
+        })}
+      </nav>
+    </>
   );
 }

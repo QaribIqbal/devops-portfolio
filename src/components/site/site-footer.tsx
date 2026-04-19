@@ -18,8 +18,8 @@ export function SiteFooter() {
             follow-up, cleaner reporting, smoother onboarding, and less repetitive operational work.
           </p>
           <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <ButtonLink href="/checklist">{siteConfig.primaryCta}</ButtonLink>
-            <ButtonLink href="/contact" variant="secondary">
+            <ButtonLink href="/checklist#lead-capture-form">{siteConfig.primaryCta}</ButtonLink>
+            <ButtonLink href={siteConfig.calendly} variant="secondary">
               {siteConfig.secondaryCta}
             </ButtonLink>
           </div>

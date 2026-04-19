@@ -52,10 +52,10 @@ export function MobileNav() {
             </nav>
 
             <div className="mt-5 flex flex-col gap-3">
-              <ButtonLink href="/checklist" className="w-full">
+              <ButtonLink href="/checklist#lead-capture-form" className="w-full">
                 {siteConfig.primaryCta}
               </ButtonLink>
-              <ButtonLink href="/contact" variant="secondary" className="w-full">
+              <ButtonLink href={siteConfig.calendly} variant="secondary" className="w-full">
                 {siteConfig.secondaryCta}
               </ButtonLink>
             </div>

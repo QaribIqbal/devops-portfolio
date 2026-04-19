@@ -8,6 +8,7 @@ type ButtonLinkProps = {
   children: React.ReactNode;
   variant?: "primary" | "secondary" | "ghost";
   className?: string;
+  external?: boolean;
 };
 
 export function ButtonLink({
@@ -15,7 +16,9 @@ export function ButtonLink({
   children,
   variant = "primary",
   className,
+  external = false,
 }: ButtonLinkProps) {
+  const isExternal = external || /^https?:\/\//.test(href);
   const style =
     variant === "primary"
       ? ({
@@ -40,6 +43,8 @@ export function ButtonLink({
   return (
     <Link
       href={href}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noreferrer noopener" : undefined}
       style={style}
       className={cn(
         "button-link",

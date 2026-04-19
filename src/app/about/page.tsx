@@ -22,8 +22,8 @@ export default function AboutPage() {
           eyebrow="About"
           title="Why this work is focused on marketing agencies."
           description="Agencies stay manual longer than they should because client work always feels more urgent than fixing the systems behind it. The result is slow follow-up, repetitive reporting work, messy onboarding, and too much admin being absorbed by small teams."
-          primaryCta={{ href: "/checklist", label: siteConfig.primaryCta }}
-          secondaryCta={{ href: "/contact", label: siteConfig.secondaryCta }}
+          primaryCta={{ href: "/checklist#lead-capture-form", label: siteConfig.primaryCta }}
+          secondaryCta={{ href: siteConfig.calendly, label: siteConfig.secondaryCta }}
         />
 
         <section className="page-section pt-0">
@@ -72,7 +72,7 @@ export default function AboutPage() {
                 workflows that hold up in day-to-day use.
               </p>
               <div className="mt-8">
-                <ButtonLink href="/contact">{siteConfig.secondaryCta}</ButtonLink>
+                <ButtonLink href={siteConfig.calendly}>{siteConfig.secondaryCta}</ButtonLink>
               </div>
             </article>
           </div>

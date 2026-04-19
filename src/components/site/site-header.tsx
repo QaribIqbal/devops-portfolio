@@ -35,20 +35,20 @@ export function SiteHeader({ minimal = false }: { minimal?: boolean }) {
         <div className="flex items-center gap-2.5">
           {!minimal ? (
             <>
-              <ButtonLink href="/contact" variant="ghost" className="hidden xl:inline-flex">
+              <ButtonLink href={siteConfig.calendly} variant="ghost" className="hidden xl:inline-flex">
                 {siteConfig.secondaryCta}
               </ButtonLink>
-              <ButtonLink href="/checklist" className="hidden sm:inline-flex">
+              <ButtonLink href="/checklist#lead-capture-form" className="hidden sm:inline-flex">
                 {siteConfig.primaryCta}
               </ButtonLink>
             </>
           ) : null}
           {minimal ? (
-            <ButtonLink href="/contact" variant="secondary" className="hidden sm:inline-flex">
+            <ButtonLink href={siteConfig.calendly} variant="secondary" className="hidden sm:inline-flex">
               {siteConfig.secondaryCta}
             </ButtonLink>
           ) : null}
-          <ButtonLink href="/contact" variant="secondary" className="hidden lg:inline-flex xl:hidden">
+          <ButtonLink href={siteConfig.calendly} variant="secondary" className="hidden lg:inline-flex xl:hidden">
             {siteConfig.secondaryCta}
           </ButtonLink>
           <MobileNav />

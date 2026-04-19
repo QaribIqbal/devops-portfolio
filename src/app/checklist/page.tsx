@@ -21,7 +21,7 @@ export default function ChecklistPage() {
           eyebrow="Free Resource"
           title="Spot the 7 workflows your agency should automate next."
           description="The Free Agency AI Automation Checklist helps lean marketing teams identify where manual work is creating friction, where systems are too disconnected, and which workflow is most worth fixing first."
-          secondaryCta={{ href: "/contact", label: siteConfig.secondaryCta }}
+          secondaryCta={{ href: siteConfig.calendly, label: siteConfig.secondaryCta }}
         />
 
         <section className="page-section pt-0">

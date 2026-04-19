@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Manrope } from "next/font/google";
 
 import "./globals.css";
+import { ExperienceShell } from "@/components/site/experience-shell";
 import { defaultMetadata } from "@/lib/seo";
 
 const geist = Geist({
@@ -23,7 +24,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geist.variable} ${manrope.variable}`}>{children}</body>
+      <body className={`${geist.variable} ${manrope.variable}`}>
+        <ExperienceShell />
+        {children}
+      </body>
     </html>
   );
 }

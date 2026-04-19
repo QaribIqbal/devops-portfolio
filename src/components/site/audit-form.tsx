@@ -55,7 +55,7 @@ export function AuditForm() {
   }
 
   return (
-    <form className="panel space-y-5" onSubmit={handleSubmit}>
+    <form id="audit-request-form" className="panel space-y-5" onSubmit={handleSubmit}>
       <div className="rounded-full border border-[color:var(--line)] bg-[color:var(--panel-soft)] px-4 py-3 text-xs uppercase tracking-[0.18em] text-[color:var(--text-subtle)]">
         Free Automation Audit
       </div>

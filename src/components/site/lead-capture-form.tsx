@@ -49,7 +49,7 @@ export function LeadCaptureForm() {
   }
 
   return (
-    <form className="panel space-y-5" onSubmit={handleSubmit}>
+    <form id="lead-capture-form" className="panel space-y-5" onSubmit={handleSubmit}>
       <div className="rounded-full border border-[color:var(--line)] bg-[color:var(--panel-soft)] px-4 py-3 text-xs uppercase tracking-[0.18em] text-[color:var(--text-subtle)]">
         Agency AI Automation Checklist
       </div>
@@ -59,6 +59,7 @@ export function LeadCaptureForm() {
           <input
             required
             type="text"
+            autoFocus
             value={form.name}
             onChange={(event) => updateField("name", event.target.value)}
             placeholder="Your name"

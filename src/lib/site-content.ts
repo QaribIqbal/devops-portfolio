@@ -192,7 +192,7 @@ export const offerPath = [
       "A lower-pressure way to get clarity before committing to a build.",
     ],
     cta: siteConfig.secondaryCta,
-    href: "/contact",
+    href: siteConfig.calendly,
     featured: false,
   },
   {
@@ -205,7 +205,7 @@ export const offerPath = [
       "A professional, lower-risk way to fix the right bottleneck without buying a huge engagement.",
     ],
     cta: siteConfig.secondaryCta,
-    href: "/contact",
+    href: siteConfig.calendly,
     featured: true,
     note: "If something inside the agreed sprint scope is not working as specified at handoff, it gets fixed before sign-off. The promise is around scope clarity and implementation quality, not exaggerated outcome guarantees.",
   },
@@ -219,7 +219,7 @@ export const offerPath = [
       "Best once the first automation is live and your team is using it day to day.",
     ],
     cta: siteConfig.secondaryCta,
-    href: "/contact",
+    href: siteConfig.calendly,
     featured: false,
   },
 ];

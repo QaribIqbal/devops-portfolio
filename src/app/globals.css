@@ -11,13 +11,30 @@
   --line-strong: oklch(0.58 0.014 220 / 0.34);
   --line-contrast: oklch(0.72 0.02 205 / 0.48);
   --text-main: oklch(0.97 0.006 220);
-  --text-muted: oklch(0.86 0.015 220);
-  --text-subtle: oklch(0.73 0.014 220);
+  --text-muted: oklch(0.9 0.012 220);
+  --text-subtle: oklch(0.8 0.012 220);
   --accent: oklch(0.76 0.085 195);
   --accent-strong: oklch(0.81 0.078 195);
   --accent-soft: color-mix(in oklch, var(--accent) 14%, transparent);
   --ease-out-strong: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html[data-theme="light"] {
+  --bg: oklch(0.97 0.006 220);
+  --bg-strong: oklch(0.93 0.007 220);
+  --panel: oklch(0.985 0.005 220 / 0.92);
+  --panel-strong: oklch(1 0.004 220 / 0.98);
+  --panel-soft: oklch(0.95 0.008 220 / 0.7);
+  --line: oklch(0.73 0.012 220 / 0.35);
+  --line-strong: oklch(0.6 0.018 220 / 0.45);
+  --line-contrast: oklch(0.45 0.06 200 / 0.45);
+  --text-main: oklch(0.19 0.02 220);
+  --text-muted: oklch(0.29 0.018 220);
+  --text-subtle: oklch(0.4 0.015 220);
+  --accent: oklch(0.58 0.1 195);
+  --accent-strong: oklch(0.52 0.11 195);
+  --accent-soft: color-mix(in oklch, var(--accent) 12%, transparent);
 }
 
 *,
@@ -109,7 +126,7 @@ img {
     z-index: -1;
     background:
       radial-gradient(circle at var(--slice-x, 18%) var(--slice-y, 24%), var(--slice-glow, transparent), transparent 52%),
-      linear-gradient(180deg, transparent, color-mix(in oklch, var(--bg) 78%, transparent));
+      linear-gradient(180deg, transparent, color-mix(in oklch, var(--bg) 84%, transparent));
     opacity: var(--slice-opacity, 0.7);
   }
 
@@ -252,6 +269,77 @@ img {
     animation: hero-drift 11s var(--ease-emphasized) infinite alternate;
   }
 
+  .theme-toggle {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 45;
+    width: 2.6rem;
+    height: 2.6rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    background: color-mix(in oklch, var(--panel) 78%, transparent);
+    color: var(--text-main);
+    box-shadow: 0 10px 20px -14px color-mix(in oklch, black 45%, transparent);
+    transition: transform 220ms var(--ease-out-strong), background-color 220ms var(--ease-out-strong);
+    backdrop-filter: blur(8px);
+  }
+
+  .theme-toggle:hover {
+    transform: translateY(-2px);
+    background: color-mix(in oklch, var(--panel-strong) 88%, transparent);
+  }
+
+  .site-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    display: grid;
+    place-content: center;
+    gap: 1.6rem;
+    background:
+      radial-gradient(circle at 50% 18%, color-mix(in oklch, var(--accent) 24%, transparent), transparent 45%),
+      linear-gradient(180deg, var(--bg), var(--bg-strong));
+  }
+
+  .site-loader-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: var(--text-main);
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .site-loader-dot {
+    width: 0.48rem;
+    height: 0.48rem;
+    border-radius: 999px;
+    background: var(--accent);
+  }
+
+  .site-loader-bars {
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    gap: 0.45rem;
+    height: 3rem;
+  }
+
+  .site-loader-bar {
+    width: 0.3rem;
+    height: 2rem;
+    border-radius: 999px;
+    transform-origin: bottom;
+    background: linear-gradient(180deg, color-mix(in oklch, var(--accent) 72%, white), var(--accent));
+    box-shadow: 0 0 18px -8px color-mix(in oklch, var(--accent) 82%, transparent);
+  }
+
   .hero-visual-main {
     transform-origin: center;
   }
@@ -300,8 +388,8 @@ img {
     background: color-mix(in oklch, var(--panel) 82%, var(--accent) 6%);
   }
 
-  .button-link {
-    @apply inline-flex min-h-12 items-center justify-center rounded-full border px-6 py-3.5 text-center text-[0.92rem] font-semibold leading-5 tracking-[-0.01em] transition duration-300;
+.button-link {
+    @apply inline-flex min-h-[3.25rem] items-center justify-center rounded-full border px-6 py-3.5 text-center text-[0.94rem] font-semibold leading-5 tracking-[-0.01em] transition duration-300;
     background: var(--button-bg, transparent) !important;
     border-color: var(--button-border, transparent) !important;
     color: var(--button-fg, var(--text-main)) !important;
@@ -325,6 +413,9 @@ img {
   .button-link-primary:hover {
     background: var(--accent-strong);
     border-color: var(--accent-strong);
+    box-shadow:
+      0 22px 38px -26px color-mix(in oklch, var(--accent) 74%, transparent),
+      0 1px 0 color-mix(in oklch, white 26%, transparent) inset;
   }
 
   .button-link-secondary {
@@ -336,6 +427,7 @@ img {
   .button-link-secondary:hover {
     border-color: var(--line-contrast);
     background: color-mix(in oklch, var(--panel) 82%, var(--accent) 6%);
+    box-shadow: 0 14px 30px -24px color-mix(in oklch, var(--accent) 44%, transparent);
   }
 
   .button-link-ghost {
@@ -485,6 +577,88 @@ img {
     font-weight: 700;
   }
 
+  .section-progress-mobile {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 4.45rem;
+    z-index: 32;
+    padding-inline: clamp(1rem, 3vw, 1.5rem);
+    pointer-events: none;
+  }
+
+  .section-progress-copy {
+    margin: 0 0 0.42rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.65rem;
+    font-size: 0.66rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-subtle);
+    font-weight: 700;
+  }
+
+  .section-progress-track {
+    width: 100%;
+    height: 3px;
+    border-radius: 999px;
+    background: color-mix(in oklch, var(--line) 90%, transparent);
+    overflow: hidden;
+  }
+
+  .section-progress-fill {
+    display: block;
+    height: 100%;
+    width: 0%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, color-mix(in oklch, var(--accent) 78%, white), var(--accent));
+    transition: width 280ms var(--ease-out-strong);
+  }
+
+  .hero-trust-chip {
+    position: absolute;
+    right: clamp(1rem, 3vw, 1.65rem);
+    top: clamp(1rem, 3vw, 1.45rem);
+    z-index: 12;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.68rem;
+    padding: 0.48rem 0.62rem 0.48rem 0.46rem;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: color-mix(in oklch, var(--panel) 76%, transparent);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 26px -18px color-mix(in oklch, black 58%, transparent);
+  }
+
+  .hero-trust-chip-avatar {
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 999px;
+    object-fit: cover;
+    border: 1px solid color-mix(in oklch, var(--accent) 36%, var(--line));
+  }
+
+  .hero-trust-chip-copy p {
+    margin: 0;
+    color: var(--text-main);
+    font-size: 0.73rem;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+    font-weight: 700;
+  }
+
+  .hero-trust-chip-copy span {
+    display: block;
+    margin-top: 0.18rem;
+    color: var(--text-subtle);
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
   .profile-premium-wrap {
     position: relative;
     isolation: isolate;
@@ -536,11 +710,33 @@ img {
       transparent
     );
   }
+
+  [data-force-horizontal="true"] {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in oklch, var(--accent) 60%, transparent) transparent;
+  }
+
+  [data-force-horizontal="true"]::-webkit-scrollbar {
+    height: 7px;
+  }
+
+  [data-force-horizontal="true"]::-webkit-scrollbar-thumb {
+    background: color-mix(in oklch, var(--accent) 50%, transparent);
+    border-radius: 999px;
+  }
+
+  [data-force-horizontal="true"]::-webkit-scrollbar-track {
+    background: transparent;
+  }
 }
 
 @media (min-width: 1180px) {
   .section-rail {
     display: flex;
+  }
+
+  .section-progress-mobile {
+    display: none;
   }
 }
 
@@ -554,6 +750,24 @@ img {
     right: -4.5rem;
     top: -3.2rem;
     opacity: 0.28;
+  }
+
+  .hero-trust-chip {
+    right: 0.9rem;
+    top: 0.9rem;
+    transform: scale(0.95);
+    transform-origin: top right;
+  }
+}
+
+@media (max-width: 639px) {
+  .theme-toggle {
+    right: 0.72rem;
+    bottom: 0.72rem;
+  }
+
+  .section-progress-mobile {
+    top: 4.15rem;
   }
 }
 
