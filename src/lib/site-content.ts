@@ -13,144 +13,144 @@ export const navigation = [
   { href: "/services", label: "Services" },
   { href: "/case-studies", label: "Case Studies" },
   { href: "/about", label: "About" },
-  { href: "/checklist", label: "Free Checklist" },
-  { href: "/contact", label: "Book Audit" },
+  { href: "/checklist", label: "Checklist" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export const homeProblems = [
-  "Leads sit untouched for days when the team gets busy, so good opportunities quietly go cold.",
-  "Weekly and monthly reports are rebuilt by hand, even though the same numbers get pulled every time.",
-  "Sales-to-delivery handoffs break because onboarding lives across Notion, spreadsheets, inboxes, and memory.",
-  "Internal ops still depend on repetitive admin work that steals time from strategy, client communication, and billable work.",
-  "Too many tools are in place, but they are loosely connected and easy to break.",
-  "Smart team members keep getting pulled into manual tasks that should already be automated.",
+  "Leads sit untouched for days when the team gets busy.",
+  "Reports get rebuilt manually every week.",
+  "Broken handoffs slow things down between sales and delivery.",
+  "Client onboarding still lives in Notion, spreadsheets, and memory.",
+  "Too many tools do not talk to each other properly.",
+  "Repetitive admin work quietly eats into billable and strategy time.",
 ];
 
 export const homeOutcomes = [
-  "New leads are handled automatically within minutes, even when nobody is at a desk.",
-  "Client reporting goes out on time without a weekly scramble.",
-  "Onboarding starts from one trigger instead of a patchwork checklist.",
-  "Admin chaos drops because steps, reminders, and handoffs happen in the right order.",
-  "Founders and small teams get time back for strategy, creative work, and client relationships.",
+  "Leads are handled automatically within minutes.",
+  "Reporting is delivered on time without a weekly scramble.",
+  "Onboarding is triggered instantly from a single action.",
+  "Less admin chaos means fewer dropped balls.",
+  "More time goes back to strategy, creative work, and client relationships.",
 ];
 
 export const services = [
   {
     title: "AI Lead Follow-Up Automation",
     description:
-      "When lead response depends on who is online, agencies lose good opportunities. I build follow-up systems that route, qualify, and move leads forward without manual chasing.",
+      "Slow, inconsistent follow-up leaves good leads waiting too long. I automate lead capture, routing, triggers, reminders, CRM updates, and qualification workflows so agencies respond faster and drop fewer opportunities.",
     bullets: [
-      "Every new lead gets a fast, on-brand first response instead of sitting untouched.",
-      "Routing, reminders, and CRM updates happen automatically so nobody has to remember the next step.",
-      "Qualification workflows create a cleaner pipeline and fewer dropped opportunities.",
+      "Every new lead gets an automated, on-brand first reply within minutes, even when your team is offline.",
+      "Routing, reminders, and CRM updates happen automatically so fewer opportunities get lost in the shuffle.",
+      "Qualification workflows create a cleaner pipeline with less manual admin around follow-up.",
     ],
     includes: [
-      "Lead capture and routing rules",
-      "Auto-replies, reminders, and follow-up triggers",
-      "CRM updates and qualification workflows",
+      "Lead capture, routing, and first-response workflows",
+      "Reminders, follow-up triggers, and qualification steps",
+      "CRM updates and handoff logic in the right order",
     ],
     problems: [
       "Slow response times",
       "Inconsistent follow-up",
-      "Leads slipping between channels",
+      "Leads slipping between channels or owners",
     ],
     outcomes: [
       "Faster lead response",
       "Fewer dropped opportunities",
-      "Less manual admin around sales follow-up",
+      "Less manual sales admin",
     ],
-    fit: "Best for agencies still handling lead replies manually across forms, inboxes, DMs, or CRMs.",
+    fit: "Best for lean agencies still handling lead replies manually across forms, inboxes, DMs, or CRMs.",
   },
   {
     title: "Client Reporting Automation",
     description:
-      "Manual reporting eats time every week and invites mistakes. I automate the pull, formatting, and delivery of client reports so reporting becomes dependable instead of disruptive.",
+      "Weekly and monthly reporting takes too much manual time in many agencies. I pull data from the right tools, format reports clearly, and deliver them automatically on schedule so reporting stops eating up the week.",
     bullets: [
-      "Reporting time drops because the recurring data work is handled automatically.",
-      "Clients get consistent reporting on schedule without last-minute scrambling.",
+      "Recurring reporting work gets pulled out of the weekly scramble.",
+      "Clients receive more consistent reports on schedule with fewer manual errors.",
       "Teams spend less time copying numbers and more time explaining what matters.",
     ],
     includes: [
-      "Scheduled data pulls from core tools",
+      "Scheduled data pulls from the right reporting sources",
       "Automated report formatting and delivery",
-      "Checks to reduce missed numbers and broken reports",
+      "Checks to reduce broken inputs and missed numbers",
     ],
     problems: [
       "Weekly report rebuilds",
-      "Copy-paste errors",
-      "Reporting work piling up on account managers or founders",
+      "Copy-paste reporting work",
+      "Last-minute pressure before client delivery",
     ],
     outcomes: [
       "Automated client reporting",
       "More reliable reporting cycles",
-      "Time back every week",
+      "Time saved every week",
     ],
-    fit: "Best for performance, SEO, or cross-channel agencies producing recurring reports for multiple clients.",
+    fit: "Best for performance, SEO, and cross-channel agencies producing recurring reports for multiple clients.",
   },
   {
     title: "Client Onboarding & Ops Automation",
     description:
-      "Messy onboarding creates avoidable friction before work even starts. I turn scattered handoffs, forms, approvals, and recurring tasks into a cleaner operational flow.",
+      "Messy onboarding creates broken handoffs, forgotten steps, and inconsistent client setup. I automate onboarding tasks, internal handoffs, approvals, and recurring workflows so the process becomes cleaner and more dependable.",
     bullets: [
-      "Each new client starts with the same clear process instead of ad hoc handoffs.",
-      "Internal tasks, reminders, and approvals trigger automatically from one action.",
-      "Delivery teams spend less time checking what was missed and more time moving work forward.",
+      "Each new client starts from the same clear process instead of a scattered checklist.",
+      "Internal tasks, reminders, approvals, and handoffs trigger automatically from one action.",
+      "The team spends less time chasing what was missed and more time moving work forward.",
     ],
     includes: [
       "Onboarding triggers and task creation",
       "Approvals, reminders, and handoff rules",
-      "Recurring process workflows for internal ops",
+      "Recurring workflows for internal operational steps",
     ],
     problems: [
-      "Forgotten steps",
-      "Messy client setup",
-      "Broken handoffs between sales and delivery",
+      "Messy onboarding",
+      "Broken handoffs",
+      "Forgotten steps after a deal closes",
     ],
     outcomes: [
       "Cleaner onboarding",
       "More consistent internal workflows",
       "Less repetitive admin work",
     ],
-    fit: "Best for lean teams onboarding clients quickly and feeling the strain when processes live in too many places.",
+    fit: "Best for small agency teams that feel onboarding strain as soon as new clients start arriving faster.",
   },
   {
     title: "AI Workflow Design & Tool Integration",
     description:
-      "Most agencies do not need more tools. They need the right systems connected properly so work moves cleanly from one step to the next.",
+      "Most agencies do not need more tools. They need the right systems connected properly. I connect CRMs, forms, spreadsheets, PM tools, and communication tools into reliable automation workflows that remove operational bottlenecks.",
     bullets: [
       "Disconnected tools become one dependable workflow instead of a fragile chain of manual fixes.",
-      "Information moves automatically between your CRM, forms, sheets, PM tools, and communication tools.",
-      "Operations get simpler because the right bottleneck is fixed instead of adding more software.",
+      "Information moves automatically between the systems your team already uses.",
+      "The result is cleaner day-to-day operations without hiring extra headcount immediately.",
     ],
     includes: [
       "Workflow mapping and bottleneck diagnosis",
-      "Tool integration across day-to-day systems",
-      "Reliability checks and handoff logic",
+      "Plain-English integration design across key systems",
+      "Reliability checks and cleaner handoff logic",
     ],
     problems: [
       "Too many tools badly connected",
-      "Duplicate data entry",
-      "Fragile operational workarounds",
+      "Duplicate entry across systems",
+      "Workflows that break when people get busy",
     ],
     outcomes: [
       "Cleaner systems",
       "Fewer manual handoffs",
       "More reliable day-to-day operations",
     ],
-    fit: "Best for agencies that already have a stack in place but know the systems are not talking to each other well.",
+    fit: "Best for agencies that already have a stack in place but know the systems are not connected cleanly enough.",
   },
   {
     title: "AI Assistants / Internal AI Systems",
     description:
-      "Teams waste time answering the same questions and repeating the same micro-tasks. I build practical internal AI helpers that support operations instead of adding more noise.",
+      "Repetitive questions and micro-tasks add up fast inside small teams. I build simple internal AI helpers for operational tasks, knowledge retrieval, and process assistance so repeated work gets lighter without adding more noise.",
     bullets: [
-      "Repeated internal questions can be handled faster with a focused AI helper.",
-      "Small operational tasks get lighter without turning the team into prompt engineers.",
-      "Knowledge retrieval becomes easier for the people doing the work day to day.",
+      "Common internal questions get answered faster with a scoped, useful helper.",
+      "Small operational tasks stop pulling senior team members into repeat work.",
+      "Process knowledge becomes easier to access for the people doing the work day to day.",
     ],
     includes: [
-      "Internal AI assistants for common ops questions",
-      "Knowledge retrieval and task support flows",
+      "Internal AI helpers for common operational questions",
+      "Knowledge retrieval and process assistance",
       "Simple scoped use cases tied to real agency work",
     ],
     problems: [
@@ -163,7 +163,7 @@ export const services = [
       "Faster access to answers",
       "Better operational consistency",
     ],
-    fit: "Best after the core workflow is clear and there is a specific internal use case worth supporting with AI.",
+    fit: "Best when the core workflow is already clear and there is a practical internal use case worth supporting.",
   },
 ];
 
@@ -171,11 +171,11 @@ export const offerPath = [
   {
     title: "Free Agency AI Automation Checklist",
     description:
-      "A practical checklist for spotting which agency workflows should be automated first, where manual work is hiding, and what to clean up before adding more tools.",
+      "A practical, low-friction resource for spotting the workflows worth automating first, identifying where manual work is hiding, and seeing where your systems are still too disconnected.",
     bullets: [
-      "Useful immediately for lean teams that feel stretched.",
-      "Helps identify the bottlenecks most worth fixing first.",
-      "Low-friction way to see where your ops are still too manual.",
+      "Useful immediately for lean agencies that feel stretched.",
+      "Helps identify the highest-value bottleneck to fix first.",
+      "A simple way to get clarity before adding more tools or more headcount.",
     ],
     cta: siteConfig.primaryCta,
     href: "/checklist",
@@ -184,11 +184,11 @@ export const offerPath = [
   {
     title: "Free Automation Audit",
     description:
-      "A focused diagnostic call to identify the highest-value operational bottleneck in your agency and map the most sensible next step.",
+      "A focused diagnostic for identifying the highest-value workflow bottleneck in your agency. This is not a vague free chat. It is a practical conversation about what is too manual, what should be fixed first, and what the sensible next step looks like.",
     bullets: [
-      "Not a vague chat or hard sell.",
       "You leave with clearer priorities and a practical recommendation.",
-      "Best for agencies that know something is too manual but want help finding the right fix first.",
+      "Best for agencies that know something feels too manual but want help diagnosing the right fix.",
+      "A lower-pressure way to get clarity before committing to a build.",
     ],
     cta: siteConfig.secondaryCta,
     href: "/contact",
@@ -197,26 +197,27 @@ export const offerPath = [
   {
     title: "Fixed-Scope AI Automation Sprint",
     description:
-      "The main paid offer: one clear bottleneck, one scoped solution, one defined timeline. Built as a focused 2 to 4 week sprint with professional communication and dependable implementation.",
+      "The main paid offer: one clear operational bottleneck, one scoped solution, one defined timeline, and one professional implementation process. Built as a focused 2 to 4 week sprint that feels easier to buy than an open-ended consulting engagement.",
     bullets: [
-      "Clear scope before build so everyone knows what is being solved.",
-      "Weekly progress updates, revisions during handoff, and short post-launch support.",
-      "A lower-risk way to buy than open-ended consulting or more software subscriptions.",
+      "Clear scope before build so everyone knows exactly what is being solved.",
+      "Weekly progress updates, fast communication, revisions during handoff, and short post-launch support are included.",
+      "A professional, lower-risk way to fix the right bottleneck without buying a huge engagement.",
     ],
-    cta: "See the Sprint Scope",
-    href: "/services#automation-sprint",
+    cta: siteConfig.secondaryCta,
+    href: "/contact",
     featured: true,
+    note: "If something inside the agreed sprint scope is not working as specified at handoff, it gets fixed before sign-off. The promise is around scope clarity and implementation quality, not exaggerated outcome guarantees.",
   },
   {
     title: "Ongoing Optimization Support",
     description:
-      "Available after the sprint for agencies that want to refine, extend, or maintain the system once the first automation is live.",
+      "Available only after the sprint, as the natural next step once the first automation is live. Useful for refinement, maintenance, and the next workflow once the first system is already working.",
     bullets: [
-      "Best as the next step after the first workflow is already working.",
-      "Keeps improvements focused instead of turning into a bloated retainer.",
-      "Useful for iterative optimization, additional workflows, and operational fine-tuning.",
+      "Keeps improvements focused instead of turning into a vague retainer.",
+      "Useful for iterative optimization, added workflows, and operational fine-tuning.",
+      "Best once the first automation is live and your team is using it day to day.",
     ],
-    cta: "Talk Through Ongoing Support",
+    cta: siteConfig.secondaryCta,
     href: "/contact",
     featured: false,
   },
@@ -234,22 +235,22 @@ export const processSteps = [
   {
     title: "Audit your workflow bottlenecks",
     description:
-      "We look at where manual work is costing time, creating inconsistency, or slowing down the team. The goal is to find the one bottleneck most worth fixing first.",
+      "We look at where manual work is costing time, creating inconsistency, or slowing down the team. The goal is to identify the highest-value workflow bottleneck, not to pile on more tools.",
   },
   {
     title: "Design the automation system",
     description:
-      "I map the workflow, define scope, and decide what needs to happen automatically versus what should stay human. You see the plan before anything is built.",
+      "I map the workflow, define scope, and decide what should happen automatically versus what should stay human. You see the plan before the build starts.",
   },
   {
     title: "Build and implement",
     description:
-      "The system gets implemented with clean integrations, clear communication, and a defined timeline. You get regular updates instead of disappearing development work.",
+      "The system gets built with reliable implementation and clean integrations. You get steady communication, weekly progress updates, and a defined timeline throughout the sprint.",
   },
   {
     title: "Refine and optimize",
     description:
-      "After launch, we test, adjust, and hand over a workflow your team can actually use. If ongoing support makes sense, it starts from a live system instead of theory.",
+      "After launch, we test, adjust, and hand over a workflow your team can actually use. If ongoing support makes sense, it starts from a live system rather than a vague retainer.",
   },
 ];
 
@@ -257,31 +258,31 @@ export const proofCards = [
   {
     title: "Example scenario: lead follow-up system",
     description:
-      "A sample build for an agency where leads arrive through forms and DMs but follow-up depends on whoever notices first.",
+      "Clearly labeled as an example, not client work. This is the kind of system built for agencies where leads arrive through forms and inboxes but follow-up still depends on whoever notices first.",
     bullets: [
-      "Lead capture triggers an immediate first response and routes the inquiry to the right owner.",
-      "Qualification steps update the CRM automatically and create reminders if the lead stalls.",
-      "Result: faster response, fewer dropped leads, and less manual sales admin.",
+      "Every inquiry triggers a first response, routing logic, qualification steps, and reminder follow-up.",
+      "The CRM stays cleaner because updates happen automatically instead of depending on memory.",
+      "The operational improvement is faster lead handling, fewer dropped opportunities, and less sales admin.",
     ],
   },
   {
     title: "What an Automation Sprint includes",
     description:
-      "Professional delivery matters even before there are client logos to show. The sprint is designed to feel dependable and easy to buy.",
+      "Professional delivery matters before there are testimonials to show. The sprint is designed to feel clear, dependable, and beginner-safe to buy.",
     bullets: [
-      "Workflow map, implementation, testing, handoff guidance, and short post-launch support.",
+      "Workflow map, implementation, testing, handoff guidance, revisions during handoff, and short post-launch support.",
       "Defined scope before build so the project stays focused.",
-      "Revisions during handoff to make sure the agreed workflow works as intended.",
+      "Communication standards that keep the work clear instead of disappearing into a black box.",
     ],
   },
   {
     title: "Example scenario: reporting workflow",
     description:
-      "A sample reporting automation for an agency that manually rebuilds the same report every week.",
+      "Clearly labeled as an example, not client work. This is the kind of reporting system built for agencies that manually rebuild the same report every week.",
     bullets: [
-      "Data is pulled on a schedule, shaped into the right format, and delivered automatically.",
-      "Checks are added so broken inputs are easier to spot before a client report goes out.",
-      "Result: less reporting scramble, fewer manual errors, and more predictable delivery.",
+      "Recurring data pulls, report formatting, and scheduled delivery happen automatically.",
+      "Checks help catch broken inputs before a report goes out to a client.",
+      "The operational improvement is less reporting scramble, fewer manual errors, and more reliable delivery.",
     ],
   },
 ];
@@ -290,15 +291,15 @@ export const faqItems = [
   {
     question: "What kinds of agencies do you work with?",
     answer:
-      "The best fit is lean marketing agencies and small agency teams that are still doing too much manually across lead follow-up, reporting, onboarding, and internal ops.",
+      "The best fit is lean marketing agencies and small agency teams doing too much manually across lead follow-up, reporting, onboarding, and internal ops.",
   },
   {
     question: "What tools can you integrate?",
     answer:
-      "Most common agency tools are fair game: CRMs, forms, spreadsheets, project management tools, reporting tools, email, and communication platforms. The exact tools matter less than fixing the right workflow.",
+      "Most common agency tools are fair game: CRMs, forms, spreadsheets, PM tools, reporting tools, email, and communication platforms. The exact tools matter less than fixing the right workflow.",
   },
   {
-    question: "Do I need a big team or a mature stack first?",
+    question: "Do I need a big team or existing tech stack first?",
     answer:
       "No. This work is often most useful for smaller teams that have grown faster than their systems and need cleaner operations before adding headcount.",
   },
@@ -315,7 +316,7 @@ export const faqItems = [
   {
     question: "Do you build custom workflows or only templates?",
     answer:
-      "The work is custom to the bottleneck being fixed. Reusable patterns help move faster, but the solution is scoped around the agency’s actual workflow, not forced into a generic template.",
+      "The work is custom to the bottleneck being fixed. Reusable patterns help move faster, but the system is scoped around the agency's actual workflow, not forced into a generic template.",
   },
   {
     question: "What happens in the free Automation Audit?",
@@ -372,9 +373,9 @@ export const beliefs = [
 ];
 
 export const checklistHighlights = [
-  "10 agency workflows worth evaluating first",
-  "A quick self-assessment for where your ops are still too manual",
-  "The signs your reporting, follow-up, or onboarding process needs cleanup before more tools are added",
+  "10 workflows agencies can automate first",
+  "Signs your lead follow-up, reporting, or onboarding process is still too manual",
+  "A quick self-assessment to spot where your systems are too disconnected",
   "Simple guidance for choosing the highest-value bottleneck to fix first",
 ];
 
@@ -385,7 +386,7 @@ export const articles = [
       "A practical breakdown of the first operational workflows worth tightening before adding more software.",
   },
   {
-    title: "Why most agencies don’t have a lead problem — they have a follow-up problem",
+    title: "Why most agencies don't have a lead problem - they have a follow-up problem",
     blurb:
       "A look at how lead leakage happens in small agency teams and what a better response system looks like.",
   },

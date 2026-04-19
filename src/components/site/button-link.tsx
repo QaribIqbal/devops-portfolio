@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import type { CSSProperties } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -16,24 +16,40 @@ export function ButtonLink({
   variant = "primary",
   className,
 }: ButtonLinkProps) {
+  const style =
+    variant === "primary"
+      ? ({
+          "--button-bg": "var(--accent)",
+          "--button-border": "var(--accent)",
+          "--button-fg": "var(--bg-strong)",
+          "--button-shadow":
+            "0 18px 32px -26px color-mix(in oklch, var(--accent) 78%, transparent)",
+        } as CSSProperties)
+      : variant === "secondary"
+        ? ({
+            "--button-bg": "var(--panel-soft)",
+            "--button-border": "var(--line-strong)",
+            "--button-fg": "var(--text-main)",
+          } as CSSProperties)
+        : ({
+            "--button-bg": "transparent",
+            "--button-border": "transparent",
+            "--button-fg": "var(--text-muted)",
+          } as CSSProperties);
+
   return (
     <Link
       href={href}
+      style={style}
       className={cn(
-        "group inline-flex items-center justify-center gap-2 rounded-full border px-5 py-3 text-sm font-medium transition duration-200 active:translate-y-px active:scale-[0.985]",
-        variant === "primary" &&
-          "border-[color:var(--accent)] bg-[color:var(--accent)] text-[color:var(--bg-strong)] hover:bg-[color:var(--accent-strong)] hover:border-[color:var(--accent-strong)]",
-        variant === "secondary" &&
-          "border-[color:var(--line-strong)] bg-[color:var(--panel)] text-[color:var(--text-main)] hover:border-[color:var(--accent)] hover:text-[color:var(--accent)]",
-        variant === "ghost" &&
-          "border-transparent bg-transparent px-0 text-[color:var(--text-muted)] hover:text-[color:var(--text-main)]",
+        "button-link",
+        variant === "primary" && "button-link-primary",
+        variant === "secondary" && "button-link-secondary",
+        variant === "ghost" && "button-link-ghost",
         className,
       )}
     >
       <span>{children}</span>
-      {variant !== "ghost" ? (
-        <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true" />
-      ) : null}
     </Link>
   );
 }

@@ -1,13 +1,9 @@
 import {
-  ArrowRight,
   Bot,
   ChartColumnIncreasing,
   CheckCircle2,
-  Clock3,
   MessageSquareReply,
   Settings2,
-  ShieldCheck,
-  Sparkles,
   Workflow,
 } from "lucide-react";
 
@@ -20,6 +16,7 @@ import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import {
   beliefs,
+  checklistHighlights,
   faqItems,
   homeOutcomes,
   homeProblems,
@@ -53,99 +50,28 @@ export default function HomePage() {
       <main>
         <section className="page-section pt-20 sm:pt-28">
           <div className="shell">
-            <div className="grid gap-8 lg:grid-cols-[1.22fr_0.78fr] lg:items-end">
-              <Reveal className="hero-panel hero-orbit">
+            <Reveal className="hero-panel">
+              <div className="max-w-[58rem]">
                 <p className="section-eyebrow">AI Automation For Marketing Agencies</p>
-                <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-[color:var(--line)] bg-[color:rgba(88,196,173,0.08)] px-4 py-2 text-xs uppercase tracking-[0.16em] text-[color:var(--text-subtle)]">
-                  <span className="pulse-soft inline-flex h-2 w-2 rounded-full bg-[color:var(--accent)]" aria-hidden="true" />
-                  One bottleneck. One scoped fix. One clear timeline.
-                </div>
-                <h1 className="display-title max-w-4xl text-balance">
+                <h1 className="display-title max-w-[15ch] text-balance">
                   I help marketing agencies eliminate manual follow-up, reporting, and repetitive
                   ops with AI automation.
                 </h1>
-                <p className="mt-6 max-w-3xl text-lg leading-8 text-[color:var(--text-muted)]">
-                  I design and implement AI automation systems that save time, reduce lead leakage,
-                  and help your agency run more smoothly without adding more manual work.
+                <p className="mt-6 max-w-[58ch] text-[1.08rem] leading-8 text-[color:var(--text-muted)] sm:text-[1.14rem]">
+                  I design and implement AI automation systems that save time, reduce lead
+                  leakage, and help your agency run more smoothly without adding more manual work.
                 </p>
-                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                   <ButtonLink href="/checklist">{siteConfig.primaryCta}</ButtonLink>
                   <ButtonLink href="/contact" variant="secondary">
                     {siteConfig.secondaryCta}
                   </ButtonLink>
                 </div>
-                <p className="mt-5 max-w-2xl text-sm leading-6 text-[color:var(--text-subtle)]">
+                <p className="mt-5 max-w-[54ch] text-sm leading-7 text-[color:var(--text-subtle)]">
                   {siteConfig.shortCredibility}
                 </p>
-              </Reveal>
-
-              <Reveal className="panel float-slow lg:translate-y-6" delay={0.08}>
-                <p className="section-eyebrow">Agency Operations Map</p>
-                <div className="space-y-5">
-                  <div className="rounded-[24px] border border-[color:var(--line)] bg-[color:rgba(88,196,173,0.06)] p-5">
-                    <div className="flex items-center justify-between gap-4">
-                      <div>
-                        <p className="text-xs uppercase tracking-[0.16em] text-[color:var(--text-subtle)]">
-                          Incoming Lead
-                        </p>
-                        <h2 className="mt-2 text-lg font-medium text-[color:var(--text-main)]">
-                          Reply, route, qualify
-                        </h2>
-                      </div>
-                      <span className="metric-pill">Minutes, not days</span>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-3 text-[color:var(--text-subtle)]">
-                    <div className="h-px flex-1 bg-[color:var(--line)]" />
-                    <Clock3 className="h-4 w-4 text-[color:var(--accent)]" aria-hidden="true" />
-                    <div className="h-px flex-1 bg-[color:var(--line)]" />
-                  </div>
-
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <div className="rounded-[24px] border border-[color:var(--line)] p-5">
-                      <p className="text-xs uppercase tracking-[0.16em] text-[color:var(--text-subtle)]">
-                        Reporting
-                      </p>
-                      <h3 className="mt-2 text-lg font-medium text-[color:var(--text-main)]">
-                        Scheduled and consistent
-                      </h3>
-                      <p className="mt-3 text-sm leading-6 text-[color:var(--text-muted)]">
-                        Pull the right data, format it cleanly, and stop rebuilding the same report every week.
-                      </p>
-                    </div>
-                    <div className="rounded-[24px] border border-[color:var(--line)] p-5">
-                      <p className="text-xs uppercase tracking-[0.16em] text-[color:var(--text-subtle)]">
-                        Onboarding
-                      </p>
-                      <h3 className="mt-2 text-lg font-medium text-[color:var(--text-main)]">
-                        Triggered from one action
-                      </h3>
-                      <p className="mt-3 text-sm leading-6 text-[color:var(--text-muted)]">
-                        Tasks, handoffs, and reminders start from one clean trigger instead of scattered checklists.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="soft-divider" />
-
-                  <div className="grid gap-3 sm:grid-cols-3">
-                    {[
-                      "Fewer dropped opportunities",
-                      "Cleaner weekly ops rhythm",
-                      "Less repetitive admin work",
-                    ].map((item) => (
-                      <div
-                        key={item}
-                        className="rounded-[22px] border border-[color:var(--line)] px-4 py-4 text-sm leading-6 text-[color:var(--text-muted)]"
-                      >
-                        {item}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </Reveal>
-            </div>
+              </div>
+            </Reveal>
           </div>
         </section>
 
@@ -153,17 +79,19 @@ export default function HomePage() {
           <div className="shell">
             <Reveal>
               <SectionHeading
-                eyebrow="The Day-To-Day Reality"
-                title="Manual agency operations create drag long before they look like a big problem."
-                description="This is what it often looks like inside lean agency teams that have grown faster than their systems."
+                eyebrow="Problem / Pain"
+                title="This is what the day-to-day reality usually looks like inside lean agencies."
+                description="These bottlenecks rarely show up as one dramatic failure. They show up as repeated operational drag across lead follow-up, reporting, onboarding, and internal admin work."
               />
             </Reveal>
-            <div className="mt-10 grid gap-4 md:grid-cols-2">
+            <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
               {homeProblems.map((problem, index) => (
                 <Reveal key={problem} delay={index * 0.03}>
-                  <div className="panel">
-                    <p className="text-base leading-7 text-[color:var(--text-muted)]">{problem}</p>
-                  </div>
+                  <article className="panel">
+                    <p className="text-[1rem] leading-7 text-[color:var(--text-muted)]">
+                      {problem}
+                    </p>
+                  </article>
                 </Reveal>
               ))}
             </div>
@@ -172,20 +100,25 @@ export default function HomePage() {
 
         <section className="page-section" id="outcomes">
           <div className="shell">
-            <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+            <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
               <Reveal>
                 <SectionHeading
-                  eyebrow="What Better Looks Like"
-                  title="The goal is not more AI tools. It is smoother operations around the work that matters."
-                  description="When the right bottleneck gets fixed, agencies feel it quickly in speed, consistency, and day-to-day calm."
+                  eyebrow="Outcome / Transformation"
+                  title="What changes after the right workflow bottleneck gets fixed."
+                  description="The goal is practical and believable: more speed, more consistency, less admin chaos, and more time back for the work that actually grows the agency."
                 />
               </Reveal>
-              <Reveal className="panel" delay={0.06}>
+              <Reveal className="panel" delay={0.05}>
                 <ul className="space-y-4">
                   {homeOutcomes.map((outcome) => (
                     <li key={outcome} className="flex items-start gap-3">
-                      <CheckCircle2 className="mt-1 h-5 w-5 text-[color:var(--accent)]" aria-hidden="true" />
-                      <span className="text-base leading-7 text-[color:var(--text-muted)]">{outcome}</span>
+                      <CheckCircle2
+                        className="mt-1 h-5 w-5 shrink-0 text-[color:var(--accent)]"
+                        aria-hidden="true"
+                      />
+                      <span className="text-[1rem] leading-7 text-[color:var(--text-muted)]">
+                        {outcome}
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -198,38 +131,46 @@ export default function HomePage() {
           <div className="shell">
             <Reveal>
               <SectionHeading
-                eyebrow="Services"
-                title="Focused AI automation services for marketing agencies that still have too much manual work in the loop."
-                description="Each service is designed around a practical operational problem, the workflow behind it, and the outcome your team actually cares about."
+                eyebrow="Services Overview"
+                title="Focused AI automation services for marketing agencies."
+                description="Each service is built around a specific operational pain and a practical outcome: faster lead handling, cleaner reporting, smoother onboarding, better connected systems, and less repeated internal work."
               />
             </Reveal>
             <div className="mt-10 grid gap-5 lg:grid-cols-2">
               {services.map((service, index) => {
                 const Icon = serviceIcons[index];
+
                 return (
                   <Reveal
                     key={service.title}
-                    className={index === services.length - 1 ? "lg:col-span-2" : ""}
                     delay={index * 0.04}
+                    className={index === services.length - 1 ? "lg:col-span-2" : ""}
                   >
-                    <article className="panel">
-                      <div className="flex items-start justify-between gap-4">
-                        <div>
-                          <p className="section-eyebrow mb-3">Service {index + 1}</p>
-                          <h3 className="text-2xl font-semibold tracking-[-0.04em] text-[color:var(--text-main)]">
+                    <article className="panel h-full">
+                      <div className="flex items-start justify-between gap-6">
+                        <div className="max-w-[42rem]">
+                          <h3 className="text-[1.55rem] font-semibold tracking-[-0.04em] text-[color:var(--text-main)] sm:text-[1.75rem]">
                             {service.title}
                           </h3>
+                          <p className="mt-4 text-[1rem] leading-7 text-[color:var(--text-muted)]">
+                            {service.description}
+                          </p>
                         </div>
-                        <Icon className="h-6 w-6 text-[color:var(--accent)]" aria-hidden="true" />
+                        <Icon
+                          className="mt-1 hidden h-5 w-5 shrink-0 text-[color:var(--accent)] sm:block"
+                          aria-hidden="true"
+                        />
                       </div>
-                      <p className="mt-4 max-w-3xl text-base leading-7 text-[color:var(--text-muted)]">
-                        {service.description}
-                      </p>
                       <ul className="mt-6 space-y-3">
                         {service.bullets.map((bullet) => (
                           <li key={bullet} className="flex items-start gap-3">
-                            <ArrowRight className="mt-1 h-4 w-4 text-[color:var(--accent)]" aria-hidden="true" />
-                            <span className="text-sm leading-6 text-[color:var(--text-muted)]">{bullet}</span>
+                            <CheckCircle2
+                              className="mt-1 h-4 w-4 shrink-0 text-[color:var(--accent)]"
+                              aria-hidden="true"
+                            />
+                            <span className="text-sm leading-7 text-[color:var(--text-muted)]">
+                              {bullet}
+                            </span>
                           </li>
                         ))}
                       </ul>
@@ -246,8 +187,8 @@ export default function HomePage() {
             <Reveal>
               <SectionHeading
                 eyebrow="Offer Path"
-                title="A simple way to start, diagnose the problem properly, and fix one important bottleneck without buying a huge engagement."
-                description="The work is designed to feel low-risk, professionally managed, and easy to understand at each step."
+                title="A simple, clear offer ladder for agencies that want to fix one bottleneck properly."
+                description="Clients do not need more AI tools. They need the right system fixing the right bottleneck, with clear scope, dependable communication, and a realistic path from diagnosis to implementation."
               />
             </Reveal>
             <Reveal className="mt-8 flex flex-wrap gap-3" delay={0.04}>
@@ -257,73 +198,45 @@ export default function HomePage() {
                 </span>
               ))}
             </Reveal>
-            <div className="mt-10 grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
-              <div className="grid gap-5">
-                {offerPath.slice(0, 2).map((offer, index) => (
-                  <Reveal key={offer.title} delay={index * 0.05}>
-                    <article className="panel">
-                      <p className="section-eyebrow mb-3">Entry Point</p>
-                      <h3 className="text-2xl font-semibold tracking-[-0.04em] text-[color:var(--text-main)]">
-                        {offer.title}
-                      </h3>
-                      <p className="mt-4 text-base leading-7 text-[color:var(--text-muted)]">
-                        {offer.description}
+            <div className="mt-10 grid gap-5 lg:grid-cols-2">
+              {offerPath.map((offer, index) => (
+                <Reveal key={offer.title} delay={index * 0.04}>
+                  <article
+                    className={`panel h-full ${offer.featured ? "panel-featured" : ""}`}
+                    id={offer.featured ? "automation-sprint" : undefined}
+                  >
+                    <h3 className="text-[1.6rem] font-semibold tracking-[-0.04em] text-[color:var(--text-main)] sm:text-[1.85rem]">
+                      {offer.title}
+                    </h3>
+                    <p className="mt-4 text-[1rem] leading-7 text-[color:var(--text-muted)]">
+                      {offer.description}
+                    </p>
+                    <ul className="mt-6 space-y-3">
+                      {offer.bullets.map((bullet) => (
+                        <li key={bullet} className="flex items-start gap-3">
+                          <CheckCircle2
+                            className="mt-1 h-4 w-4 shrink-0 text-[color:var(--accent)]"
+                            aria-hidden="true"
+                          />
+                          <span className="text-sm leading-7 text-[color:var(--text-muted)]">
+                            {bullet}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="mt-7">
+                      <ButtonLink href={offer.href} variant={offer.featured ? "primary" : "secondary"}>
+                        {offer.cta}
+                      </ButtonLink>
+                    </div>
+                    {"note" in offer && offer.note ? (
+                      <p className="mt-5 max-w-[56ch] text-sm leading-7 text-[color:var(--text-subtle)]">
+                        {offer.note}
                       </p>
-                      <ul className="mt-6 space-y-3">
-                        {offer.bullets.map((bullet) => (
-                          <li key={bullet} className="flex items-start gap-3 text-sm leading-6 text-[color:var(--text-muted)]">
-                            <CheckCircle2 className="mt-1 h-4 w-4 text-[color:var(--accent)]" aria-hidden="true" />
-                            <span>{bullet}</span>
-                          </li>
-                        ))}
-                      </ul>
-                      <div className="mt-7">
-                        <ButtonLink href={offer.href} variant="secondary">
-                          {offer.cta}
-                        </ButtonLink>
-                      </div>
-                    </article>
-                  </Reveal>
-                ))}
-              </div>
-              <div className="grid gap-5">
-                {offerPath.slice(2).map((offer, index) => (
-                  <Reveal key={offer.title} delay={0.08 + index * 0.05}>
-                    <article
-                      className={`panel ${offer.featured ? "border-[color:var(--accent)] bg-[color:var(--panel-strong)]" : ""}`}
-                      id={offer.title === "Fixed-Scope AI Automation Sprint" ? "automation-sprint" : undefined}
-                    >
-                      <p className="section-eyebrow mb-3">
-                        {offer.featured ? "Main Paid Offer" : "After The Sprint"}
-                      </p>
-                      <h3 className="text-2xl font-semibold tracking-[-0.04em] text-[color:var(--text-main)] sm:text-3xl">
-                        {offer.title}
-                      </h3>
-                      <p className="mt-4 text-base leading-7 text-[color:var(--text-muted)]">
-                        {offer.description}
-                      </p>
-                      <ul className="mt-6 space-y-3">
-                        {offer.bullets.map((bullet) => (
-                          <li key={bullet} className="flex items-start gap-3 text-sm leading-6 text-[color:var(--text-muted)]">
-                            <ShieldCheck className="mt-1 h-4 w-4 text-[color:var(--accent)]" aria-hidden="true" />
-                            <span>{bullet}</span>
-                          </li>
-                        ))}
-                      </ul>
-                      <div className="mt-7">
-                        <ButtonLink href={offer.href}>{offer.cta}</ButtonLink>
-                      </div>
-                      {offer.featured ? (
-                        <p className="mt-5 text-sm leading-6 text-[color:var(--text-subtle)]">
-                          If something inside the agreed sprint scope is not working as specified at handoff,
-                          it gets fixed before sign-off. The promise is around scope clarity and implementation quality,
-                          not inflated outcome guarantees.
-                        </p>
-                      ) : null}
-                    </article>
-                  </Reveal>
-                ))}
-              </div>
+                    ) : null}
+                  </article>
+                </Reveal>
+              ))}
             </div>
           </div>
         </section>
@@ -334,16 +247,20 @@ export default function HomePage() {
               <SectionHeading
                 eyebrow="How It Works"
                 title="A calm, clear process from diagnosis to implementation."
-                description="No vague framework language, just a sensible path to identifying and fixing one operational bottleneck at a time."
+                description="No vague framework language. Just a practical path for identifying the bottleneck, designing the system, building it well, and refining it after launch."
               />
             </Reveal>
             <div className="mt-10 grid gap-4 lg:grid-cols-2">
               {processSteps.map((step, index) => (
                 <Reveal key={step.title} delay={index * 0.04}>
                   <article className="panel">
-                    <p className="section-eyebrow mb-3">Step {index + 1}</p>
-                    <h3 className="text-xl font-semibold text-[color:var(--text-main)]">{step.title}</h3>
-                    <p className="mt-4 text-sm leading-7 text-[color:var(--text-muted)]">{step.description}</p>
+                    <p className="section-eyebrow">Step {index + 1}</p>
+                    <h3 className="text-[1.35rem] font-semibold tracking-[-0.03em] text-[color:var(--text-main)]">
+                      {step.title}
+                    </h3>
+                    <p className="mt-4 text-sm leading-7 text-[color:var(--text-muted)]">
+                      {step.description}
+                    </p>
                   </article>
                 </Reveal>
               ))}
@@ -355,29 +272,31 @@ export default function HomePage() {
           <div className="shell">
             <Reveal>
               <SectionHeading
-                eyebrow="Proof Of Process"
-                title="No fake logos, no invented testimonials, and no made-up case studies."
-                description="Until real client stories exist, the honest way to build trust is to show how the work is thought through, scoped, and delivered."
+                eyebrow="Proof / Credibility"
+                title="Honest proof of process instead of fake logos, testimonials, or invented case studies."
+                description="Until real client work exists, the most credible thing to show is how the work is scoped, what a sample system looks like, and what a client actually receives in a sprint."
               />
             </Reveal>
-            <div className="mt-10 grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
+            <div className="mt-10 grid gap-5 lg:grid-cols-3">
               {proofCards.map((card, index) => (
-                <Reveal
-                  key={card.title}
-                  className={index === 0 ? "lg:row-span-2" : ""}
-                  delay={index * 0.05}
-                >
-                  <article className={`panel ${index === 0 ? "lg:row-span-2" : ""}`}>
-                    <p className="section-eyebrow mb-3">{index === 1 ? "Delivery Detail" : "Example Build"}</p>
-                    <h3 className="text-2xl font-semibold tracking-[-0.04em] text-[color:var(--text-main)]">
+                <Reveal key={card.title} delay={index * 0.04}>
+                  <article className="panel h-full">
+                    <h3 className="text-[1.45rem] font-semibold tracking-[-0.04em] text-[color:var(--text-main)]">
                       {card.title}
                     </h3>
-                    <p className="mt-4 text-base leading-7 text-[color:var(--text-muted)]">{card.description}</p>
+                    <p className="mt-4 text-[1rem] leading-7 text-[color:var(--text-muted)]">
+                      {card.description}
+                    </p>
                     <ul className="mt-6 space-y-3">
                       {card.bullets.map((bullet) => (
-                        <li key={bullet} className="flex items-start gap-3 text-sm leading-6 text-[color:var(--text-muted)]">
-                          <Sparkles className="mt-1 h-4 w-4 text-[color:var(--accent)]" aria-hidden="true" />
-                          <span>{bullet}</span>
+                        <li key={bullet} className="flex items-start gap-3">
+                          <CheckCircle2
+                            className="mt-1 h-4 w-4 shrink-0 text-[color:var(--accent)]"
+                            aria-hidden="true"
+                          />
+                          <span className="text-sm leading-7 text-[color:var(--text-muted)]">
+                            {bullet}
+                          </span>
                         </li>
                       ))}
                     </ul>
@@ -393,28 +312,33 @@ export default function HomePage() {
             <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
               <Reveal>
                 <SectionHeading
-                  eyebrow="About Qarib"
-                  title="A hands-on operator focused on helping agencies remove the manual work slowing them down."
-                  description="I focus on marketing agencies because that is where repeated follow-up, reporting, onboarding, and operations work quietly eats time every week. The best automation work starts with diagnosing the real bottleneck, not jumping straight to another tool."
+                  eyebrow="About"
+                  title="A hands-on operator who understands both agency operations and technical implementation."
+                  description="Qarib focuses on marketing agencies because this is where repeated follow-up, reporting, onboarding, and internal workflow issues quietly eat time every week. The work starts with diagnosis before prescription and stays outcome-first from start to finish."
                 />
               </Reveal>
-              <Reveal className="panel" delay={0.06}>
-                <p className="text-base leading-7 text-[color:var(--text-muted)]">
-                  Qarib works at the intersection of agency operations and dependable implementation. The
-                  goal is not to produce pretty diagrams or generic AI talk. It is to build practical
-                  systems that reduce admin work, improve consistency, and hold up in day-to-day use.
+              <Reveal className="panel" delay={0.05}>
+                <p className="text-[1rem] leading-7 text-[color:var(--text-muted)]">
+                  Most agencies do not stay manual because they are careless. They stay manual because
+                  client work always feels more urgent than fixing the systems behind it. That is why
+                  the operational problems often linger until they start affecting lead response,
+                  reporting consistency, onboarding quality, and day-to-day reliability.
                 </p>
                 <div className="mt-6 space-y-3">
                   {beliefs.map((belief) => (
                     <div key={belief} className="flex items-start gap-3">
-                      <CheckCircle2 className="mt-1 h-4 w-4 text-[color:var(--accent)]" aria-hidden="true" />
-                      <p className="text-sm leading-6 text-[color:var(--text-muted)]">{belief}</p>
+                      <CheckCircle2
+                        className="mt-1 h-4 w-4 shrink-0 text-[color:var(--accent)]"
+                        aria-hidden="true"
+                      />
+                      <p className="text-sm leading-7 text-[color:var(--text-muted)]">{belief}</p>
                     </div>
                   ))}
                 </div>
-                <p className="mt-6 text-sm leading-6 text-[color:var(--text-subtle)]">
-                  Technical depth is there to make systems dependable, but the work stays outcome-first:
-                  faster follow-up, cleaner reporting, smoother onboarding, and less manual admin.
+                <p className="mt-6 text-sm leading-7 text-[color:var(--text-subtle)]">
+                  Built with reliable implementation and clean integrations. Technical depth is there
+                  to make systems dependable, but the work stays focused on practical wins for small
+                  teams.
                 </p>
               </Reveal>
             </div>
@@ -425,31 +349,29 @@ export default function HomePage() {
           <div className="shell">
             <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
               <Reveal>
-                <div>
-                  <SectionHeading
-                    eyebrow="Free Resource"
-                    title="Get the Free Agency AI Automation Checklist"
-                    description="A practical lead magnet for lean agencies that feel stretched and know too much still depends on manual work."
-                  />
-                  <div className="mt-6 space-y-3">
-                    {[
-                      "10 workflows agencies can evaluate first",
-                      "Signs your lead follow-up, reporting, or onboarding process is too manual",
-                      "A simple self-assessment to help choose the highest-value bottleneck",
-                    ].map((item) => (
-                      <div key={item} className="flex items-start gap-3">
-                        <CheckCircle2 className="mt-1 h-4 w-4 text-[color:var(--accent)]" aria-hidden="true" />
-                        <p className="text-sm leading-6 text-[color:var(--text-muted)]">{item}</p>
-                      </div>
-                    ))}
-                  </div>
-                  <p className="mt-6 text-sm leading-6 text-[color:var(--text-subtle)]">
-                    Best for small and growing agencies that want to clean up the right workflow before hiring
-                    more people or adding more tools.
-                  </p>
+                <SectionHeading
+                  eyebrow="Free Resource"
+                  title="Get the Free Agency AI Automation Checklist"
+                  description="A practical lead magnet for lean agencies that feel stretched and know too much still depends on manual work."
+                />
+                <div className="mt-6 space-y-3">
+                  {checklistHighlights.map((item) => (
+                    <div key={item} className="flex items-start gap-3">
+                      <CheckCircle2
+                        className="mt-1 h-4 w-4 shrink-0 text-[color:var(--accent)]"
+                        aria-hidden="true"
+                      />
+                      <p className="text-sm leading-7 text-[color:var(--text-muted)]">{item}</p>
+                    </div>
+                  ))}
                 </div>
+                <p className="mt-6 max-w-[58ch] text-sm leading-7 text-[color:var(--text-subtle)]">
+                  Best for lean agencies that feel stretched, not huge enterprises. If too much still
+                  depends on manual follow-up, manual reporting, and manual onboarding, the checklist
+                  helps you spot where to start.
+                </p>
               </Reveal>
-              <Reveal delay={0.06}>
+              <Reveal delay={0.05}>
                 <LeadCaptureForm />
               </Reveal>
             </div>
@@ -461,8 +383,8 @@ export default function HomePage() {
             <Reveal>
               <SectionHeading
                 eyebrow="FAQ"
-                title="Short answers to the questions agencies usually ask before they reach out."
-                description="The goal here is clarity, not pressure."
+                title="Short, direct answers to the questions agencies usually ask before reaching out."
+                description="The goal here is to lower risk and make the next step clearer."
               />
             </Reveal>
             <div className="mt-10">
@@ -478,12 +400,14 @@ export default function HomePage() {
             <Reveal className="hero-panel">
               <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
                 <div>
-                  <p className="section-eyebrow">Next Step</p>
-                  <h2 className="max-w-3xl text-balance text-3xl font-semibold tracking-[-0.04em] text-[color:var(--text-main)] sm:text-4xl">
-                    If your agency is still running too much manually, start with the checklist or book a free audit.
+                  <p className="section-eyebrow">Final CTA</p>
+                  <h2 className="max-w-[18ch] text-balance font-[family:var(--font-display)] text-[clamp(2rem,3.8vw,4rem)] font-semibold leading-[1] tracking-[-0.05em] text-[color:var(--text-main)]">
+                    If your agency is still running too much manually, start with the checklist or
+                    book a free audit.
                   </h2>
-                  <p className="mt-4 max-w-2xl text-base leading-7 text-[color:var(--text-muted)]">
-                    You do not need more AI tools. You need the right system fixing the right bottleneck.
+                  <p className="mt-4 max-w-[58ch] text-[1rem] leading-7 text-[color:var(--text-muted)]">
+                    You do not need more AI tools. You need the right system fixing the right
+                    bottleneck.
                   </p>
                 </div>
                 <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">

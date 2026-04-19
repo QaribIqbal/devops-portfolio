@@ -19,29 +19,29 @@ export default function ContactPage() {
       <SiteHeader />
       <main>
         <PageHero
-          eyebrow="Book Audit"
+          eyebrow="Contact / Book Audit"
           title="A focused diagnostic for agencies that know something is too manual."
-          description="The Free Automation Audit is not a generic discovery chat. It is a practical conversation to identify the workflow bottleneck most worth fixing, clarify what better looks like, and decide whether a focused sprint makes sense."
+          description="The Free Automation Audit is not a generic discovery chat. It is a focused diagnostic for identifying the highest-value workflow bottleneck, clarifying what better looks like, and deciding whether a sprint makes sense."
           primaryCta={{ href: "/checklist", label: siteConfig.primaryCta }}
         />
 
         <section className="page-section pt-0">
-          <div className="shell grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="shell grid gap-6 lg:grid-cols-[1.02fr_0.98fr]">
             <AuditForm />
 
             <div className="grid gap-5">
               <article className="panel">
                 <p className="section-eyebrow">What It Is</p>
-                <h2 className="text-2xl font-semibold text-[color:var(--text-main)]">
+                <h2 className="text-[1.65rem] font-semibold tracking-[-0.04em] text-[color:var(--text-main)]">
                   A serious diagnostic for agencies that want clarity before they buy a build.
                 </h2>
                 <p className="mt-4 text-sm leading-7 text-[color:var(--text-muted)]">
-                  Best fit: marketing agency owners, operators, and small teams dealing with manual lead
-                  follow-up, reporting, onboarding, or disconnected internal workflows.
+                  Best fit: marketing agency owners, operators, and small teams dealing with manual
+                  lead follow-up, reporting, onboarding, or disconnected internal workflows.
                 </p>
                 <p className="mt-4 text-sm leading-7 text-[color:var(--text-muted)]">
-                  You leave with a clearer view of the bottleneck, prioritized opportunities, and a practical
-                  next step. If there is no fit, there is no pressure to force one.
+                  You leave with clarity, prioritized opportunities, and a practical next step. If
+                  there is no fit, there is no pressure to force one.
                 </p>
               </article>
 

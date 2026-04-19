@@ -10,14 +10,14 @@ export function SiteFooter() {
       <div className="shell grid gap-10 lg:grid-cols-[1.3fr_0.8fr_0.9fr]">
         <div className="space-y-5">
           <p className="section-eyebrow">For Lean Marketing Agencies</p>
-          <h2 className="max-w-xl text-2xl font-semibold tracking-[-0.04em] text-[color:var(--text-main)]">
+          <h2 className="max-w-xl text-[clamp(1.8rem,2.8vw,2.7rem)] font-semibold tracking-[-0.045em] text-[color:var(--text-main)]">
             Cleaner systems beat more software.
           </h2>
           <p className="max-w-xl text-sm leading-7 text-[color:var(--text-muted)]">
             Qarib designs and implements AI automation systems for agencies that want faster lead
             follow-up, cleaner reporting, smoother onboarding, and less repetitive operational work.
           </p>
-          <div className="flex flex-col gap-3 sm:flex-row">
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <ButtonLink href="/checklist">{siteConfig.primaryCta}</ButtonLink>
             <ButtonLink href="/contact" variant="secondary">
               {siteConfig.secondaryCta}
@@ -34,7 +34,7 @@ export function SiteFooter() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="text-sm text-[color:var(--text-muted)] transition hover:text-[color:var(--text-main)]"
+                  className="text-sm leading-7 text-[color:var(--text-muted)] transition hover:text-[color:var(--text-main)]"
                 >
                   {item.label}
                 </Link>
@@ -50,7 +50,7 @@ export function SiteFooter() {
             </h3>
             <ul className="mt-5 space-y-3">
               {articles.map((article) => (
-                <li key={article.title} className="text-sm leading-6 text-[color:var(--text-muted)]">
+                <li key={article.title} className="text-sm leading-7 text-[color:var(--text-muted)]">
                   {article.title}
                 </li>
               ))}

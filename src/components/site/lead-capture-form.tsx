@@ -50,8 +50,8 @@ export function LeadCaptureForm() {
 
   return (
     <form className="panel space-y-5" onSubmit={handleSubmit}>
-      <div className="rounded-[24px] border border-[color:var(--line)] bg-[color:rgba(255,255,255,0.02)] px-4 py-3 text-xs uppercase tracking-[0.18em] text-[color:var(--text-subtle)]">
-        Checklist Request
+      <div className="rounded-full border border-[color:var(--line)] bg-[color:var(--panel-soft)] px-4 py-3 text-xs uppercase tracking-[0.18em] text-[color:var(--text-subtle)]">
+        Agency AI Automation Checklist
       </div>
       <div className="grid gap-5 md:grid-cols-2">
         <label className="form-field">
@@ -99,11 +99,11 @@ export function LeadCaptureForm() {
       </label>
 
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <button type="submit" className="button-primary">
-          Request the Checklist
+        <button type="submit" className="button-primary w-full sm:w-auto">
+          {siteConfig.primaryCta}
         </button>
         <p className="text-sm leading-6 text-[color:var(--text-subtle)]">
-          This opens a prefilled email so you can send the request in one click.
+          This opens a prefilled email so you can send the request with your details in one step.
         </p>
       </div>
 

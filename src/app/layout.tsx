@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Sora } from "next/font/google";
+import { Geist, Manrope } from "next/font/google";
 
 import "./globals.css";
 import { defaultMetadata } from "@/lib/seo";
@@ -9,9 +9,9 @@ const geist = Geist({
   variable: "--font-geist",
 });
 
-const sora = Sora({
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-sora",
+  variable: "--font-display",
 });
 
 export const metadata: Metadata = defaultMetadata;
@@ -23,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geist.variable} ${sora.variable}`}>{children}</body>
+      <body className={`${geist.variable} ${manrope.variable}`}>{children}</body>
     </html>
   );
 }

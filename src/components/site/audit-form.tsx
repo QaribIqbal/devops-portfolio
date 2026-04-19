@@ -56,8 +56,8 @@ export function AuditForm() {
 
   return (
     <form className="panel space-y-5" onSubmit={handleSubmit}>
-      <div className="rounded-[24px] border border-[color:var(--line)] bg-[color:rgba(255,255,255,0.02)] px-4 py-3 text-xs uppercase tracking-[0.18em] text-[color:var(--text-subtle)]">
-        Audit Request
+      <div className="rounded-full border border-[color:var(--line)] bg-[color:var(--panel-soft)] px-4 py-3 text-xs uppercase tracking-[0.18em] text-[color:var(--text-subtle)]">
+        Free Automation Audit
       </div>
       <div className="grid gap-5 md:grid-cols-2">
         <label className="form-field">
@@ -128,8 +128,8 @@ export function AuditForm() {
       </label>
 
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <button type="submit" className="button-primary">
-          Send Audit Request
+        <button type="submit" className="button-primary w-full sm:w-auto">
+          {siteConfig.secondaryCta}
         </button>
         <p className="text-sm leading-6 text-[color:var(--text-subtle)]">
           This opens a prefilled email with your answers so the next step is clear.

@@ -20,9 +20,14 @@ export function PageHero({
     <section className="page-section pt-24 sm:pt-32">
       <div className="shell">
         <div className="hero-panel">
-          <SectionHeading eyebrow={eyebrow} title={title} description={description} />
+          <SectionHeading
+            eyebrow={eyebrow}
+            title={title}
+            description={description}
+            className="max-w-[56rem]"
+          />
           {(primaryCta || secondaryCta) && (
-            <div className="mt-8 flex flex-col gap-3 border-t border-[color:var(--line)] pt-8 sm:flex-row">
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
               {primaryCta ? (
                 <ButtonLink href={primaryCta.href}>{primaryCta.label}</ButtonLink>
               ) : null}

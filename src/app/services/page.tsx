@@ -1,4 +1,4 @@
-import { CheckCircle2, ShieldCheck } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 
 import { ButtonLink } from "@/components/site/button-link";
 import { PageHero } from "@/components/site/page-hero";
@@ -21,84 +21,94 @@ export default function ServicesPage() {
         <PageHero
           eyebrow="Services"
           title="AI automation services built specifically for marketing agencies."
-          description="This is not generic AI consulting. Each service is designed around the operational bottlenecks agencies feel most: lead follow-up, reporting, onboarding, repetitive admin work, and disconnected tools."
+          description="This is AI automation for marketing agencies, not generic AI consulting. Each service is designed around the operational bottlenecks agencies feel most: lead follow-up, reporting, onboarding, repetitive admin work, and disconnected systems."
           primaryCta={{ href: "/checklist", label: siteConfig.primaryCta }}
           secondaryCta={{ href: "/contact", label: siteConfig.secondaryCta }}
         />
 
         <section className="page-section pt-0">
-          <div className="shell">
-            <div className="grid gap-5">
-              {services.map((service) => (
-                <article key={service.title} className="panel">
-                  <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-                    <div>
-                      <p className="section-eyebrow">Core Service</p>
-                      <h2 className="text-3xl font-semibold tracking-[-0.04em] text-[color:var(--text-main)]">
-                        {service.title}
-                      </h2>
-                      <p className="mt-4 text-base leading-7 text-[color:var(--text-muted)]">
-                        {service.description}
-                      </p>
-                      <p className="mt-6 text-sm leading-6 text-[color:var(--text-subtle)]">
-                        {service.fit}
-                      </p>
+          <div className="shell grid gap-5">
+            {services.map((service) => (
+              <article key={service.title} className="panel">
+                <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr]">
+                  <div>
+                    <h2 className="text-[clamp(1.75rem,2.5vw,2.5rem)] font-semibold tracking-[-0.045em] text-[color:var(--text-main)]">
+                      {service.title}
+                    </h2>
+                    <p className="mt-4 max-w-[58ch] text-[1rem] leading-7 text-[color:var(--text-muted)]">
+                      {service.description}
+                    </p>
+                    <p className="mt-6 text-sm leading-7 text-[color:var(--text-subtle)]">
+                      {service.fit}
+                    </p>
+                  </div>
+
+                  <div className="grid gap-5 md:grid-cols-3">
+                    <div className="subtle-card">
+                      <h3 className="text-sm font-semibold uppercase tracking-[0.16em] text-[color:var(--text-subtle)]">
+                        What It Includes
+                      </h3>
+                      <ul className="mt-4 space-y-3">
+                        {service.includes.map((item) => (
+                          <li key={item} className="flex items-start gap-3">
+                            <CheckCircle2
+                              className="mt-1 h-4 w-4 shrink-0 text-[color:var(--accent)]"
+                              aria-hidden="true"
+                            />
+                            <span className="text-sm leading-7 text-[color:var(--text-muted)]">
+                              {item}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
 
-                    <div className="grid gap-5 md:grid-cols-3 md:[&>*]:px-5 md:[&>*:not(:first-child)]:border-l md:[&>*:not(:first-child)]:border-[color:var(--line)] md:[&>*:first-child]:pl-0 md:[&>*:last-child]:pr-0">
-                      <div>
-                        <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-[color:var(--text-subtle)]">
-                          What It Includes
-                        </h3>
-                        <ul className="mt-4 space-y-3">
-                          {service.includes.map((item) => (
-                            <li key={item} className="flex items-start gap-3 text-sm leading-6 text-[color:var(--text-muted)]">
-                              <CheckCircle2 className="mt-1 h-4 w-4 text-[color:var(--accent)]" aria-hidden="true" />
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      <div>
-                        <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-[color:var(--text-subtle)]">
-                          Problems It Solves
-                        </h3>
-                        <ul className="mt-4 space-y-3">
-                          {service.problems.map((item) => (
-                            <li key={item} className="text-sm leading-6 text-[color:var(--text-muted)]">
-                              {item}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      <div>
-                        <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-[color:var(--text-subtle)]">
-                          Outcomes
-                        </h3>
-                        <ul className="mt-4 space-y-3">
-                          {service.outcomes.map((item) => (
-                            <li key={item} className="text-sm leading-6 text-[color:var(--text-muted)]">
-                              {item}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                    <div className="subtle-card">
+                      <h3 className="text-sm font-semibold uppercase tracking-[0.16em] text-[color:var(--text-subtle)]">
+                        Problems It Solves
+                      </h3>
+                      <ul className="mt-4 space-y-3">
+                        {service.problems.map((item) => (
+                          <li key={item} className="text-sm leading-7 text-[color:var(--text-muted)]">
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="subtle-card">
+                      <h3 className="text-sm font-semibold uppercase tracking-[0.16em] text-[color:var(--text-subtle)]">
+                        Outcomes
+                      </h3>
+                      <ul className="mt-4 space-y-3">
+                        {service.outcomes.map((item) => (
+                          <li key={item} className="text-sm leading-7 text-[color:var(--text-muted)]">
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
-                </article>
-              ))}
-            </div>
+                </div>
+              </article>
+            ))}
           </div>
         </section>
 
         <section className="page-section" id="packaging">
           <div className="shell">
-            <div className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
-              <div className="panel">
+            <div className="grid gap-5 lg:grid-cols-[0.92fr_1.08fr]">
+              <article className="panel">
                 <p className="section-eyebrow">Service Packaging</p>
-                <h2 className="text-3xl font-semibold tracking-[-0.04em] text-[color:var(--text-main)]">
-                  Start with diagnosis, move into a fixed-scope sprint, then extend only if it makes sense.
+                <h2 className="text-[clamp(1.85rem,2.9vw,3rem)] font-semibold tracking-[-0.045em] text-[color:var(--text-main)]">
+                  Start with diagnosis, move into a fixed-scope sprint, and extend only after the
+                  first automation is live.
                 </h2>
+                <p className="mt-4 max-w-[60ch] text-[1rem] leading-7 text-[color:var(--text-muted)]">
+                  The work is designed to feel specific, scoped, low-risk, and professionally
+                  managed. Results, reliability, communication, speed, and professionalism matter
+                  more than technical complexity.
+                </p>
                 <div className="mt-6 flex flex-wrap gap-3">
                   {trustStrip.map((item) => (
                     <span key={item} className="metric-pill">
@@ -106,76 +116,88 @@ export default function ServicesPage() {
                     </span>
                   ))}
                 </div>
-              </div>
+              </article>
 
               <div className="grid gap-5">
                 <article className="panel">
-                  <p className="section-eyebrow">Step 1</p>
-                  <h3 className="text-2xl font-semibold text-[color:var(--text-main)]">
+                  <h3 className="text-[1.55rem] font-semibold tracking-[-0.04em] text-[color:var(--text-main)]">
                     Automation Audit
                   </h3>
-                  <p className="mt-4 text-base leading-7 text-[color:var(--text-muted)]">
-                    A focused diagnostic to identify the workflow bottleneck most worth fixing first,
-                    not a generic discovery chat.
+                  <p className="mt-4 text-[1rem] leading-7 text-[color:var(--text-muted)]">
+                    A focused diagnostic for identifying the workflow bottleneck most worth fixing
+                    first, not a generic discovery chat.
                   </p>
                 </article>
 
-                <article className="panel border-[color:var(--accent)]" id="automation-sprint">
-                  <p className="section-eyebrow">Main Paid Offer</p>
-                  <h3 className="text-3xl font-semibold tracking-[-0.04em] text-[color:var(--text-main)]">
+                <article className="panel panel-featured" id="automation-sprint">
+                  <h3 className="text-[1.75rem] font-semibold tracking-[-0.045em] text-[color:var(--text-main)]">
                     Fixed-Scope AI Automation Sprint (2 to 4 weeks)
                   </h3>
-                  <div className="mt-6 grid gap-5 md:grid-cols-2 md:[&>*]:px-5 md:[&>*:not(:first-child)]:border-l md:[&>*:not(:first-child)]:border-[color:var(--line)] md:[&>*:first-child]:pl-0 md:[&>*:last-child]:pr-0">
-                    <div>
-                      <h4 className="text-sm font-semibold uppercase tracking-[0.18em] text-[color:var(--text-subtle)]">
+                  <p className="mt-4 text-[1rem] leading-7 text-[color:var(--text-muted)]">
+                    This is the main paid offer: one clear operational bottleneck, one scoped
+                    solution, one defined timeline, and one professional implementation process.
+                  </p>
+                  <div className="mt-6 grid gap-5 md:grid-cols-2">
+                    <div className="subtle-card">
+                      <h4 className="text-sm font-semibold uppercase tracking-[0.16em] text-[color:var(--text-subtle)]">
                         Scoped Before Build
                       </h4>
                       <ul className="mt-4 space-y-3">
                         {[
                           "One clear operational bottleneck",
-                          "Defined workflow and implementation scope",
-                          "Agreed timeline, handoff, and support window",
+                          "Defined workflow and agreed sprint scope",
+                          "Timeline, handoff, revisions, and support window set before implementation",
                         ].map((item) => (
-                          <li key={item} className="flex items-start gap-3 text-sm leading-6 text-[color:var(--text-muted)]">
-                            <ShieldCheck className="mt-1 h-4 w-4 text-[color:var(--accent)]" aria-hidden="true" />
-                            <span>{item}</span>
+                          <li key={item} className="flex items-start gap-3">
+                            <CheckCircle2
+                              className="mt-1 h-4 w-4 shrink-0 text-[color:var(--accent)]"
+                              aria-hidden="true"
+                            />
+                            <span className="text-sm leading-7 text-[color:var(--text-muted)]">
+                              {item}
+                            </span>
                           </li>
                         ))}
                       </ul>
                     </div>
-                    <div>
-                      <h4 className="text-sm font-semibold uppercase tracking-[0.18em] text-[color:var(--text-subtle)]">
+
+                    <div className="subtle-card">
+                      <h4 className="text-sm font-semibold uppercase tracking-[0.16em] text-[color:var(--text-subtle)]">
                         Included In The Sprint
                       </h4>
                       <ul className="mt-4 space-y-3">
                         {[
                           "Workflow design, implementation, testing, and handoff",
-                          "Weekly progress updates and fast communication during the build",
+                          "Weekly progress updates and fast communication throughout the build",
                           "Revisions during handoff and short post-launch support",
                         ].map((item) => (
-                          <li key={item} className="flex items-start gap-3 text-sm leading-6 text-[color:var(--text-muted)]">
-                            <CheckCircle2 className="mt-1 h-4 w-4 text-[color:var(--accent)]" aria-hidden="true" />
-                            <span>{item}</span>
+                          <li key={item} className="flex items-start gap-3">
+                            <CheckCircle2
+                              className="mt-1 h-4 w-4 shrink-0 text-[color:var(--accent)]"
+                              aria-hidden="true"
+                            />
+                            <span className="text-sm leading-7 text-[color:var(--text-muted)]">
+                              {item}
+                            </span>
                           </li>
                         ))}
                       </ul>
                     </div>
                   </div>
-                  <p className="mt-6 text-sm leading-6 text-[color:var(--text-subtle)]">
-                    If something inside the agreed scope is not working as specified at handoff, it gets
-                    fixed before sign-off. The promise is a professional implementation process with clear
-                    communication and dependable delivery, not exaggerated business guarantees.
+                  <p className="mt-6 max-w-[62ch] text-sm leading-7 text-[color:var(--text-subtle)]">
+                    If something inside the agreed scope is not working as specified at handoff, it
+                    gets fixed before sign-off. The promise is a clear process and dependable
+                    implementation, not exaggerated outcome guarantees.
                   </p>
                 </article>
 
                 <article className="panel">
-                  <p className="section-eyebrow">After Launch</p>
-                  <h3 className="text-2xl font-semibold text-[color:var(--text-main)]">
+                  <h3 className="text-[1.55rem] font-semibold tracking-[-0.04em] text-[color:var(--text-main)]">
                     Ongoing Optimization Support
                   </h3>
-                  <p className="mt-4 text-base leading-7 text-[color:var(--text-muted)]">
-                    Available after the sprint for agencies that want to maintain, refine, or extend the
-                    first automation once it is live and being used day to day.
+                  <p className="mt-4 text-[1rem] leading-7 text-[color:var(--text-muted)]">
+                    Available after the sprint for agencies that want to refine, maintain, or extend
+                    the first automation once it is live.
                   </p>
                 </article>
               </div>
