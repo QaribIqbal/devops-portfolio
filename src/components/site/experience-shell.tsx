@@ -92,18 +92,20 @@ export function ExperienceShell() {
       if (!section) return;
 
       const resizeAndAnimate = () => {
-        const totalShift = Math.max(0, track.scrollWidth - track.clientWidth);
-        if (totalShift < 12 || window.innerWidth < 1024) return;
+        if (window.innerWidth < 1024) return;
+
+        const totalShift = () => Math.max(0, track.scrollWidth - track.clientWidth);
+        if (totalShift() < 12) return;
 
         const tween = gsap.to(track, {
-          x: -totalShift,
+          x: () => -totalShift(),
           ease: "none",
           scrollTrigger: {
-            trigger: section,
-            start: "top top",
-            end: () => `+=${totalShift + 360}`,
+            trigger: track,
+            start: "top top+=80",
+            end: () => `+=${totalShift() + 320}`,
             scrub: 1.15,
-            pin: true,
+            pin: section,
             anticipatePin: 1,
             invalidateOnRefresh: true,
           },
