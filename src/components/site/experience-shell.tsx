@@ -20,6 +20,7 @@ export function ExperienceShell() {
   const [theme, setTheme] = useState<"light" | "dark">("dark");
   const [showLoader, setShowLoader] = useState(true);
   const loaderRef = useRef<HTMLDivElement>(null);
+  const scopeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem(THEME_KEY);
@@ -73,170 +74,210 @@ export function ExperienceShell() {
     if (reducedMotion) return;
 
     const lenis = new Lenis({
-      autoRaf: true,
+      autoRaf: false,
       smoothWheel: true,
-      duration: 1.18,
-      wheelMultiplier: 1.14,
+      duration: 1.08,
+      wheelMultiplier: 1.08,
     });
-    lenis.on("scroll", ScrollTrigger.update);
+    const onLenisScroll = () => ScrollTrigger.update();
+    const lenisRaf = (time: number) => lenis.raf(time * 1000);
+    lenis.on("scroll", onLenisScroll);
+    gsap.ticker.add(lenisRaf);
+    gsap.ticker.lagSmoothing(0);
 
-    ScrollTrigger.defaults({
-      markers: false,
-    });
+    const ctx = gsap.context(() => {
+      ScrollTrigger.defaults({
+        markers: false,
+      });
 
-    const horizontalTracks = gsap.utils.toArray<HTMLElement>("[data-force-horizontal='true']");
-    const animations: gsap.core.Tween[] = [];
-    const cleanupResizeHandlers: Array<() => void> = [];
-    const delayedHorizontalTimers: number[] = [];
-
-    horizontalTracks.forEach((track, index) => {
-      const section = track.closest("[data-horizontal-section='true']");
-      if (!section) return;
-
-      const triggerId = `forced-horizontal-${index}`;
-      let activeTween: gsap.core.Tween | null = null;
-
-      const createOrRefreshHorizontal = () => {
-        activeTween?.kill();
-        activeTween = null;
-        ScrollTrigger.getById(triggerId)?.kill();
+      const animations: gsap.core.Tween[] = [];
+      const horizontalTracks = gsap.utils.toArray<HTMLElement>("[data-force-horizontal='true']");
+      horizontalTracks.forEach((track) => {
+        track.dataset.horizontalMode = "native";
         gsap.set(track, { x: 0 });
+      });
 
-        if (window.innerWidth < 768) return;
+      const mm = gsap.matchMedia();
+      mm.add("(min-width: 1024px)", () => {
+        const cleanupObservers: Array<() => void> = [];
+        const cleanupImageListeners: Array<() => void> = [];
 
-        const children = Array.from(track.children) as HTMLElement[];
-        const computed = window.getComputedStyle(track);
-        const gapValue = Number.parseFloat(computed.columnGap || computed.gap || "0");
-        const totalChildWidth =
-          children.reduce((sum, child) => sum + child.getBoundingClientRect().width, 0) +
-          Math.max(0, children.length - 1) * gapValue;
-        const totalShift = Math.max(0, totalChildWidth - track.clientWidth);
-        if (totalShift < 12) return;
+        horizontalTracks.forEach((track, index) => {
+          const section = track.closest<HTMLElement>("[data-horizontal-section='true']");
+          if (!section) return;
 
-        activeTween = gsap.to(track, {
-          x: -totalShift,
-          ease: "none",
-          scrollTrigger: {
-            id: triggerId,
-            trigger: section,
-            start: "top top+=80",
-            end: () => `+=${totalShift + 320}`,
-            scrub: 1.16,
-            pin: true,
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
-          },
+          const triggerId = `forced-horizontal-${index}`;
+          track.dataset.horizontalMode = "forced";
+
+          const getHeaderOffset = () =>
+            Math.round(document.querySelector("header")?.getBoundingClientRect().height ?? 0);
+          const getTotalShift = () => Math.max(0, Math.round(track.scrollWidth - track.clientWidth));
+
+          const createOrRefreshHorizontal = () => {
+            const totalShift = getTotalShift();
+            ScrollTrigger.getById(triggerId)?.kill();
+            gsap.set(track, { x: 0 });
+
+            if (totalShift < 8) return;
+
+            const horizontalTween = gsap.to(track, {
+              x: -totalShift,
+              ease: "none",
+              force3D: true,
+              overwrite: "auto",
+              scrollTrigger: {
+                id: triggerId,
+                trigger: section,
+                start: () => `top top+=${getHeaderOffset()}`,
+                end: () => `+=${getTotalShift()}`,
+                scrub: 1,
+                pin: true,
+                pinSpacing: true,
+                anticipatePin: 1,
+                fastScrollEnd: true,
+                invalidateOnRefresh: true,
+              },
+            });
+
+            animations.push(horizontalTween);
+          };
+
+          createOrRefreshHorizontal();
+
+          if (typeof ResizeObserver !== "undefined") {
+            const observer = new ResizeObserver(() => createOrRefreshHorizontal());
+            observer.observe(section);
+            observer.observe(track);
+            Array.from(track.children).forEach((child) => observer.observe(child));
+            cleanupObservers.push(() => observer.disconnect());
+          } else {
+            const onResize = () => createOrRefreshHorizontal();
+            window.addEventListener("resize", onResize);
+            cleanupObservers.push(() => window.removeEventListener("resize", onResize));
+          }
+
+          const images = track.querySelectorAll<HTMLImageElement>("img");
+          images.forEach((image) => {
+            if (image.complete) return;
+            const onLoad = () => ScrollTrigger.refresh();
+            image.addEventListener("load", onLoad, { once: true });
+            cleanupImageListeners.push(() => image.removeEventListener("load", onLoad));
+          });
         });
 
-        animations.push(activeTween);
-      };
+        ScrollTrigger.refresh();
 
-      createOrRefreshHorizontal();
-
-      const onResize = () => createOrRefreshHorizontal();
-      window.addEventListener("resize", onResize);
-      cleanupResizeHandlers.push(() => window.removeEventListener("resize", onResize));
-
-      delayedHorizontalTimers.push(window.setTimeout(createOrRefreshHorizontal, 360));
-      delayedHorizontalTimers.push(window.setTimeout(createOrRefreshHorizontal, 1100));
-    });
-
-    const heroVisual = document.querySelector<HTMLElement>(".hero-visual-main");
-    if (heroVisual) {
-      const heroTween = gsap.to(heroVisual, {
-        yPercent: 28,
-        xPercent: -10,
-        rotate: -14,
-        scale: 1.08,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".section-slice-hero",
-          start: "top top",
-          end: "bottom top",
-          scrub: 1.1,
-        },
+        return () => {
+          cleanupObservers.forEach((cleanup) => cleanup());
+          cleanupImageListeners.forEach((cleanup) => cleanup());
+          horizontalTracks.forEach((track) => {
+            track.dataset.horizontalMode = "native";
+            gsap.set(track, { x: 0 });
+          });
+        };
       });
-      animations.push(heroTween);
-    }
 
-    const parallaxAssets = gsap.utils.toArray<HTMLElement>("[data-parallax='asset']");
-    parallaxAssets.forEach((asset, index) => {
-      const tween = gsap.fromTo(
-        asset,
-        {
-          y: 22 + index * 4,
-          opacity: 0.5,
-          rotate: -2,
-        },
-        {
-          y: -16 - index * 2,
-          opacity: 1,
-          rotate: 2,
+      const heroVisual = document.querySelector<HTMLElement>(".hero-visual-main");
+      if (heroVisual) {
+        const heroTween = gsap.to(heroVisual, {
+          yPercent: 28,
+          xPercent: -10,
+          rotate: -14,
+          scale: 1.08,
           ease: "none",
           scrollTrigger: {
-            trigger: asset.closest(".section-slice") ?? asset,
-            start: "top bottom",
+            trigger: ".section-slice-hero",
+            start: "top top",
             end: "bottom top",
-            scrub: 1.2,
+            scrub: 1.05,
           },
-        },
-      );
-      animations.push(tween);
-    });
+        });
+        animations.push(heroTween);
+      }
 
-    const sections = gsap.utils.toArray<HTMLElement>(".section-slice");
-    sections.forEach((section) => {
-      const tween = gsap.fromTo(
-        section,
-        { backgroundPositionY: "0%" },
-        {
-          backgroundPositionY: "16%",
-          ease: "none",
-          scrollTrigger: {
-            trigger: section,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: 1.2,
+      const parallaxAssets = gsap.utils.toArray<HTMLElement>("[data-parallax='asset']");
+      parallaxAssets.forEach((asset, index) => {
+        const tween = gsap.fromTo(
+          asset,
+          {
+            y: 22 + index * 4,
+            opacity: 0.5,
+            rotate: -2,
           },
-        },
-      );
-      animations.push(tween);
-    });
-
-    const cinematicCards = gsap.utils.toArray<HTMLElement>(".kinetic-panel");
-    cinematicCards.forEach((card) => {
-      const tween = gsap.fromTo(
-        card,
-        { y: 34, rotateX: 7, opacity: 0.78, transformOrigin: "50% 100%" },
-        {
-          y: 0,
-          rotateX: 0,
-          opacity: 1,
-          duration: 1.05,
-          ease: "power4.out",
-          scrollTrigger: {
-            trigger: card,
-            start: "top 84%",
-            toggleActions: "play none none reverse",
+          {
+            y: -16 - index * 2,
+            opacity: 1,
+            rotate: 2,
+            ease: "none",
+            scrollTrigger: {
+              trigger: asset.closest(".section-slice") ?? asset,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 1.15,
+            },
           },
-        },
-      );
-      animations.push(tween);
-    });
+        );
+        animations.push(tween);
+      });
 
-    ScrollTrigger.refresh();
+      const sections = gsap.utils.toArray<HTMLElement>(".section-slice");
+      sections.forEach((section) => {
+        const tween = gsap.fromTo(
+          section,
+          { backgroundPositionY: "0%" },
+          {
+            backgroundPositionY: "16%",
+            ease: "none",
+            scrollTrigger: {
+              trigger: section,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 1.1,
+            },
+          },
+        );
+        animations.push(tween);
+      });
+
+      const cinematicCards = gsap.utils.toArray<HTMLElement>(".kinetic-panel");
+      cinematicCards.forEach((card) => {
+        const tween = gsap.fromTo(
+          card,
+          { y: 26, rotateX: 6, opacity: 0.82, transformOrigin: "50% 100%" },
+          {
+            y: 0,
+            rotateX: 0,
+            opacity: 1,
+            duration: 0.94,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 84%",
+              toggleActions: "play none none reverse",
+            },
+          },
+        );
+        animations.push(tween);
+      });
+
+      ScrollTrigger.refresh();
+
+      return () => {
+        animations.forEach((tween) => tween.kill());
+        mm.revert();
+      };
+    }, scopeRef);
 
     return () => {
-      delayedHorizontalTimers.forEach((timer) => window.clearTimeout(timer));
-      cleanupResizeHandlers.forEach((dispose) => dispose());
-      animations.forEach((tween) => tween.kill());
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      ctx.revert();
+      gsap.ticker.remove(lenisRaf);
+      (lenis as unknown as { off?: (event: string, cb: () => void) => void }).off?.("scroll", onLenisScroll);
       lenis.destroy();
     };
   }, []);
 
   return (
-    <>
+    <div ref={scopeRef}>
       <button
         type="button"
         className="theme-toggle"
@@ -261,6 +302,6 @@ export function ExperienceShell() {
           </div>
         </div>
       ) : null}
-    </>
+    </div>
   );
 }

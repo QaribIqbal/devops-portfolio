@@ -9,6 +9,7 @@ type RevealProps = {
   className?: string;
   delay?: number;
   as?: "div" | "section" | "article";
+  alwaysVisible?: boolean;
 };
 
 const easeOut = [0.23, 1, 0.32, 1] as const;
@@ -18,11 +19,12 @@ export function Reveal({
   className,
   delay = 0,
   as = "div",
+  alwaysVisible = false,
 }: RevealProps) {
   const prefersReducedMotion = useReducedMotion();
   const Component = motion[as];
 
-  if (prefersReducedMotion) {
+  if (prefersReducedMotion || alwaysVisible) {
     return <div className={className}>{children}</div>;
   }
 

@@ -510,10 +510,29 @@ img {
     transition: transform 420ms var(--ease-out-strong), opacity 420ms var(--ease-out-strong);
   }
 
+  html[data-theme="light"] .service-visual,
+  html[data-theme="light"] .proof-visual {
+    opacity: 0.17;
+    mix-blend-mode: multiply;
+    filter: saturate(0.82);
+  }
+
+  html[data-theme="dark"] .service-visual,
+  html[data-theme="dark"] .proof-visual {
+    opacity: 0.3;
+    mix-blend-mode: screen;
+    filter: saturate(1.08) brightness(1.06);
+  }
+
   .kinetic-panel:hover .service-visual,
   .kinetic-panel:hover .proof-visual {
     transform: translate(-0.7rem, 0.7rem) rotate(-5deg) scale(1.06);
     opacity: 0.42;
+  }
+
+  .kinetic-panel {
+    isolation: isolate;
+    z-index: 0;
   }
 
   .section-rail {
@@ -711,6 +730,25 @@ img {
     );
   }
 
+  [data-horizontal-section="true"] {
+    overflow: visible;
+  }
+
+  .horizontal-track {
+    align-items: stretch;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in oklch, var(--accent) 60%, transparent) transparent;
+    will-change: transform;
+  }
+
+  .horizontal-track > * {
+    flex-shrink: 0;
+    min-height: 100%;
+  }
+
   [data-force-horizontal="true"] {
     scrollbar-width: thin;
     scrollbar-color: color-mix(in oklch, var(--accent) 60%, transparent) transparent;
@@ -727,6 +765,18 @@ img {
 
   [data-force-horizontal="true"]::-webkit-scrollbar-track {
     background: transparent;
+  }
+
+  [data-force-horizontal="true"][data-horizontal-mode="forced"] {
+    overflow-x: clip;
+    scroll-snap-type: none;
+    touch-action: pan-y;
+  }
+
+  [data-force-horizontal="true"][data-horizontal-mode="native"] {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
   }
 
   .service-panel {
@@ -801,6 +851,11 @@ img {
   .service-insight-grid > :last-child {
     grid-column: 1 / -1;
   }
+
+  [data-force-horizontal="true"] {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
 }
 
 @media (max-width: 639px) {
@@ -831,6 +886,11 @@ img {
   .service-insight-card {
     min-height: 100%;
     padding: 1.45rem 1.2rem;
+  }
+
+  [data-force-horizontal="true"][data-horizontal-mode="forced"] {
+    overflow-x: clip;
+    scroll-snap-type: none;
   }
 }
 
