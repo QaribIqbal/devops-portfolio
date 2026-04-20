@@ -9,7 +9,7 @@ export function ProfileCardPanel() {
       <ProfileCard
         name="Qarib Iqbal"
         title="AI Automation Specialist"
-        handle="qaribiqbal92"
+        handle="qaribiqbal"
         status="Available for New Agency Projects"
         contactText="Book on Calendly"
         avatarUrl="/me.png"

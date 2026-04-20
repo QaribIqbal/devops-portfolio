@@ -177,7 +177,7 @@ export default function HomePage() {
         <section
           className="page-section section-slice section-slice-services"
           id="services"
-          data-horizontal-section="true"
+          data-horizontal-section="services"
         >
           <div className="shell">
             <Reveal>
@@ -189,7 +189,7 @@ export default function HomePage() {
             </Reveal>
             <div
               className="horizontal-track mt-10 flex gap-5 pb-3"
-              data-force-horizontal="true"
+              data-horizontal-track="services"
             >
               {services.map((service, index) => {
                 const Icon = serviceIcons[index];
@@ -200,9 +200,7 @@ export default function HomePage() {
                     key={service.title}
                     delay={index * 0.04}
                     alwaysVisible
-                    className={`shrink-0 min-w-[88vw] snap-start sm:min-w-[70vw] lg:min-w-[44vw] ${
-                      index === services.length - 1 ? "lg:min-w-[56vw]" : ""
-                    }`}
+                    className="shrink-0 min-w-[88vw] snap-start sm:min-w-[70vw] lg:min-w-[calc((100%-2.5rem)/2.2)]"
                   >
                     <article className="panel kinetic-panel relative h-full overflow-hidden">
                       <Image
@@ -337,11 +335,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section
-          className="page-section section-slice section-slice-proof"
-          id="proof"
-          data-horizontal-section="true"
-        >
+        <section className="page-section section-slice section-slice-proof" id="proof">
           <div className="shell">
             <Reveal>
               <SectionHeading
@@ -352,7 +346,6 @@ export default function HomePage() {
             </Reveal>
             <div
               className="horizontal-track mt-10 flex gap-5 pb-3"
-              data-force-horizontal="true"
             >
               {proofCards.map((card, index) => (
                 <Reveal

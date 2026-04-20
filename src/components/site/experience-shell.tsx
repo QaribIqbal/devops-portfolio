@@ -6,6 +6,7 @@ import Lenis from "lenis";
 import { animate } from "animejs";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { buildHorizontalSnapPoints, getHorizontalTravel } from "@/lib/horizontal-scroll";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -91,48 +92,50 @@ export function ExperienceShell() {
       });
 
       const animations: gsap.core.Tween[] = [];
-      const horizontalTracks = gsap.utils.toArray<HTMLElement>("[data-force-horizontal='true']");
-      horizontalTracks.forEach((track) => {
-        track.dataset.horizontalMode = "native";
-        gsap.set(track, { x: 0 });
-      });
+      const servicesSection = scopeRef.current?.querySelector<HTMLElement>("[data-horizontal-section='services']");
+      const servicesTrack = scopeRef.current?.querySelector<HTMLElement>("[data-horizontal-track='services']");
+
+      if (servicesTrack) {
+        servicesTrack.dataset.horizontalMode = "native";
+        gsap.set(servicesTrack, { x: 0 });
+      }
 
       const mm = gsap.matchMedia();
       mm.add("(min-width: 1024px)", () => {
-        const cleanupObservers: Array<() => void> = [];
         const cleanupImageListeners: Array<() => void> = [];
 
-        horizontalTracks.forEach((track, index) => {
-          const section = track.closest<HTMLElement>("[data-horizontal-section='true']");
-          if (!section) return;
-
-          const triggerId = `forced-horizontal-${index}`;
-          track.dataset.horizontalMode = "forced";
+        if (servicesSection && servicesTrack) {
+          servicesTrack.dataset.horizontalMode = "forced";
 
           const getHeaderOffset = () =>
             Math.round(document.querySelector("header")?.getBoundingClientRect().height ?? 0);
-          const getTotalShift = () => Math.max(0, Math.round(track.scrollWidth - track.clientWidth));
+          const getTotalShift = () => getHorizontalTravel(servicesTrack.scrollWidth, servicesTrack.clientWidth);
+          const getSnapPoints = () =>
+            buildHorizontalSnapPoints(
+              Array.from(servicesTrack.children).map((child) => (child as HTMLElement).offsetLeft),
+              getTotalShift(),
+            );
 
-          const createOrRefreshHorizontal = () => {
-            const totalShift = getTotalShift();
-            ScrollTrigger.getById(triggerId)?.kill();
-            gsap.set(track, { x: 0 });
-
-            if (totalShift < 8) return;
-
-            const horizontalTween = gsap.to(track, {
-              x: -totalShift,
+          if (getTotalShift() > 0) {
+            const horizontalTween = gsap.to(servicesTrack, {
+              x: () => -getTotalShift(),
               ease: "none",
               force3D: true,
               overwrite: "auto",
               scrollTrigger: {
-                id: triggerId,
-                trigger: section,
+                id: "services-horizontal-scroll",
+                trigger: servicesSection,
                 start: () => `top top+=${getHeaderOffset()}`,
                 end: () => `+=${getTotalShift()}`,
-                scrub: 1,
                 pin: true,
                 pinSpacing: true,
+                scrub: 1,
+                snap: {
+                  snapTo: (progress: number) => gsap.utils.snap(getSnapPoints(), progress),
+                  duration: { min: 0.16, max: 0.32 },
+                  delay: 0.04,
+                  ease: "power1.inOut",
+                },
                 anticipatePin: 1,
                 fastScrollEnd: true,
                 invalidateOnRefresh: true,
@@ -140,40 +143,25 @@ export function ExperienceShell() {
             });
 
             animations.push(horizontalTween);
-          };
-
-          createOrRefreshHorizontal();
-
-          if (typeof ResizeObserver !== "undefined") {
-            const observer = new ResizeObserver(() => createOrRefreshHorizontal());
-            observer.observe(section);
-            observer.observe(track);
-            Array.from(track.children).forEach((child) => observer.observe(child));
-            cleanupObservers.push(() => observer.disconnect());
-          } else {
-            const onResize = () => createOrRefreshHorizontal();
-            window.addEventListener("resize", onResize);
-            cleanupObservers.push(() => window.removeEventListener("resize", onResize));
           }
 
-          const images = track.querySelectorAll<HTMLImageElement>("img");
+          const images = servicesTrack.querySelectorAll<HTMLImageElement>("img");
           images.forEach((image) => {
             if (image.complete) return;
             const onLoad = () => ScrollTrigger.refresh();
             image.addEventListener("load", onLoad, { once: true });
             cleanupImageListeners.push(() => image.removeEventListener("load", onLoad));
           });
-        });
+        }
 
         ScrollTrigger.refresh();
 
         return () => {
-          cleanupObservers.forEach((cleanup) => cleanup());
           cleanupImageListeners.forEach((cleanup) => cleanup());
-          horizontalTracks.forEach((track) => {
-            track.dataset.horizontalMode = "native";
-            gsap.set(track, { x: 0 });
-          });
+          if (servicesTrack) {
+            servicesTrack.dataset.horizontalMode = "native";
+            gsap.set(servicesTrack, { x: 0 });
+          }
         };
       });
 
