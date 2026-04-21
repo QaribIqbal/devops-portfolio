@@ -450,6 +450,7 @@ img {
   }
 
   .form-field > input,
+  .form-field > select,
   .form-field > textarea {
     @apply rounded-[22px] border px-4 py-3.5 text-[0.96rem] leading-6 text-[color:var(--text-main)] transition;
     background: color-mix(in oklch, var(--panel) 86%, black 14%);
@@ -458,11 +459,13 @@ img {
   }
 
   .form-field > input::placeholder,
+  .form-field > select::placeholder,
   .form-field > textarea::placeholder {
     color: var(--text-subtle);
   }
 
   .form-field > input:focus,
+  .form-field > select:focus,
   .form-field > textarea:focus {
     border-color: color-mix(in oklch, var(--accent) 70%, white 30%);
     box-shadow: 0 0 0 4px var(--accent-soft);

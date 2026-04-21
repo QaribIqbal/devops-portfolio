@@ -1,6 +1,7 @@
-import { Calendar, Linkedin, Mail } from "lucide-react";
+import { Calendar, Linkedin } from "lucide-react";
 
 import { AuditForm } from "@/components/site/audit-form";
+import { ButtonLink } from "@/components/site/button-link";
 import { PageHero } from "@/components/site/page-hero";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
@@ -10,7 +11,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "Book a Free Automation Audit",
   description:
-    "Book a Free Automation Audit with Qarib Iqbal to identify the highest-value workflow bottleneck in your marketing agency and get a practical next step.",
+    "Request a free automation audit to identify the highest-value workflow bottleneck in your marketing agency and get a practical implementation path.",
 });
 
 export default function ContactPage() {
@@ -19,10 +20,10 @@ export default function ContactPage() {
       <SiteHeader />
       <main>
         <PageHero
-          eyebrow="Contact / Book Audit"
-          title="A focused diagnostic for agencies that know something is too manual."
-          description="The Free Automation Audit is not a generic discovery chat. It is a focused diagnostic for identifying the highest-value workflow bottleneck, clarifying what better looks like, and deciding whether a sprint makes sense."
-          primaryCta={{ href: "/checklist#lead-capture-form", label: siteConfig.primaryCta }}
+          eyebrow="Free Automation Audit"
+          title="A focused diagnostic for agencies that want to fix the right bottleneck first"
+          description="This is for lean marketing agencies that know manual operations are slowing growth. You get clarity on what to fix, what to ignore for now, and what implementation should look like."
+          primaryCta={{ href: "/checklist", label: siteConfig.primaryCta }}
         />
 
         <section className="page-section pt-0">
@@ -31,58 +32,43 @@ export default function ContactPage() {
 
             <div className="grid gap-5">
               <article className="panel">
-                <p className="section-eyebrow">What It Is</p>
-                <h2 className="text-[1.65rem] font-semibold tracking-[-0.04em] text-[color:var(--text-main)]">
-                  A serious diagnostic for agencies that want clarity before they buy a build.
-                </h2>
-                <p className="mt-4 text-sm leading-7 text-[color:var(--text-muted)]">
-                  Best fit: marketing agency owners, operators, and small teams dealing with manual
-                  lead follow-up, reporting, onboarding, or disconnected internal workflows.
-                </p>
-                <p className="mt-4 text-sm leading-7 text-[color:var(--text-muted)]">
-                  You leave with clarity, prioritized opportunities, and a practical next step. If
-                  there is no fit, there is no pressure to force one.
+                <p className="section-eyebrow">Who this is for</p>
+                <p className="text-sm leading-7 text-[color:var(--text-muted)]">
+                  Best fit: marketing agencies around 10-15 people, usually founder-led or
+                  operator-led, dealing with manual follow-up, manual reporting, onboarding
+                  inconsistency, and disconnected tools.
                 </p>
               </article>
 
               <article className="panel">
-                <p className="section-eyebrow">What To Expect</p>
+                <p className="section-eyebrow">What happens in the audit</p>
                 <ul className="space-y-3 text-sm leading-7 text-[color:var(--text-muted)]">
-                  <li>Clear next steps instead of a vague conversation.</li>
-                  <li>Fast response and direct communication.</li>
-                  <li>Diagnosis before any recommendation to build.</li>
-                  <li>A simple path into a fixed-scope sprint if the problem is worth solving now.</li>
+                  <li>1. We identify the highest-friction operational workflow.</li>
+                  <li>2. We define what a cleaner version of that workflow looks like.</li>
+                  <li>3. We outline scope, effort, and a practical next step.</li>
+                  <li>4. If there is no fit, you still leave with clarity.</li>
                 </ul>
               </article>
 
               <article className="panel">
-                <p className="section-eyebrow">Direct Contact</p>
-                <div className="space-y-3">
-                  <a
-                    href={`mailto:${siteConfig.email}`}
-                    className="subtle-card inline-flex items-center gap-3 text-sm text-[color:var(--text-muted)] hover:text-[color:var(--text-main)]"
-                  >
-                    <Mail className="h-4 w-4 text-[color:var(--accent)]" aria-hidden="true" />
-                    {siteConfig.email}
-                  </a>
-                  <a
-                    href={siteConfig.linkedin}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="subtle-card inline-flex items-center gap-3 text-sm text-[color:var(--text-muted)] hover:text-[color:var(--text-main)]"
-                  >
-                    <Linkedin className="h-4 w-4 text-[color:var(--accent)]" aria-hidden="true" />
-                    Message on LinkedIn
-                  </a>
-                  <a
-                    href={siteConfig.calendly}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="subtle-card inline-flex items-center gap-3 text-sm text-[color:var(--text-muted)] hover:text-[color:var(--text-main)]"
-                  >
-                    <Calendar className="h-4 w-4 text-[color:var(--accent)]" aria-hidden="true" />
-                    Book on Calendly
-                  </a>
+                <p className="section-eyebrow">After you submit</p>
+                <p className="text-sm leading-7 text-[color:var(--text-muted)]">
+                  You get a response to confirm fit and next steps. If you prefer, you can book a
+                  slot directly.
+                </p>
+                <div className="mt-5 flex flex-col gap-3">
+                  <ButtonLink href={siteConfig.calendly} variant="secondary" trackingEvent="contact_calendly_click">
+                    <span className="inline-flex items-center gap-2">
+                      <Calendar className="h-4 w-4" aria-hidden="true" />
+                      Book on Calendly
+                    </span>
+                  </ButtonLink>
+                  <ButtonLink href={siteConfig.linkedin} variant="ghost" trackingEvent="contact_linkedin_click">
+                    <span className="inline-flex items-center gap-2">
+                      <Linkedin className="h-4 w-4" aria-hidden="true" />
+                      Message on LinkedIn
+                    </span>
+                  </ButtonLink>
                 </div>
               </article>
             </div>

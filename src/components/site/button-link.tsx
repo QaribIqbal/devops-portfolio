@@ -1,6 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import type { CSSProperties } from "react";
 
+import { trackEvent } from "@/lib/analytics";
+import { captureCurrentUtmParams } from "@/lib/utm";
 import { cn } from "@/lib/utils";
 
 type ButtonLinkProps = {
@@ -9,6 +13,8 @@ type ButtonLinkProps = {
   variant?: "primary" | "secondary" | "ghost";
   className?: string;
   external?: boolean;
+  trackingEvent?: string;
+  trackingProps?: Record<string, string | number | boolean | undefined>;
 };
 
 export function ButtonLink({
@@ -17,8 +23,11 @@ export function ButtonLink({
   variant = "primary",
   className,
   external = false,
+  trackingEvent,
+  trackingProps,
 }: ButtonLinkProps) {
   const isExternal = external || /^https?:\/\//.test(href);
+
   const style =
     variant === "primary"
       ? ({
@@ -46,6 +55,21 @@ export function ButtonLink({
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noreferrer noopener" : undefined}
       style={style}
+      onClick={() => {
+        captureCurrentUtmParams();
+
+        if (trackingEvent) {
+          trackEvent(trackingEvent, trackingProps);
+        }
+
+        if (href.includes("calendly.com")) {
+          trackEvent("calendly_click", { source: trackingEvent ?? "button_link" });
+        }
+
+        if (href.includes("linkedin.com")) {
+          trackEvent("linkedin_outbound_click", { source: trackingEvent ?? "button_link" });
+        }
+      }}
       className={cn(
         "button-link",
         variant === "primary" && "button-link-primary",

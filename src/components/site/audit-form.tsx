@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 
+import { trackEvent } from "@/lib/analytics";
 import { siteConfig } from "@/lib/site-content";
+import { getStoredUtmParams, readTrackingParams } from "@/lib/utm";
 
 type AuditFormState = {
   name: string;
@@ -24,41 +26,101 @@ const initialState: AuditFormState = {
 
 export function AuditForm() {
   const [form, setForm] = useState<AuditFormState>(initialState);
-  const [status, setStatus] = useState<"idle" | "opening">("idle");
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [error, setError] = useState("");
+  const [hasStarted, setHasStarted] = useState(false);
 
   function updateField(key: keyof AuditFormState, value: string) {
     setForm((current) => ({ ...current, [key]: value }));
   }
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const subject = encodeURIComponent("Free Automation Audit request");
-    const body = encodeURIComponent(
-      [
-        "Hi Qarib,",
-        "",
-        "I'd like to book a Free Automation Audit.",
-        "",
-        `Name: ${form.name}`,
-        `Email: ${form.email}`,
-        `Agency size: ${form.agencySize}`,
-        `Primary services: ${form.primaryServices}`,
-        `Biggest manual pain right now: ${form.biggestPain}`,
-        `Desired timeline to start: ${form.timeline}`,
-        "",
-        "Please let me know the next step.",
-      ].join("\n"),
-    );
+  function markStart() {
+    if (hasStarted) {
+      return;
+    }
 
-    setStatus("opening");
-    window.location.href = `mailto:${siteConfig.email}?subject=${subject}&body=${body}`;
+    setHasStarted(true);
+    trackEvent("audit_form_start");
+  }
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setStatus("submitting");
+    setError("");
+
+    try {
+      const response = await fetch("/api/forms/audit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...form,
+          formType: "audit",
+          submittedAt: new Date().toISOString(),
+          pagePath: window.location.pathname,
+          utm: {
+            ...getStoredUtmParams(),
+            ...readTrackingParams(new URLSearchParams(window.location.search)),
+          },
+        }),
+      });
+
+      if (!response.ok) {
+        const payload = (await response.json().catch(() => null)) as { error?: string } | null;
+        throw new Error(payload?.error || "Unable to submit right now.");
+      }
+
+      setStatus("success");
+      trackEvent("audit_form_submit", { timeline: form.timeline });
+      setForm(initialState);
+    } catch (submitError) {
+      setStatus("error");
+      setError(
+        submitError instanceof Error
+          ? submitError.message
+          : "Submission failed. Please try again in a moment.",
+      );
+    }
+  }
+
+  if (status === "success") {
+    return (
+      <div id="audit-request-form" className="panel space-y-4">
+        <p className="section-eyebrow">Audit Request Sent</p>
+        <h3 className="text-[1.5rem] font-semibold tracking-[-0.03em] text-[color:var(--text-main)]">
+          Thanks. Your automation audit request is in.
+        </h3>
+        <p className="text-sm leading-7 text-[color:var(--text-muted)]">
+          You can also book directly on Calendly if you want to secure a slot now.
+        </p>
+        <a
+          href={siteConfig.calendly}
+          target="_blank"
+          rel="noreferrer"
+          className="button-secondary inline-flex w-full justify-center sm:w-auto"
+          onClick={() => trackEvent("calendly_click", { source: "audit_form_success" })}
+        >
+          Book on Calendly
+        </a>
+        <p className="text-xs leading-6 text-[color:var(--text-subtle)]">
+          Edit this thank-you message in `src/components/site/audit-form.tsx`.
+        </p>
+      </div>
+    );
   }
 
   return (
-    <form id="audit-request-form" className="panel space-y-5" onSubmit={handleSubmit}>
+    <form
+      id="audit-request-form"
+      className="panel space-y-5"
+      onSubmit={handleSubmit}
+      onFocusCapture={markStart}
+    >
       <div className="rounded-full border border-[color:var(--line)] bg-[color:var(--panel-soft)] px-4 py-3 text-xs uppercase tracking-[0.18em] text-[color:var(--text-subtle)]">
-        Free Automation Audit
+        Free Automation Audit Request
       </div>
+
       <div className="grid gap-5 md:grid-cols-2">
         <label className="form-field">
           <span>Name</span>
@@ -90,7 +152,7 @@ export function AuditForm() {
             type="text"
             value={form.agencySize}
             onChange={(event) => updateField("agencySize", event.target.value)}
-            placeholder="Example: 7-person team, 20 active clients"
+            placeholder="Example: 10-person team"
           />
         </label>
         <label className="form-field">
@@ -100,47 +162,55 @@ export function AuditForm() {
             type="text"
             value={form.primaryServices}
             onChange={(event) => updateField("primaryServices", event.target.value)}
-            placeholder="Performance, creative, SEO, lifecycle, or mixed"
+            placeholder="Performance, SEO, creative, lifecycle, etc."
           />
         </label>
       </div>
 
       <label className="form-field">
-        <span>Biggest manual pain right now</span>
+        <span>Biggest pain</span>
         <textarea
           required
           value={form.biggestPain}
           onChange={(event) => updateField("biggestPain", event.target.value)}
-          placeholder="Describe the workflow that is eating time, causing missed steps, or slowing the team down"
+          placeholder="Which workflow is currently slowing your team down most?"
           rows={4}
         />
       </label>
 
       <label className="form-field">
-        <span>Desired timeline to start</span>
+        <span>Timeline</span>
         <input
           required
           type="text"
           value={form.timeline}
           onChange={(event) => updateField("timeline", event.target.value)}
-          placeholder="Example: This month, next quarter, or just exploring"
+          placeholder="This month, next quarter, or evaluating"
         />
       </label>
 
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <button type="submit" className="button-primary w-full sm:w-auto">
-          {siteConfig.secondaryCta}
+        <button type="submit" className="button-primary w-full sm:w-auto" disabled={status === "submitting"}>
+          {status === "submitting" ? "Submitting..." : siteConfig.secondaryCta}
         </button>
-        <p className="text-sm leading-6 text-[color:var(--text-subtle)]">
-          This opens a prefilled email with your answers so the next step is clear.
-        </p>
+        <a
+          href={siteConfig.calendly}
+          target="_blank"
+          rel="noreferrer"
+          className="button-secondary inline-flex w-full justify-center sm:w-auto"
+          onClick={() => trackEvent("calendly_click", { source: "audit_form" })}
+        >
+          Or book on Calendly
+        </a>
       </div>
 
-      {status === "opening" ? (
-        <p className="text-sm text-[color:var(--accent)]">
-          Your email app should open with the audit request drafted.
-        </p>
-      ) : null}
+      {status === "error" ? <p className="text-sm text-red-300">{error}</p> : null}
+
+      <p className="text-xs leading-6 text-[color:var(--text-subtle)]">
+        Form endpoint setup: configure `AUDIT_FORM_ENDPOINT` (or
+        `NEXT_PUBLIC_AUDIT_FORM_ENDPOINT`) to connect Formspree, Basin, Tally, Airtable,
+        Supabase, or your own endpoint.
+      </p>
     </form>
   );
 }

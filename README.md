@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Portfolio - Conversion-Focused Agency Landing Site
 
-## Getting Started
+This is a Next.js site for Qarib Iqbal, positioned as an AI Automation Specialist for lean marketing agencies.
 
-First, run the development server:
+## Run locally
+
+```bash
+npm install
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+## Form endpoint setup (required)
+
+The site submits both forms through a local relay route:
+- `POST /api/forms/checklist`
+- `POST /api/forms/audit`
+
+Those relay routes forward to your real form backend (Formspree, Basin, Tally webhook, Airtable automation webhook, Supabase function, etc.).
+
+### 1. Create local env file
+
+```bash
+cp .env.local.example .env.local
+```
+
+### 2. Set endpoints in `.env.local`
+
+Option A: separate endpoints per form
+
+```bash
+CHECKLIST_FORM_ENDPOINT=https://your-provider.example/checklist
+AUDIT_FORM_ENDPOINT=https://your-provider.example/audit
+```
+
+Option B: one shared endpoint for both forms
+
+```bash
+FORMS_ENDPOINT=https://your-provider.example/forms
+```
+
+Optional payload mode:
+
+```bash
+# json (default) or form
+FORM_SUBMIT_CONTENT_TYPE=json
+```
+
+### 3. Restart dev server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Form payload fields
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Checklist form sends:
+- `name`
+- `email`
+- `agencySize`
+- `biggestBottleneck`
+- `formType=checklist`
+- `submittedAt`
+- `pagePath`
+- `utm` (object)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Audit form sends:
+- `name`
+- `email`
+- `agencySize`
+- `primaryServices`
+- `biggestPain`
+- `timeline`
+- `formType=audit`
+- `submittedAt`
+- `pagePath`
+- `utm` (object)
 
-## Learn More
+## Tracking events
 
-To learn more about Next.js, take a look at the following resources:
+The frontend emits events through `src/lib/analytics.ts` and fails silently if analytics is not installed.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Primary events:
+- `hero_checklist_click`
+- `hero_audit_click`
+- `checklist_form_start`
+- `checklist_form_submit`
+- `audit_form_start`
+- `audit_form_submit`
+- `calendly_click`
+- `linkedin_outbound_click`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Build
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run build
+```
