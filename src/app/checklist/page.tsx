@@ -51,7 +51,8 @@ export default function ChecklistPage() {
                 <h2 className="text-lg font-medium text-[color:var(--text-main)]">Trust note</h2>
                 <p className="mt-3 text-sm leading-7 text-[color:var(--text-muted)]">
                   This is a practical diagnostic resource, not a pitch deck. If there is no clear
-                  fit, you can still use the checklist internally.
+                  fit, you can still use the checklist internally to choose what to tackle in your
+                  first sprint.
                 </p>
               </div>
 

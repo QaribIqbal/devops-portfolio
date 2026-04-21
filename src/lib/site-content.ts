@@ -1,3 +1,38 @@
+type ServiceTarget = {
+  title: string;
+  description: string;
+  bullets: string[];
+  callout: string;
+};
+
+type ProcessStep = {
+  title: string;
+  description: string;
+};
+
+export type ProofCaseStudy = {
+  clientType: string;
+  problem: string;
+  built: string;
+  outcome: string;
+  sprintTag?: string;
+  isPublished: boolean;
+};
+
+export type ProofQuote = {
+  quote: string;
+  attribution: string;
+  isPublished: boolean;
+};
+
+export type ProofTestimonial = {
+  quote: string;
+  name: string;
+  role: string;
+  company: string;
+  isPublished: boolean;
+};
+
 export const siteConfig = {
   name: "Qarib Iqbal",
   role: "AI Automation Specialist for Marketing Agencies",
@@ -8,7 +43,7 @@ export const siteConfig = {
   primaryCta: "Book Free Automation Audit",
   secondaryCta: "Get the Agency AI Automation Checklist",
   shortCredibility:
-    "Automation systems for founder-led agencies that need cleaner execution, not extra complexity.",
+    "Sprint-based implementation for founder-led agencies that need cleaner execution, not extra complexity.",
 };
 
 export const navigation = [
@@ -16,89 +51,95 @@ export const navigation = [
   { href: "/contact", label: "Free Audit" },
 ];
 
-export const homeProblems = [
-  "Leads sit in inboxes and CRMs while the team is buried in delivery.",
-  "Reporting gets rebuilt manually every week and steals senior time.",
-  "Onboarding depends on memory, scattered docs, and repeated follow-ups.",
-  "Sales-to-delivery handoffs break when ownership is unclear.",
-  "Ops leaders spend too much time patching process gaps by hand.",
-  "Manual admin quietly erodes margins, response time, and client trust.",
+export const offerPackaging = [
+  "Automation Audit (Free)",
+  "21-Day Agency Automation Sprint (Flagship)",
+  "Ongoing Automation Optimization (Optional)",
 ];
 
-export const services = [
+export const homeProblems = [
+  "Leads go cold when follow-up depends on who is available in the moment.",
+  "Reporting cycles turn into weekly fire drills and drain senior delivery time.",
+  "Onboarding drifts because docs, reminders, and handoffs are inconsistent.",
+  "Sales-to-delivery transitions break when no workflow owns the handoff.",
+  "Ops teams patch process gaps manually instead of improving the system itself.",
+  "Manual admin work quietly slows response times and erodes margin.",
+];
+
+export const services: ServiceTarget[] = [
   {
     title: "Lead Follow-Up Automation",
     description:
-      "When leads sit in the inbox or CRM for hours, you lose deals. Every qualified lead gets an on-brand first reply within minutes.",
+      "When lead response depends on manual chasing, opportunities stall and pipelines thin out.",
     bullets: [
-      "Sales gets structured reminders instead of ad-hoc chasing.",
-      "CRM stays updated automatically so nothing falls through the cracks.",
-      "Routing and ownership are clear from first touch onward.",
+      "Qualified leads get a consistent first response within minutes.",
+      "Sales receives structured reminders instead of ad-hoc follow-up.",
+      "CRM status updates stay current without manual cleanup.",
     ],
-    callout: "Available as a 21-Day Agency Automation Sprint.",
+    callout: "Delivered as a focused automation sprint.",
   },
   {
     title: "Reporting Automation",
     description:
-      "When reporting lives in copy-paste cycles, leadership loses visibility. Data is pulled, structured, and delivered on a dependable schedule.",
+      "When reporting is built by hand every week, leaders lose speed and clients lose confidence.",
     bullets: [
-      "Recurring reports stop being a weekly scramble.",
-      "Analysts spend more time on insight and less on assembly.",
-      "Client communication becomes cleaner and more predictable.",
+      "Recurring reports are assembled and delivered on a reliable cadence.",
+      "Team time shifts from copy-paste work to insight and decisions.",
+      "Reporting handoffs stay clean across channels and owners.",
     ],
     callout: "Available as a 21-Day Agency Automation Sprint.",
   },
   {
     title: "Client Onboarding Automation",
     description:
-      "When onboarding is inconsistent, delivery starts behind. New clients move through a consistent flow from deal close to kickoff.",
+      "When onboarding varies by account manager, delivery starts behind and rework stacks up.",
     bullets: [
-      "Tasks, docs, and approvals trigger in the right order.",
-      "Internal visibility improves without extra status chasing.",
-      "Missed steps and rework are reduced.",
+      "Deal-won tasks, docs, and reminders trigger in the right order.",
+      "Internal teams get visibility without status-chasing.",
+      "New accounts move from close to kickoff with fewer misses.",
     ],
-    callout: "Available as a 21-Day Agency Automation Sprint.",
+    callout: "Delivered through sprint-based implementation.",
   },
   {
     title: "Ops / CRM Cleanup",
     description:
-      "When your systems are cluttered, every workflow slows down. Core tools are cleaned, connected, and aligned to one practical process.",
+      "When systems are cluttered, every process takes longer than it should and handoffs get messy.",
     bullets: [
-      "Handoffs stop depending on manual workarounds.",
-      "Duplicate data entry and context switching drop.",
-      "Team execution becomes more stable as volume grows.",
+      "Duplicate entry drops by connecting tools around one workflow.",
+      "Ownership and routing become clear from intake to delivery.",
+      "Execution stays stable as workload and client volume increase.",
     ],
-    callout: "Available as a 21-Day Agency Automation Sprint.",
+    callout: "Available as a focused sprint engagement.",
   },
 ];
 
-export const processSteps = [
+export const processSteps: ProcessStep[] = [
   {
     title: "Download the free checklist",
     description:
-      "Run a quick self-audit to identify where leads, follow-ups, reporting, and handoffs are leaking time.",
+      "Run a 10-15 minute self-audit to see where leads, follow-ups, and handoffs are quietly leaking time.",
   },
   {
-    title: "Book your free automation audit",
+    title: "Book the free automation audit",
     description:
-      "We map one ugly workflow live and define what should be automated first, with or without me.",
+      "We map one painful workflow live and define what to automate first, what to ignore, and what to keep manual for now.",
   },
   {
-    title: "Run a 21-day sprint",
+    title: "Run a 21-Day Agency Automation Sprint",
     description:
-      "We fix one high-cost workflow from scope to implementation so your team gets measurable time back.",
+      "In 21 days, we audit the chosen workflow, design the future state, build and integrate the automation in your existing tools, test it with real data, and hand it over with Loom walkthroughs and SOPs, plus 14 days of post-launch tweaks.",
   },
   {
-    title: "Add ongoing optimization",
+    title: "Add ongoing optimization when it makes sense",
     description:
-      "If needed, we keep the machine running and improve one workflow at a time as your process evolves.",
+      "After the sprint, ongoing support is optional: keep the workflow healthy, adjust when tools change, and scope the next bottleneck one at a time.",
   },
 ];
 
 export const checklistHighlights = [
   "Spot where leads, follow-ups, and handoffs are quietly leaking",
   "See which workflows are automation-ready vs not worth touching yet",
-  "Walk into a call already knowing what you want fixed first",
+  "Walk into a call already knowing what to fix first",
 ];
 
 export const proofAuditIncludes = [
@@ -109,12 +150,12 @@ export const proofAuditIncludes = [
 ];
 
 export const proofSprintIncludes = [
-  "Deep-dive workflow audit scoped for build",
-  "Detailed future-state workflow map",
-  "Build + integration in your existing tools",
-  "Test plan with live data validation",
+  "Deep-dive workflow audit and future-state map",
+  "Build + integration inside your current tools",
+  "Test plan and live testing with real data",
   "Loom walkthroughs for your team",
-  "SOP + break/fix guide and 14 days of post-launch support",
+  "SOP and fallback guide for edge cases",
+  "14 days of post-launch tweaks and support",
 ];
 
 export const proofDeliverables = [
@@ -123,49 +164,78 @@ export const proofDeliverables = [
   "Lead follow-up logic diagram",
 ];
 
-export const caseStudyTiles = [
+export const caseStudyTiles: ProofCaseStudy[] = [
   {
     clientType: "Performance agency, 6-person team",
     problem: "Manual weekly reporting across 4 platforms.",
     built: "Automated reporting workflow with structured data flow.",
+    // TODO: Replace placeholder case-study metric with real result
     outcome: "Reporting time dropped from [X] hours/week to [Y].",
+    sprintTag: "Delivered as a 21-Day Agency Automation Sprint.",
+    isPublished: false,
   },
   {
     clientType: "Lead-gen agency, 9-person team",
-    problem: "Inconsistent lead follow-up when the team got busy.",
+    problem: "Inconsistent lead follow-up during busy delivery weeks.",
     built: "Form-to-CRM routing with instant first touch and reminders.",
+    // TODO: Replace placeholder case-study metric with real result
     outcome: "First-response time moved from [X] to [Y].",
+    sprintTag: "Delivered as a focused automation sprint.",
+    isPublished: false,
   },
   {
     clientType: "Creative agency, 8-person team",
     problem: "Onboarding handoffs broke after deal close.",
     built: "Deal-won to kickoff workflow with task and doc triggers.",
+    // TODO: Replace placeholder case-study metric with real result
     outcome: "Handoff delays dropped from [X] per month to [Y].",
+    sprintTag: "Delivered as a sprint-based implementation.",
+    isPublished: false,
   },
 ];
 
-export const quoteStripPlaceholders = [
-  "We went from 'we'll get back to this lead tomorrow' to responses within minutes.",
-  "Our weekly reporting stopped being a scramble.",
+export const quoteStripEntries: ProofQuote[] = [
+  {
+    // TODO: Replace placeholder testimonial with real client quote
+    quote: "We went from 'we'll get back to this lead tomorrow' to responses within minutes.",
+    attribution: "[Client]",
+    isPublished: false,
+  },
+  {
+    // TODO: Replace placeholder testimonial with real client quote
+    quote: "Our weekly reporting stopped being a scramble.",
+    attribution: "[Client]",
+    isPublished: false,
+  },
 ];
 
-export const testimonialSlots = [
+export const testimonialSlots: ProofTestimonial[] = [
   {
+    // TODO: Replace placeholder testimonial with real client quote
     quote: "Add your first client testimonial here. Keep it specific and outcome-focused.",
     name: "Client Name",
     role: "Role",
     company: "Company",
+    isPublished: false,
   },
   {
+    // TODO: Replace placeholder testimonial with real client quote
     quote: "Add your second client testimonial here. Keep it specific and outcome-focused.",
     name: "Client Name",
     role: "Role",
     company: "Company",
+    isPublished: false,
   },
   {
+    // TODO: Replace placeholder testimonial with real client quote
     quote: "Add your third client testimonial here. Keep it specific and outcome-focused.",
     name: "Client Name",
     role: "Role",
     company: "Company",
+    isPublished: false,
   },
 ];
+
+export const publishedCaseStudyTiles = caseStudyTiles.filter((entry) => entry.isPublished);
+export const publishedQuoteStripEntries = quoteStripEntries.filter((entry) => entry.isPublished);
+export const publishedTestimonials = testimonialSlots.filter((entry) => entry.isPublished);

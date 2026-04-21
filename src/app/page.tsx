@@ -7,17 +7,17 @@ import { SectionHeading } from "@/components/site/section-heading";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import {
-  caseStudyTiles,
   checklistHighlights,
   homeProblems,
   processSteps,
+  publishedCaseStudyTiles,
+  publishedQuoteStripEntries,
+  publishedTestimonials,
   proofAuditIncludes,
   proofDeliverables,
   proofSprintIncludes,
-  quoteStripPlaceholders,
   services,
   siteConfig,
-  testimonialSlots,
 } from "@/lib/site-content";
 import { buildMetadata } from "@/lib/seo";
 
@@ -40,8 +40,9 @@ export default function HomePage() {
                 Remove one high-cost manual bottleneck in 21 days.
               </h1>
               <p className="mt-6 max-w-[62ch] text-[1.08rem] leading-8 text-[color:var(--text-muted)] sm:text-[1.14rem]">
-                Built for lean, founder-led agencies. Fix lead follow-up, reporting, onboarding, or
-                internal ops handoffs with one focused implementation sprint.
+                I run focused 21-Day Agency Automation Sprints that fix one expensive manual
+                workflow at a time, lead follow-up, reporting, onboarding, or internal handoffs, so
+                your team gets hours back without adding headcount.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
                 <ButtonLink href="/contact" className="max-sm:w-full" trackingEvent="hero_audit_click">
@@ -70,7 +71,7 @@ export default function HomePage() {
             <SectionHeading
               eyebrow="Problem"
               title="Manual operations are where lean agencies lose leverage"
-              description="Fixing one bottleneck properly can return hours of senior time every week."
+              description="Fix one bottleneck properly and the team gets immediate leverage without adding more software."
             />
             <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
               {homeProblems.map((problem) => (
@@ -87,7 +88,7 @@ export default function HomePage() {
             <SectionHeading
               eyebrow="Services"
               title="What the 21-Day Agency Automation Sprint can target"
-              description="Every service is built around the workflow gap that is already costing your team time."
+              description="Instead of vague automation services, the work is delivered through focused sprints that target one painful workflow at a time."
             />
             <div className="mt-10 grid gap-5 md:grid-cols-2">
               {services.map((service) => (
@@ -123,25 +124,39 @@ export default function HomePage() {
               description="Real operators care about implementation clarity more than vague promise language."
             />
 
-            <div className="mt-10 grid gap-5 lg:grid-cols-3">
-              {caseStudyTiles.map((tile) => (
-                <article key={tile.clientType} className="panel">
-                  <p className="text-xs uppercase tracking-[0.12em] text-[color:var(--text-subtle)]">
-                    {tile.clientType}
-                  </p>
-                  <p className="mt-3 text-sm leading-7 text-[color:var(--text-muted)]">
-                    <strong className="text-[color:var(--text-main)]">Problem:</strong> {tile.problem}
-                  </p>
-                  <p className="mt-2 text-sm leading-7 text-[color:var(--text-muted)]">
-                    <strong className="text-[color:var(--text-main)]">Built:</strong> {tile.built}
-                  </p>
-                  {/* TODO: Replace placeholder case-study outcome with real metric */}
-                  <p className="mt-2 text-sm leading-7 text-[color:var(--text-muted)]">
-                    <strong className="text-[color:var(--text-main)]">Outcome:</strong> {tile.outcome}
-                  </p>
-                </article>
-              ))}
-            </div>
+            {publishedCaseStudyTiles.length > 0 ? (
+              <div className="mt-10 grid gap-5 lg:grid-cols-3">
+                {publishedCaseStudyTiles.map((tile) => (
+                  <article key={tile.clientType} className="panel">
+                    <p className="text-xs uppercase tracking-[0.12em] text-[color:var(--text-subtle)]">
+                      {tile.clientType}
+                    </p>
+                    <p className="mt-3 text-sm leading-7 text-[color:var(--text-muted)]">
+                      <strong className="text-[color:var(--text-main)]">Problem:</strong> {tile.problem}
+                    </p>
+                    <p className="mt-2 text-sm leading-7 text-[color:var(--text-muted)]">
+                      <strong className="text-[color:var(--text-main)]">Built:</strong> {tile.built}
+                    </p>
+                    <p className="mt-2 text-sm leading-7 text-[color:var(--text-muted)]">
+                      <strong className="text-[color:var(--text-main)]">Outcome:</strong> {tile.outcome}
+                    </p>
+                    {tile.sprintTag ? (
+                      <p className="mt-3 text-xs uppercase tracking-[0.1em] text-[color:var(--accent)]">
+                        {tile.sprintTag}
+                      </p>
+                    ) : null}
+                  </article>
+                ))}
+              </div>
+            ) : (
+              <article className="panel mt-10">
+                {/* TODO: Replace placeholder case-study metric with real result */}
+                <p className="text-sm leading-7 text-[color:var(--text-muted)]">
+                  Public case-study outcomes are being prepared. During the audit, I can walk you
+                  through anonymized workflow examples and delivery artifacts.
+                </p>
+              </article>
+            )}
 
             <div className="mt-5 grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
               <article className="panel">
@@ -174,35 +189,45 @@ export default function HomePage() {
               </article>
             </div>
 
-            <article className="panel mt-5">
-              <p className="section-eyebrow">Quote Strip</p>
-              {/* TODO: Replace placeholder testimonial with real client quote */}
-              <div className="grid gap-4 md:grid-cols-2">
-                {quoteStripPlaceholders.map((quote) => (
-                  <p key={quote} className="subtle-card text-sm leading-7 text-[color:var(--text-muted)]">
-                    “{quote}” — [Client]
-                  </p>
+            {publishedQuoteStripEntries.length > 0 ? (
+              <article className="panel mt-5">
+                <p className="section-eyebrow">Quote Strip</p>
+                <div className="grid gap-4 md:grid-cols-2">
+                  {publishedQuoteStripEntries.map((entry) => (
+                    <p key={`${entry.quote}-${entry.attribution}`} className="subtle-card text-sm leading-7 text-[color:var(--text-muted)]">
+                      “{entry.quote}” — {entry.attribution}
+                    </p>
+                  ))}
+                </div>
+              </article>
+            ) : (
+              <article className="panel mt-5">
+                {/* TODO: Replace placeholder testimonial with real client quote */}
+                <p className="text-sm leading-7 text-[color:var(--text-muted)]">
+                  Client quotes are shared publicly only after approval. If helpful, I can share
+                  anonymized sprint feedback during the audit call.
+                </p>
+              </article>
+            )}
+
+            {publishedTestimonials.length > 0 ? (
+              <div className="mt-5 grid gap-5 lg:grid-cols-3">
+                {publishedTestimonials.map((testimonial, index) => (
+                  <article
+                    key={`${testimonial.name}-${index}`}
+                    className="panel border-t-2 border-t-[color:var(--accent)]"
+                  >
+                    <p className="text-sm leading-7 text-[color:var(--text-muted)]">“{testimonial.quote}”</p>
+                    <p className="mt-4 text-sm font-semibold text-[color:var(--text-main)]">
+                      {testimonial.name}
+                    </p>
+                    <p className="text-xs uppercase tracking-[0.08em] text-[color:var(--text-subtle)]">
+                      {testimonial.role} at {testimonial.company}
+                    </p>
+                  </article>
                 ))}
               </div>
-            </article>
-
-            <div className="mt-5 grid gap-5 lg:grid-cols-3">
-              {/* TODO: Replace testimonial placeholders with real client testimonials */}
-              {testimonialSlots.map((testimonial, index) => (
-                <article
-                  key={`${testimonial.name}-${index}`}
-                  className="panel border-t-2 border-t-[color:var(--accent)]"
-                >
-                  <p className="text-sm leading-7 text-[color:var(--text-muted)]">“{testimonial.quote}”</p>
-                  <p className="mt-4 text-sm font-semibold text-[color:var(--text-main)]">
-                    {testimonial.name}
-                  </p>
-                  <p className="text-xs uppercase tracking-[0.08em] text-[color:var(--text-subtle)]">
-                    {testimonial.role} at {testimonial.company}
-                  </p>
-                </article>
-              ))}
-            </div>
+            ) : null}
 
             <div className="mt-5 grid gap-5 lg:grid-cols-[0.96fr_1.04fr]">
               <article className="panel">
@@ -263,16 +288,6 @@ export default function HomePage() {
                 </article>
               ))}
             </div>
-            <div className="mt-6 grid gap-3 md:grid-cols-2">
-              {/* TODO: Replace placeholder testimonial with real client quote */}
-              <p className="subtle-card text-sm leading-7 text-[color:var(--text-muted)]">
-                “We went from ‘we&apos;ll get back to this lead tomorrow’ to responses within minutes.”
-                — [Client]
-              </p>
-              <p className="subtle-card text-sm leading-7 text-[color:var(--text-muted)]">
-                “Our weekly reporting stopped being a scramble.” — [Client]
-              </p>
-            </div>
           </div>
         </section>
 
@@ -297,6 +312,9 @@ export default function HomePage() {
                   Not ready for a call yet? Start here, find your bottlenecks, then book the audit
                   when you&apos;re ready.
                 </p>
+                <p className="mt-3 text-sm leading-7 text-[color:var(--text-subtle)]">
+                  This helps you decide what to tackle in your first sprint.
+                </p>
                 <div className="mt-6">
                   <ButtonLink href="/checklist" trackingEvent="checklist_section_button_click">
                     Get the Checklist
@@ -319,8 +337,9 @@ export default function HomePage() {
                   </h2>
                   <p className="mt-4 max-w-[58ch] text-[1rem] leading-7 text-[color:var(--text-muted)]">
                     If your agency is still rebuilding reports by hand, chasing leads manually, or
-                    relying on messy onboarding checklists, start with a clear diagnosis and execute
-                    one focused sprint.
+                    relying on messy onboarding checklists, start with the checklist, book the audit,
+                    and then fix one workflow through a focused 21-day sprint with optional ongoing
+                    optimization after handoff.
                   </p>
                 </div>
                 <div className="flex flex-col gap-3 sm:flex-row sm:gap-4 lg:flex-col">

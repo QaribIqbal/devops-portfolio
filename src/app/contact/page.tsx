@@ -22,7 +22,7 @@ export default function ContactPage() {
         <PageHero
           eyebrow="Free Automation Audit"
           title="A focused diagnostic for agencies that want to fix the right bottleneck first"
-          description="This is for lean marketing agencies that know manual operations are slowing growth. You get clarity on what to fix, what to ignore for now, and what implementation should look like."
+          description="This is for lean marketing agencies that know manual operations are slowing growth. You get clarity on what to fix, what to ignore for now, and what a 21-Day Agency Automation Sprint should include if there is a fit."
           primaryCta={{ href: "/checklist", label: siteConfig.secondaryCta }}
         />
 
@@ -45,7 +45,7 @@ export default function ContactPage() {
                 <ul className="space-y-3 text-sm leading-7 text-[color:var(--text-muted)]">
                   <li>1. We identify the highest-friction operational workflow.</li>
                   <li>2. We define what a cleaner version of that workflow looks like.</li>
-                  <li>3. We outline scope, effort, and a practical next step.</li>
+                  <li>3. We outline scope, effort, and the most practical implementation path.</li>
                   <li>4. If there is no fit, you still leave with clarity.</li>
                 </ul>
               </article>
@@ -53,8 +53,9 @@ export default function ContactPage() {
               <article className="panel">
                 <p className="section-eyebrow">After you submit</p>
                 <p className="text-sm leading-7 text-[color:var(--text-muted)]">
-                  You get a response to confirm fit and next steps. If you prefer, you can book a
-                  slot directly.
+                  You get a response to confirm fit and next steps. When there is a fit, the usual
+                  next step is a focused 21-Day Agency Automation Sprint on one workflow. If you
+                  prefer, you can book a slot directly.
                 </p>
                 <div className="mt-5 flex flex-col gap-3">
                   <ButtonLink href={siteConfig.calendly} variant="secondary" trackingEvent="contact_calendly_click">

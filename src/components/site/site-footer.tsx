@@ -32,6 +32,17 @@ export function SiteFooter() {
               LinkedIn
             </span>
           </ButtonLink>
+          <div className="flex flex-wrap gap-3 text-xs uppercase tracking-[0.1em] text-[color:var(--text-subtle)]">
+            <ButtonLink href="/about" variant="ghost" trackingEvent="footer_about_click">
+              About
+            </ButtonLink>
+            <ButtonLink href="/services" variant="ghost" trackingEvent="footer_services_click">
+              Services
+            </ButtonLink>
+            <ButtonLink href="/case-studies" variant="ghost" trackingEvent="footer_case_studies_click">
+              Case Studies
+            </ButtonLink>
+          </div>
         </div>
       </div>
     </footer>
