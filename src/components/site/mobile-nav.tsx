@@ -42,10 +42,10 @@ export function MobileNav() {
           </nav>
 
           <div className="mt-5 flex flex-col gap-3">
-            <ButtonLink href="/checklist" className="w-full" trackingEvent="mobile_checklist_click">
+            <ButtonLink href="/contact" className="w-full" trackingEvent="mobile_audit_click">
               {siteConfig.primaryCta}
             </ButtonLink>
-            <ButtonLink href="/contact" variant="secondary" className="w-full" trackingEvent="mobile_audit_click">
+            <ButtonLink href="/checklist" variant="secondary" className="w-full" trackingEvent="mobile_checklist_click">
               {siteConfig.secondaryCta}
             </ButtonLink>
           </div>

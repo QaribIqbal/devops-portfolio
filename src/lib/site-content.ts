@@ -3,121 +3,150 @@ export const siteConfig = {
   role: "AI Automation Specialist for Marketing Agencies",
   email: "qaribiqbal92@gmail.com",
   linkedin: "https://www.linkedin.com/in/qarib-iqbal92",
-  // TODO: Replace with your real Calendly URL
+  // TODO: Replace Calendly link with real booking URL
   calendly: "https://calendly.com/qaribiqbal92/30min",
-  primaryCta: "Get the Free Agency AI Automation Checklist",
-  secondaryCta: "Book a Free Automation Audit",
+  primaryCta: "Book Free Automation Audit",
+  secondaryCta: "Get the Agency AI Automation Checklist",
   shortCredibility:
-    "Practical automation systems for lean agencies that want cleaner workflows, faster response times, and less manual ops.",
+    "Automation systems for founder-led agencies that need cleaner execution, not extra complexity.",
 };
 
 export const navigation = [
   { href: "/checklist", label: "Checklist" },
-  { href: "/contact", label: "Audit" },
+  { href: "/contact", label: "Free Audit" },
 ];
 
 export const homeProblems = [
-  "Leads sit untouched while the team is deep in client delivery.",
-  "Reporting gets rebuilt manually every week.",
-  "Onboarding is inconsistent and handoffs break between teams.",
-  "Tools are disconnected, so data gets copied in multiple places.",
-  "Repetitive admin keeps stealing time from strategic work.",
-  "Founders and operators become the backup workflow for everything.",
+  "Leads sit in inboxes and CRMs while the team is buried in delivery.",
+  "Reporting gets rebuilt manually every week and steals senior time.",
+  "Onboarding depends on memory, scattered docs, and repeated follow-ups.",
+  "Sales-to-delivery handoffs break when ownership is unclear.",
+  "Ops leaders spend too much time patching process gaps by hand.",
+  "Manual admin quietly erodes margins, response time, and client trust.",
 ];
 
 export const services = [
   {
     title: "Lead Follow-Up Automation",
     description:
-      "Automate first response, routing, reminders, and CRM updates so fewer leads are lost while your team is busy.",
+      "When leads sit in the inbox or CRM for hours, you lose deals. Every qualified lead gets an on-brand first reply within minutes.",
     bullets: [
-      "Reply speed improves without adding headcount.",
-      "Follow-up sequence stays consistent across channels.",
-      "Lead status updates happen automatically.",
+      "Sales gets structured reminders instead of ad-hoc chasing.",
+      "CRM stays updated automatically so nothing falls through the cracks.",
+      "Routing and ownership are clear from first touch onward.",
     ],
+    callout: "Available as a 21-Day Agency Automation Sprint.",
   },
   {
     title: "Reporting Automation",
     description:
-      "Pull recurring metrics, format reports, and send on schedule so reporting stops eating team capacity every week.",
+      "When reporting lives in copy-paste cycles, leadership loses visibility. Data is pulled, structured, and delivered on a dependable schedule.",
     bullets: [
-      "Recurring reports are sent on time.",
-      "Manual copy-paste work drops significantly.",
-      "Delivery becomes more reliable for clients.",
+      "Recurring reports stop being a weekly scramble.",
+      "Analysts spend more time on insight and less on assembly.",
+      "Client communication becomes cleaner and more predictable.",
     ],
+    callout: "Available as a 21-Day Agency Automation Sprint.",
   },
   {
-    title: "Onboarding and Ops Automation",
+    title: "Client Onboarding Automation",
     description:
-      "Trigger tasks, approvals, reminders, and handoffs from one workflow so onboarding stays clean and predictable.",
+      "When onboarding is inconsistent, delivery starts behind. New clients move through a consistent flow from deal close to kickoff.",
     bullets: [
-      "New clients move through a consistent onboarding flow.",
-      "Internal handoffs and reminders are automated.",
+      "Tasks, docs, and approvals trigger in the right order.",
+      "Internal visibility improves without extra status chasing.",
       "Missed steps and rework are reduced.",
     ],
+    callout: "Available as a 21-Day Agency Automation Sprint.",
   },
   {
-    title: "Workflow Design and Tool Integration",
+    title: "Ops / CRM Cleanup",
     description:
-      "Map bottlenecks, then connect your current stack into one dependable process instead of adding more tools.",
+      "When your systems are cluttered, every workflow slows down. Core tools are cleaned, connected, and aligned to one practical process.",
     bullets: [
-      "Systems are connected around one clear process.",
-      "Duplicate entry and context switching go down.",
-      "Automation is scoped to a real operational bottleneck.",
+      "Handoffs stop depending on manual workarounds.",
+      "Duplicate data entry and context switching drop.",
+      "Team execution becomes more stable as volume grows.",
     ],
+    callout: "Available as a 21-Day Agency Automation Sprint.",
   },
 ];
 
 export const processSteps = [
   {
-    title: "Diagnose the bottleneck",
+    title: "Download the free checklist",
     description:
-      "We identify where manual work is causing lead leakage, delays, or repeated admin load.",
+      "Run a quick self-audit to identify where leads, follow-ups, reporting, and handoffs are leaking time.",
   },
   {
-    title: "Design the workflow",
+    title: "Book your free automation audit",
     description:
-      "The automation logic, ownership, and handoffs are scoped before anything is built.",
+      "We map one ugly workflow live and define what should be automated first, with or without me.",
   },
   {
-    title: "Build and implement",
+    title: "Run a 21-day sprint",
     description:
-      "The workflow is implemented, tested, and integrated with your existing tools.",
+      "We fix one high-cost workflow from scope to implementation so your team gets measurable time back.",
   },
   {
-    title: "Refine and support",
+    title: "Add ongoing optimization",
     description:
-      "After launch, we tighten edge cases and make sure the system holds up in daily use.",
+      "If needed, we keep the machine running and improve one workflow at a time as your process evolves.",
   },
 ];
 
 export const checklistHighlights = [
-  "A practical self-audit to spot workflow bottlenecks in under 15 minutes",
-  "The highest-impact automation opportunities for lean marketing agencies",
-  "A prioritization method for choosing what to automate first",
-  "Clear warning signs that your follow-up, reporting, or onboarding is still too manual",
+  "Spot where leads, follow-ups, and handoffs are quietly leaking",
+  "See which workflows are automation-ready vs not worth touching yet",
+  "Walk into a call already knowing what you want fixed first",
 ];
 
 export const proofAuditIncludes = [
-  "Current-state workflow diagnosis",
-  "Highest-value bottleneck recommendation",
-  "Risk and effort notes before implementation",
-  "A clear next-step plan with realistic scope",
+  "Brief context review of leads, reporting, onboarding, and internal ops",
+  "Live workflow mapping of one ugly process",
+  "Written summary: current state, bottlenecks, and first recommendation",
+  "Prioritized next-step plan with clear scope and tradeoffs",
 ];
 
 export const proofSprintIncludes = [
-  "Clear scope before build",
-  "2-4 week implementation window",
-  "Workflow design",
-  "Build and testing",
-  "Revisions included",
-  "Post-launch support",
+  "Deep-dive workflow audit scoped for build",
+  "Detailed future-state workflow map",
+  "Build + integration in your existing tools",
+  "Test plan with live data validation",
+  "Loom walkthroughs for your team",
+  "SOP + break/fix guide and 14 days of post-launch support",
 ];
 
 export const proofDeliverables = [
   "Workflow map",
   "Reporting automation outline",
   "Lead follow-up logic diagram",
+];
+
+export const caseStudyTiles = [
+  {
+    clientType: "Performance agency, 6-person team",
+    problem: "Manual weekly reporting across 4 platforms.",
+    built: "Automated reporting workflow with structured data flow.",
+    outcome: "Reporting time dropped from [X] hours/week to [Y].",
+  },
+  {
+    clientType: "Lead-gen agency, 9-person team",
+    problem: "Inconsistent lead follow-up when the team got busy.",
+    built: "Form-to-CRM routing with instant first touch and reminders.",
+    outcome: "First-response time moved from [X] to [Y].",
+  },
+  {
+    clientType: "Creative agency, 8-person team",
+    problem: "Onboarding handoffs broke after deal close.",
+    built: "Deal-won to kickoff workflow with task and doc triggers.",
+    outcome: "Handoff delays dropped from [X] per month to [Y].",
+  },
+];
+
+export const quoteStripPlaceholders = [
+  "We went from 'we'll get back to this lead tomorrow' to responses within minutes.",
+  "Our weekly reporting stopped being a scramble.",
 ];
 
 export const testimonialSlots = [
@@ -138,16 +167,5 @@ export const testimonialSlots = [
     name: "Client Name",
     role: "Role",
     company: "Company",
-  },
-];
-
-export const beforeAfterExamples = [
-  {
-    before: "Leads are followed up manually when someone has time.",
-    after: "New leads trigger immediate response, assignment, and follow-up reminders.",
-  },
-  {
-    before: "Weekly reports are rebuilt in spreadsheets each cycle.",
-    after: "Reporting data is pulled and delivered automatically on schedule.",
   },
 ];

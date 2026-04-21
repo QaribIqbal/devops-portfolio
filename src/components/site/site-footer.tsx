@@ -13,12 +13,12 @@ export function SiteFooter() {
             Cleaner systems beat more software.
           </h2>
           <p className="max-w-xl text-sm leading-7 text-[color:var(--text-muted)]">
-            Start with the checklist to identify your highest-value bottleneck, then move to an
-            audit when you are ready to fix it.
+            Start with a free automation audit for a clear diagnosis, then run a focused sprint to
+            fix one workflow at a time.
           </p>
           <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <ButtonLink href="/checklist" trackingEvent="footer_checklist_click">{siteConfig.primaryCta}</ButtonLink>
-            <ButtonLink href="/contact" variant="secondary" trackingEvent="footer_audit_click">
+            <ButtonLink href="/contact" trackingEvent="footer_audit_click">{siteConfig.primaryCta}</ButtonLink>
+            <ButtonLink href="/checklist" variant="secondary" trackingEvent="footer_checklist_click">
               {siteConfig.secondaryCta}
             </ButtonLink>
           </div>

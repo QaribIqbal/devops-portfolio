@@ -7,13 +7,14 @@ import { SectionHeading } from "@/components/site/section-heading";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import {
-  beforeAfterExamples,
+  caseStudyTiles,
   checklistHighlights,
   homeProblems,
   processSteps,
   proofAuditIncludes,
   proofDeliverables,
   proofSprintIncludes,
+  quoteStripPlaceholders,
   services,
   siteConfig,
   testimonialSlots,
@@ -23,7 +24,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "AI Automation for Marketing Agencies",
   description:
-    "Qarib Iqbal helps lean marketing agencies eliminate manual follow-up, reporting, onboarding, and repetitive ops with practical AI automation systems.",
+    "Qarib Iqbal helps lean marketing agencies remove manual follow-up, reporting, onboarding, and handoff bottlenecks with practical automation systems.",
 });
 
 export default function HomePage() {
@@ -31,29 +32,23 @@ export default function HomePage() {
     <div className="min-h-[100dvh]">
       <SiteHeader />
       <main>
-        <section className="page-section section-slice section-slice-hero pt-20 sm:pt-24">
+        <section className="page-section section-slice section-slice-hero pt-16 sm:pt-20">
           <div className="shell">
             <div className="hero-panel">
               <p className="section-eyebrow">AI Automation for Marketing Agencies</p>
               <h1 className="display-title max-w-[17ch] text-balance">
-                I help marketing agencies eliminate manual follow-up, reporting, and repetitive ops
-                with AI automation.
+                Remove one high-cost manual bottleneck in 21 days.
               </h1>
-              <p className="mt-6 max-w-[60ch] text-[1.08rem] leading-8 text-[color:var(--text-muted)] sm:text-[1.14rem]">
-                Practical systems for lean agency teams that want cleaner workflows, faster response
-                times, and less manual admin.
+              <p className="mt-6 max-w-[62ch] text-[1.08rem] leading-8 text-[color:var(--text-muted)] sm:text-[1.14rem]">
+                Built for lean, founder-led agencies. Fix lead follow-up, reporting, onboarding, or
+                internal ops handoffs with one focused implementation sprint.
               </p>
-              <ul className="mt-6 space-y-2 text-sm leading-7 text-[color:var(--text-muted)]">
-                <li>Built for founder-led and operator-led agencies with 10-15 people.</li>
-                <li>Follow-up, reporting, onboarding, and handoff bottlenecks solved first.</li>
-                <li>Faster response, cleaner delivery, and less repeated admin overhead.</li>
-              </ul>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
-                <ButtonLink href="/checklist" className="max-sm:w-full" trackingEvent="hero_checklist_click">
-                  {siteConfig.primaryCta}
+                <ButtonLink href="/contact" className="max-sm:w-full" trackingEvent="hero_audit_click">
+                  Book Free Automation Audit
                 </ButtonLink>
-                <ButtonLink href="/contact" variant="secondary" trackingEvent="hero_audit_click">
-                  {siteConfig.secondaryCta}
+                <ButtonLink href="/checklist" variant="secondary" trackingEvent="hero_checklist_click">
+                  Get the Agency AI Automation Checklist
                 </ButtonLink>
               </div>
               <p className="mt-5 max-w-[54ch] text-sm leading-7 text-[color:var(--text-subtle)]">
@@ -74,8 +69,8 @@ export default function HomePage() {
           <div className="shell">
             <SectionHeading
               eyebrow="Problem"
-              title="Where lean agencies usually lose time and momentum"
-              description="Most growth friction is operational, not strategic. Agencies usually do not need more tooling; they need cleaner execution around one core bottleneck."
+              title="Manual operations are where lean agencies lose leverage"
+              description="Fixing one bottleneck properly can return hours of senior time every week."
             />
             <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
               {homeProblems.map((problem) => (
@@ -91,7 +86,7 @@ export default function HomePage() {
           <div className="shell">
             <SectionHeading
               eyebrow="Services"
-              title="What I fix inside agency operations"
+              title="What the 21-Day Agency Automation Sprint can target"
               description="Every service is built around the workflow gap that is already costing your team time."
             />
             <div className="mt-10 grid gap-5 md:grid-cols-2">
@@ -111,13 +106,11 @@ export default function HomePage() {
                       </li>
                     ))}
                   </ul>
+                  <p className="mt-5 text-xs uppercase tracking-[0.12em] text-[color:var(--accent)]">
+                    {service.callout}
+                  </p>
                 </article>
               ))}
-            </div>
-            <div className="mt-8">
-              <ButtonLink href="/checklist" trackingEvent="services_checklist_click">
-                {siteConfig.primaryCta}
-              </ButtonLink>
             </div>
           </div>
         </section>
@@ -126,67 +119,46 @@ export default function HomePage() {
           <div className="shell">
             <SectionHeading
               eyebrow="Proof"
-              title="Proof through clear process, real accountability, and visible outputs"
-              description="No fake logos. No made-up case studies. Clear scope and practical execution."
+              title="How the sprint is scoped, delivered, and validated"
+              description="Real operators care about implementation clarity more than vague promise language."
             />
 
-            <div className="mt-10 grid gap-5 lg:grid-cols-2">
-              <article className="panel">
-                <p className="section-eyebrow">About Qarib</p>
-                <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
-                  <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-full border-2 border-[color:var(--accent)]">
-                    {/* TODO: Replace this placeholder with Qarib's real photo */}
-                    {/* Recommended: professional headshot, square crop, 400x400px minimum */}
-                    {/* TODO: Replace profile photo placeholder with real headshot — /assets/images/qarib-profile.jpg */}
-                    {/* Place the image file at: /assets/images/qarib-profile.jpg */}
-                    <Image
-                      src="/assets/images/qarib-profile.jpg"
-                      alt="Qarib Iqbal profile placeholder"
-                      fill
-                      sizes="96px"
-                      className="object-cover"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="text-[1.2rem] font-semibold tracking-[-0.02em] text-[color:var(--text-main)]">
-                      Operator-led, implementation-first approach
-                    </h3>
-                    <p className="mt-3 text-sm leading-7 text-[color:var(--text-muted)]">
-                      My job is to find the friction point before writing a single line of
-                      automation.
-                    </p>
-                  </div>
-                </div>
-              </article>
-
-              <article className="panel">
-                <h3 className="text-[1.35rem] font-semibold tracking-[-0.03em] text-[color:var(--text-main)]">
-                  What the audit includes
-                </h3>
-                <ul className="mt-5 space-y-3">
-                  {proofAuditIncludes.map((item) => (
-                    <li key={item} className="flex items-start gap-3">
-                      <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-[color:var(--accent)]" aria-hidden="true" />
-                      <span className="text-sm leading-7 text-[color:var(--text-muted)]">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </article>
+            <div className="mt-10 grid gap-5 lg:grid-cols-3">
+              {caseStudyTiles.map((tile) => (
+                <article key={tile.clientType} className="panel">
+                  <p className="text-xs uppercase tracking-[0.12em] text-[color:var(--text-subtle)]">
+                    {tile.clientType}
+                  </p>
+                  <p className="mt-3 text-sm leading-7 text-[color:var(--text-muted)]">
+                    <strong className="text-[color:var(--text-main)]">Problem:</strong> {tile.problem}
+                  </p>
+                  <p className="mt-2 text-sm leading-7 text-[color:var(--text-muted)]">
+                    <strong className="text-[color:var(--text-main)]">Built:</strong> {tile.built}
+                  </p>
+                  {/* TODO: Replace placeholder case-study outcome with real metric */}
+                  <p className="mt-2 text-sm leading-7 text-[color:var(--text-muted)]">
+                    <strong className="text-[color:var(--text-main)]">Outcome:</strong> {tile.outcome}
+                  </p>
+                </article>
+              ))}
             </div>
 
-            <div className="mt-5 grid gap-5 lg:grid-cols-2">
+            <div className="mt-5 grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
               <article className="panel">
                 <h3 className="text-[1.35rem] font-semibold tracking-[-0.03em] text-[color:var(--text-main)]">
-                  Sprint inclusions
+                  Inside a 21-Day Agency Automation Sprint
                 </h3>
-                <ul className="mt-5 space-y-3">
+                <div className="mt-6 grid gap-4 sm:grid-cols-2">
                   {proofSprintIncludes.map((item) => (
-                    <li key={item} className="flex items-start gap-3">
-                      <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-[color:var(--accent)]" aria-hidden="true" />
-                      <span className="text-sm leading-7 text-[color:var(--text-muted)]">{item}</span>
-                    </li>
+                    <div key={item} className="subtle-card text-sm leading-7 text-[color:var(--text-muted)]">
+                      {item}
+                    </div>
                   ))}
-                </ul>
+                </div>
+                <p className="mt-6 text-sm leading-7 text-[color:var(--text-muted)]">
+                  If the agreed workflow is not implemented and running as scoped, I keep working on
+                  it until it is, at no extra cost.
+                </p>
               </article>
 
               <article className="panel">
@@ -202,43 +174,71 @@ export default function HomePage() {
               </article>
             </div>
 
+            <article className="panel mt-5">
+              <p className="section-eyebrow">Quote Strip</p>
+              {/* TODO: Replace placeholder testimonial with real client quote */}
+              <div className="grid gap-4 md:grid-cols-2">
+                {quoteStripPlaceholders.map((quote) => (
+                  <p key={quote} className="subtle-card text-sm leading-7 text-[color:var(--text-muted)]">
+                    “{quote}” — [Client]
+                  </p>
+                ))}
+              </div>
+            </article>
+
             <div className="mt-5 grid gap-5 lg:grid-cols-3">
               {/* TODO: Replace testimonial placeholders with real client testimonials */}
               {testimonialSlots.map((testimonial, index) => (
-                <article key={`${testimonial.name}-${index}`} className="panel border-l-2 border-l-[color:var(--accent)]">
+                <article
+                  key={`${testimonial.name}-${index}`}
+                  className="panel border-t-2 border-t-[color:var(--accent)]"
+                >
                   <p className="text-sm leading-7 text-[color:var(--text-muted)]">“{testimonial.quote}”</p>
                   <p className="mt-4 text-sm font-semibold text-[color:var(--text-main)]">
                     {testimonial.name}
                   </p>
-                  <p className="text-xs tracking-[0.08em] uppercase text-[color:var(--text-subtle)]">
+                  <p className="text-xs uppercase tracking-[0.08em] text-[color:var(--text-subtle)]">
                     {testimonial.role} at {testimonial.company}
                   </p>
                 </article>
               ))}
             </div>
 
-            <div className="mt-5 grid gap-5 lg:grid-cols-2">
+            <div className="mt-5 grid gap-5 lg:grid-cols-[0.96fr_1.04fr]">
               <article className="panel">
-                <p className="section-eyebrow">Before / After Example</p>
-                <div className="space-y-5">
-                  {beforeAfterExamples.map((example) => (
-                    <div key={example.before} className="subtle-card">
-                      <p className="text-xs uppercase tracking-[0.14em] text-[color:var(--text-subtle)]">Before</p>
-                      <p className="mt-2 text-sm leading-7 text-[color:var(--text-muted)]">{example.before}</p>
-                      <p className="mt-4 text-xs uppercase tracking-[0.14em] text-[color:var(--text-subtle)]">After</p>
-                      <p className="mt-2 text-sm leading-7 text-[color:var(--text-muted)]">{example.after}</p>
-                    </div>
+                <p className="section-eyebrow">Free Agency Automation Audit</p>
+                <ul className="space-y-3">
+                  {proofAuditIncludes.map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-[color:var(--accent)]" aria-hidden="true" />
+                      <span className="text-sm leading-7 text-[color:var(--text-muted)]">{item}</span>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </article>
 
               <article className="panel">
-                <p className="section-eyebrow">Risk Reduction</p>
-                <div className="space-y-4 text-sm leading-7 text-[color:var(--text-muted)]">
-                  <p>Clear scope is agreed before implementation starts.</p>
-                  <p>Delivery is fixed around one bottleneck at a time.</p>
-                  <p>You get implementation plus handoff support.</p>
-                  <p>Direct communication stays open throughout the sprint.</p>
+                <p className="section-eyebrow">About Qarib</p>
+                <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
+                  <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-full border-2 border-[color:var(--accent)]">
+                    {/* TODO: Replace placeholder profile photo with real image */}
+                    <Image
+                      src="/assets/images/qarib-profile.jpg"
+                      alt="Qarib Iqbal profile placeholder"
+                      fill
+                      sizes="96px"
+                      className="object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="text-[1.2rem] font-semibold tracking-[-0.02em] text-[color:var(--text-main)]">
+                      Operator-led implementation
+                    </h3>
+                    <p className="mt-3 text-sm leading-7 text-[color:var(--text-muted)]">
+                      My job is to find the friction point before writing a single line of
+                      automation.
+                    </p>
+                  </div>
                 </div>
               </article>
             </div>
@@ -249,7 +249,7 @@ export default function HomePage() {
           <div className="shell">
             <SectionHeading
               eyebrow="Process"
-              title="Simple 4-step process"
+              title="Offer ladder: from first visit to fixed workflow"
               description="Fix the right bottleneck first. Everything else follows."
             />
             <div className="mt-10 grid gap-4 lg:grid-cols-2">
@@ -263,6 +263,16 @@ export default function HomePage() {
                 </article>
               ))}
             </div>
+            <div className="mt-6 grid gap-3 md:grid-cols-2">
+              {/* TODO: Replace placeholder testimonial with real client quote */}
+              <p className="subtle-card text-sm leading-7 text-[color:var(--text-muted)]">
+                “We went from ‘we&apos;ll get back to this lead tomorrow’ to responses within minutes.”
+                — [Client]
+              </p>
+              <p className="subtle-card text-sm leading-7 text-[color:var(--text-muted)]">
+                “Our weekly reporting stopped being a scramble.” — [Client]
+              </p>
+            </div>
           </div>
         </section>
 
@@ -271,9 +281,9 @@ export default function HomePage() {
             <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
               <div>
                 <SectionHeading
-                  eyebrow="Primary CTA"
-                  title="Get the Free Agency AI Automation Checklist"
-                  description="This is the fastest way to identify what to automate first and avoid fixing the wrong workflow."
+                  eyebrow="Free Checklist"
+                  title="Not ready to book a call? Start with the checklist."
+                  description="A 10-15 minute self-audit to find the 3-5 workflows wasting the most time each week."
                 />
                 <div className="mt-6 space-y-3">
                   {checklistHighlights.map((item) => (
@@ -282,6 +292,15 @@ export default function HomePage() {
                       <p className="text-sm leading-7 text-[color:var(--text-muted)]">{item}</p>
                     </div>
                   ))}
+                </div>
+                <p className="mt-6 text-sm leading-7 text-[color:var(--text-subtle)]">
+                  Not ready for a call yet? Start here, find your bottlenecks, then book the audit
+                  when you&apos;re ready.
+                </p>
+                <div className="mt-6">
+                  <ButtonLink href="/checklist" trackingEvent="checklist_section_button_click">
+                    Get the Checklist
+                  </ButtonLink>
                 </div>
               </div>
               <LeadCaptureForm />
@@ -296,18 +315,20 @@ export default function HomePage() {
                 <div>
                   <p className="section-eyebrow">Final CTA</p>
                   <h2 className="max-w-[18ch] text-balance font-[family:var(--font-display)] text-[clamp(2rem,3.8vw,4rem)] font-semibold leading-[1] tracking-[-0.05em] text-[color:var(--text-main)]">
-                    If your agency is still too manual, start with the checklist.
+                    Map the bottleneck, then fix one workflow in 21 days.
                   </h2>
                   <p className="mt-4 max-w-[58ch] text-[1rem] leading-7 text-[color:var(--text-muted)]">
-                    The fastest way forward is a clear diagnosis, not more tooling.
+                    If your agency is still rebuilding reports by hand, chasing leads manually, or
+                    relying on messy onboarding checklists, start with a clear diagnosis and execute
+                    one focused sprint.
                   </p>
                 </div>
                 <div className="flex flex-col gap-3 sm:flex-row sm:gap-4 lg:flex-col">
-                  <ButtonLink href="/checklist" className="max-sm:w-full" trackingEvent="final_checklist_click">
-                    {siteConfig.primaryCta}
+                  <ButtonLink href="/contact" className="max-sm:w-full" trackingEvent="final_audit_click">
+                    Book Free Automation Audit
                   </ButtonLink>
-                  <ButtonLink href="/contact" variant="secondary" trackingEvent="final_audit_click">
-                    {siteConfig.secondaryCta}
+                  <ButtonLink href="/checklist" variant="secondary" trackingEvent="final_checklist_click">
+                    Get the Agency AI Automation Checklist
                   </ButtonLink>
                 </div>
               </div>

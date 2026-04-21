@@ -23,7 +23,7 @@ export default function ChecklistPage() {
           eyebrow="Lead Magnet"
           title="Find the automation bottleneck that is costing your agency the most time"
           description="This checklist helps lean marketing agency teams diagnose where manual follow-up, reporting, and onboarding are breaking down before they spend on the wrong fix."
-          secondaryCta={{ href: "/contact", label: siteConfig.secondaryCta }}
+          secondaryCta={{ href: "/contact", label: siteConfig.primaryCta }}
         />
 
         <section className="page-section pt-0">
@@ -64,7 +64,7 @@ export default function ChecklistPage() {
 
               <div className="mt-6">
                 <ButtonLink href="/contact" variant="secondary" trackingEvent="checklist_page_audit_click">
-                  Need help applying it? {siteConfig.secondaryCta}
+                  Need help applying it? {siteConfig.primaryCta}
                 </ButtonLink>
               </div>
             </div>

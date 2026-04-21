@@ -12,7 +12,6 @@ import {
   validateChecklistField,
   validateChecklistForm,
 } from "@/lib/form-validation";
-import { siteConfig } from "@/lib/site-content";
 import { getStoredUtmParams, readTrackingParams } from "@/lib/utm";
 import { cn } from "@/lib/utils";
 
@@ -128,6 +127,7 @@ export function LeadCaptureForm() {
     try {
       const sanitized = sanitizeChecklistForm(form);
 
+      // TODO: Replace checklist form endpoint with real endpoint
       // TODO: Replace YOUR_FORM_ID with your real Formspree form ID
       const response = await fetch("/api/forms/checklist", {
         method: "POST",
@@ -305,7 +305,7 @@ export function LeadCaptureForm() {
           className="button-primary w-full sm:w-auto"
           disabled={status === "submitting" || (hasStarted && !isFormValid)}
         >
-          {status === "submitting" ? "Sending..." : siteConfig.primaryCta}
+          {status === "submitting" ? "Sending..." : "Get the Checklist"}
         </button>
         <p className="text-sm leading-6 text-[color:var(--text-subtle)]">
           No spam. This is a practical checklist for agency operators.

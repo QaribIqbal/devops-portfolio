@@ -17,10 +17,11 @@ export function SiteHeader({ minimal = false }: { minimal?: boolean }) {
             className="relative inline-flex h-8 w-8 overflow-hidden rounded-full border-2 border-[color:var(--accent)]"
             aria-hidden="true"
           >
+            {/* TODO: Replace placeholder profile photo with real image */}
             {/* TODO: Replace profile photo placeholder with real headshot — /assets/images/qarib-profile.jpg */}
             <Image
               src="/assets/images/qarib-profile.jpg"
-              alt=""
+              alt="Qarib Iqbal profile avatar"
               fill
               sizes="32px"
               className="object-cover"
@@ -34,16 +35,16 @@ export function SiteHeader({ minimal = false }: { minimal?: boolean }) {
         <div className="flex items-center gap-2.5">
           {!minimal ? (
             <>
-              <ButtonLink href="/contact" variant="secondary" className="hidden lg:inline-flex" trackingEvent="header_audit_click">
-                {siteConfig.secondaryCta}
-              </ButtonLink>
-              <ButtonLink href="/checklist" className="hidden sm:inline-flex" trackingEvent="header_checklist_click">
+              <ButtonLink href="/contact" className="hidden lg:inline-flex" trackingEvent="header_audit_click">
                 {siteConfig.primaryCta}
+              </ButtonLink>
+              <ButtonLink href="/checklist" variant="secondary" className="hidden sm:inline-flex" trackingEvent="header_checklist_click">
+                {siteConfig.secondaryCta}
               </ButtonLink>
             </>
           ) : (
             <ButtonLink href="/checklist" className="hidden sm:inline-flex" trackingEvent="header_minimal_checklist_click">
-              {siteConfig.primaryCta}
+              {siteConfig.secondaryCta}
             </ButtonLink>
           )}
           <MobileNav />

@@ -23,7 +23,7 @@ export default function ContactPage() {
           eyebrow="Free Automation Audit"
           title="A focused diagnostic for agencies that want to fix the right bottleneck first"
           description="This is for lean marketing agencies that know manual operations are slowing growth. You get clarity on what to fix, what to ignore for now, and what implementation should look like."
-          primaryCta={{ href: "/checklist", label: siteConfig.primaryCta }}
+          primaryCta={{ href: "/checklist", label: siteConfig.secondaryCta }}
         />
 
         <section className="page-section pt-0">

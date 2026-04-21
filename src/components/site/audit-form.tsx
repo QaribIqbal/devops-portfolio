@@ -134,6 +134,7 @@ export function AuditForm() {
     try {
       const sanitized = sanitizeAuditForm(form);
 
+      // TODO: Replace audit form endpoint with real endpoint
       // TODO: Replace YOUR_AUDIT_FORM_ID with your real Formspree audit form ID
       const response = await fetch("/api/forms/audit", {
         method: "POST",
@@ -376,9 +377,10 @@ export function AuditForm() {
           className="button-primary w-full sm:w-auto"
           disabled={status === "submitting" || (hasStarted && !isFormValid)}
         >
-          {status === "submitting" ? "Sending..." : siteConfig.secondaryCta}
+          {status === "submitting" ? "Sending..." : "Send Audit Request"}
         </button>
         <a
+          // TODO: Replace Calendly link with real booking URL
           // TODO: Replace with your real Calendly URL
           href={siteConfig.calendly}
           target="_blank"
