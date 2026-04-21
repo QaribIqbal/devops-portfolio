@@ -160,7 +160,7 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
 
     // ---------- navigation logic ----------
     try {
-      const isExternal = href.startsWith("http") || href.startsWith("mailto:");
+      const isExternal = href.startsWith("http");
       const hasHash = href.includes("#");
       const urlPath = href.split("#")[0] || "/";
       const hashPart = hasHash ? `#${href.split("#")[1]}` : "";
@@ -239,7 +239,7 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
             const href = item.href || "#";
 
             // For external links show anchor that opens new tab
-            const isExternal = href.startsWith("http") || href.startsWith("mailto:");
+            const isExternal = href.startsWith("http");
 
             return (
               <li key={index} className={activeIndex === index ? "active" : ""}>

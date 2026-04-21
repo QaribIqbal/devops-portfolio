@@ -134,6 +134,7 @@ export function AuditForm() {
     try {
       const sanitized = sanitizeAuditForm(form);
 
+      // TODO: Replace YOUR_AUDIT_FORM_ID with your real Formspree audit form ID
       const response = await fetch("/api/forms/audit", {
         method: "POST",
         headers: {
@@ -161,13 +162,9 @@ export function AuditForm() {
       setForm(initialState);
       setErrors({});
       setTouched(initialTouchedState);
-    } catch (submitError) {
+    } catch {
       setStatus("error");
-      setError(
-        submitError instanceof Error
-          ? submitError.message
-          : "Submission failed. Please try again in a moment.",
-      );
+      setError("Something went wrong. Please try again or email me directly.");
     }
   }
 
@@ -179,11 +176,13 @@ export function AuditForm() {
         </div>
         <p className="section-eyebrow">Audit Request Sent</p>
         <h3 className="text-[1.5rem] font-semibold tracking-[-0.03em] text-[color:var(--text-main)]">
-          Thanks. Your automation audit request is in.
+          Audit request received.
         </h3>
         <p className="text-sm leading-7 text-[color:var(--text-muted)]">
-          You can also book directly on Calendly if you want to secure a slot now.
+          This is a serious diagnostic, not a generic discovery call. I&apos;ll review your
+          submission and reach out with next steps within 24-48 hours.
         </p>
+        {/* TODO: Update thank-you copy to match your delivery timeline */}
         <a
           href={siteConfig.calendly}
           target="_blank"
@@ -191,7 +190,7 @@ export function AuditForm() {
           className="button-secondary inline-flex w-full justify-center sm:w-auto"
           onClick={() => trackEvent("calendly_click", { source: "audit_form_success" })}
         >
-          Book on Calendly
+          Prefer to book directly? Open Calendly →
         </a>
       </div>
     );
@@ -279,7 +278,7 @@ export function AuditForm() {
             <option value="">Select your team size</option>
             {agencySizeOptions.map((option) => (
               <option key={option} value={option}>
-                {option} people
+                {option}
               </option>
             ))}
           </select>
@@ -377,9 +376,10 @@ export function AuditForm() {
           className="button-primary w-full sm:w-auto"
           disabled={status === "submitting" || (hasStarted && !isFormValid)}
         >
-          {status === "submitting" ? "Submitting..." : siteConfig.secondaryCta}
+          {status === "submitting" ? "Sending..." : siteConfig.secondaryCta}
         </button>
         <a
+          // TODO: Replace with your real Calendly URL
           href={siteConfig.calendly}
           target="_blank"
           rel="noreferrer"
@@ -392,7 +392,7 @@ export function AuditForm() {
 
       {status === "error" ? (
         <p className="text-sm text-red-300" role="alert">
-          {error}
+          {error || "Something went wrong. Please try again or email me directly."}
         </p>
       ) : null}
 

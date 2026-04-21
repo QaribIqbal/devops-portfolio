@@ -3,15 +3,15 @@ export const siteConfig = {
   role: "AI Automation Specialist for Marketing Agencies",
   email: "qaribiqbal92@gmail.com",
   linkedin: "https://www.linkedin.com/in/qarib-iqbal92",
+  // TODO: Replace with your real Calendly URL
   calendly: "https://calendly.com/qaribiqbal92/30min",
   primaryCta: "Get the Free Agency AI Automation Checklist",
   secondaryCta: "Book a Free Automation Audit",
   shortCredibility:
-    "Practical automation systems for lean agencies that want cleaner workflows and less manual ops.",
+    "Practical automation systems for lean agencies that want cleaner workflows, faster response times, and less manual ops.",
 };
 
 export const navigation = [
-  { href: "/", label: "Home" },
   { href: "/checklist", label: "Checklist" },
   { href: "/contact", label: "Audit" },
 ];
@@ -95,7 +95,7 @@ export const checklistHighlights = [
   "A practical self-audit to spot workflow bottlenecks in under 15 minutes",
   "The highest-impact automation opportunities for lean marketing agencies",
   "A prioritization method for choosing what to automate first",
-  "Clear warning signs that your follow-up, reporting, or onboarding is too manual",
+  "Clear warning signs that your follow-up, reporting, or onboarding is still too manual",
 ];
 
 export const proofAuditIncludes = [
@@ -106,17 +106,39 @@ export const proofAuditIncludes = [
 ];
 
 export const proofSprintIncludes = [
-  "Workflow map and implementation plan",
-  "Build, testing, and tool integration",
-  "Handoff documentation and walkthrough",
-  "Short post-launch support window",
+  "Clear scope before build",
+  "2-4 week implementation window",
+  "Workflow design",
+  "Build and testing",
+  "Revisions included",
+  "Post-launch support",
 ];
 
 export const proofDeliverables = [
-  "Sample automation audit summary",
-  "Sample workflow map",
-  "Checklist preview",
-  "Sprint deliverables and acceptance checklist",
+  "Workflow map",
+  "Reporting automation outline",
+  "Lead follow-up logic diagram",
+];
+
+export const testimonialSlots = [
+  {
+    quote: "Add your first client testimonial here. Keep it specific and outcome-focused.",
+    name: "Client Name",
+    role: "Role",
+    company: "Company",
+  },
+  {
+    quote: "Add your second client testimonial here. Keep it specific and outcome-focused.",
+    name: "Client Name",
+    role: "Role",
+    company: "Company",
+  },
+  {
+    quote: "Add your third client testimonial here. Keep it specific and outcome-focused.",
+    name: "Client Name",
+    role: "Role",
+    company: "Company",
+  },
 ];
 
 export const beforeAfterExamples = [

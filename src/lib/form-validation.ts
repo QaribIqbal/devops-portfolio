@@ -18,14 +18,8 @@ type ValidationErrors<T extends Record<string, string>> = Partial<Record<keyof T
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
 
-export const agencySizeOptions = ["1-5", "6-9", "10-15", "16-25", "26+"] as const;
-export const auditTimelineOptions = [
-  "ASAP (within 2 weeks)",
-  "This month",
-  "Next month",
-  "Next quarter",
-  "Just exploring",
-] as const;
+export const agencySizeOptions = ["1-5", "6-10", "11-20", "20+"] as const;
+export const auditTimelineOptions = ["Immediately", "1-2 weeks", "1 month+"] as const;
 
 const agencySizeSet = new Set<string>(agencySizeOptions);
 const auditTimelineSet = new Set<string>(auditTimelineOptions);
@@ -105,11 +99,7 @@ export function validateChecklistField(
     case "biggestBottleneck": {
       const normalized = normalize(values.biggestBottleneck);
       if (!normalized) {
-        return "Please describe your biggest bottleneck.";
-      }
-
-      if (normalized.length < 12) {
-        return "Please add a bit more detail (at least 12 characters).";
+        return undefined;
       }
 
       if (normalized.length > 600) {
@@ -123,7 +113,9 @@ export function validateChecklistField(
   }
 }
 
-export function validateChecklistForm(values: ChecklistFormValues): ValidationErrors<ChecklistFormValues> {
+export function validateChecklistForm(
+  values: ChecklistFormValues,
+): ValidationErrors<ChecklistFormValues> {
   const errors: ValidationErrors<ChecklistFormValues> = {};
 
   (Object.keys(values) as Array<keyof ChecklistFormValues>).forEach((field) => {
@@ -173,7 +165,7 @@ export function validateAuditField(field: keyof AuditFormValues, values: AuditFo
     case "biggestPain": {
       const normalized = normalize(values.biggestPain);
       if (!normalized) {
-        return "Please describe the main operational pain point.";
+        return "Please describe your biggest pain point right now.";
       }
 
       if (normalized.length < 16) {

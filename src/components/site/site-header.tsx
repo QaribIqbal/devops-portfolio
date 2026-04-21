@@ -1,8 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { ButtonLink } from "@/components/site/button-link";
 import { MobileNav } from "@/components/site/mobile-nav";
-import { navigation, siteConfig } from "@/lib/site-content";
+import { siteConfig } from "@/lib/site-content";
 
 export function SiteHeader({ minimal = false }: { minimal?: boolean }) {
   return (
@@ -12,28 +13,23 @@ export function SiteHeader({ minimal = false }: { minimal?: boolean }) {
           href="/"
           className="flex items-center gap-3 text-sm font-semibold tracking-[-0.01em] text-[color:var(--text-main)]"
         >
-          <span className="inline-flex h-2.5 w-2.5 rounded-full bg-[color:var(--accent)]" aria-hidden="true" />
+          <span
+            className="relative inline-flex h-8 w-8 overflow-hidden rounded-full border-2 border-[color:var(--accent)]"
+            aria-hidden="true"
+          >
+            {/* TODO: Replace profile photo placeholder with real headshot — /assets/images/qarib-profile.jpg */}
+            <Image
+              src="/assets/images/qarib-profile.jpg"
+              alt=""
+              fill
+              sizes="32px"
+              className="object-cover"
+            />
+          </span>
           <span>{siteConfig.name}</span>
         </Link>
 
-        {!minimal ? (
-          <nav
-            aria-label="Primary"
-            className="hidden items-center gap-1 rounded-full border border-[color:var(--line)] bg-[color:var(--panel-soft)] p-1 lg:flex"
-          >
-            {navigation.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="rounded-full px-4 py-2 text-sm text-[color:var(--text-muted)] transition hover:bg-[color:color-mix(in_oklch,var(--accent)_8%,transparent)] hover:text-[color:var(--text-main)]"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-        ) : (
-          <div className="hidden sm:block" />
-        )}
+        <div className="hidden sm:block" />
 
         <div className="flex items-center gap-2.5">
           {!minimal ? (

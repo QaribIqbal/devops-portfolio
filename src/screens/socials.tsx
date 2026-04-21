@@ -18,7 +18,7 @@ const items = [
     icon: <span className="text-white font-bold text-lg">@</span>,
     color: "gray",
     label: "Email",
-    href: "mailto:qaribiqbal92@gmail.com",
+    href: "/contact",
   },
 ];
 
@@ -73,10 +73,10 @@ function socials() {
 
         <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto mt-4 px-4 items-center">
           <a
-            href="mailto:qaribiqbal92@gmail.com"
+            href="/contact"
             className="bg-teal text-main px-8 py-4 rounded-xl font-bold shadow-lg hover:shadow-[0_0_20px_rgba(34,197,94,0.4)] hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto text-center"
           >
-            Email Qarib
+            Contact Qarib
           </a>
           <a
             href="https://www.linkedin.com/in/qarib-iqbal92"

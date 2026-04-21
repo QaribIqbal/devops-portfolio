@@ -1,4 +1,4 @@
-import { Linkedin, Mail } from "lucide-react";
+import { Linkedin } from "lucide-react";
 
 import { ButtonLink } from "@/components/site/button-link";
 import { siteConfig } from "@/lib/site-content";
@@ -25,13 +25,7 @@ export function SiteFooter() {
         </div>
 
         <div className="subtle-card space-y-4">
-          <a
-            href={`mailto:${siteConfig.email}`}
-            className="inline-flex items-center gap-2 text-sm text-[color:var(--text-muted)] transition hover:text-[color:var(--text-main)]"
-          >
-            <Mail className="h-4 w-4" aria-hidden="true" />
-            {siteConfig.email}
-          </a>
+          <p className="text-sm text-[color:var(--text-muted)]">{siteConfig.email}</p>
           <ButtonLink href={siteConfig.linkedin} variant="ghost" trackingEvent="linkedin_footer_click">
             <span className="inline-flex items-center gap-2">
               <Linkedin className="h-4 w-4" aria-hidden="true" />

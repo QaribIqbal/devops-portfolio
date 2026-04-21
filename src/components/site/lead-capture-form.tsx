@@ -128,6 +128,7 @@ export function LeadCaptureForm() {
     try {
       const sanitized = sanitizeChecklistForm(form);
 
+      // TODO: Replace YOUR_FORM_ID with your real Formspree form ID
       const response = await fetch("/api/forms/checklist", {
         method: "POST",
         headers: {
@@ -155,13 +156,9 @@ export function LeadCaptureForm() {
       setForm(initialState);
       setErrors({});
       setTouched(initialTouchedState);
-    } catch (submitError) {
+    } catch {
       setStatus("error");
-      setError(
-        submitError instanceof Error
-          ? submitError.message
-          : "Submission failed. Please try again in a moment.",
-      );
+      setError("Something went wrong. Please try again or email me directly.");
     }
   }
 
@@ -173,14 +170,15 @@ export function LeadCaptureForm() {
         </div>
         <p className="section-eyebrow">Checklist Requested</p>
         <h3 className="text-[1.5rem] font-semibold tracking-[-0.03em] text-[color:var(--text-main)]">
-          You are in. The checklist request has been sent.
+          Checklist request received. I&apos;ll send it over shortly.
         </h3>
         <p className="text-sm leading-7 text-[color:var(--text-muted)]">
-          Next step: if you want direct help identifying what to fix first, book a free automation
-          audit.
+          Already know your agency has a follow-up, reporting, or onboarding bottleneck? The next
+          step is a Free Automation Audit.
         </p>
+        {/* TODO: Update thank-you copy to match your delivery timeline */}
         <ButtonLink href="/contact" variant="secondary" className="w-full sm:w-auto">
-          {siteConfig.secondaryCta}
+          Book a Free Automation Audit →
         </ButtonLink>
       </div>
     );
@@ -265,7 +263,7 @@ export function LeadCaptureForm() {
           <option value="">Select your team size</option>
           {agencySizeOptions.map((option) => (
             <option key={option} value={option}>
-              {option} people
+              {option}
             </option>
           ))}
         </select>
@@ -279,7 +277,6 @@ export function LeadCaptureForm() {
       <label className="form-field">
         <span>Biggest bottleneck right now</span>
         <textarea
-          required
           name="biggestBottleneck"
           maxLength={600}
           value={form.biggestBottleneck}
@@ -297,7 +294,7 @@ export function LeadCaptureForm() {
           </p>
         ) : (
           <p id="checklist-bottleneck-help" className="form-help">
-            Add at least one specific workflow issue. ({form.biggestBottleneck.length}/600)
+            Optional: share one workflow issue for better diagnosis. ({form.biggestBottleneck.length}/600)
           </p>
         )}
       </label>
@@ -308,7 +305,7 @@ export function LeadCaptureForm() {
           className="button-primary w-full sm:w-auto"
           disabled={status === "submitting" || (hasStarted && !isFormValid)}
         >
-          {status === "submitting" ? "Submitting..." : siteConfig.primaryCta}
+          {status === "submitting" ? "Sending..." : siteConfig.primaryCta}
         </button>
         <p className="text-sm leading-6 text-[color:var(--text-subtle)]">
           No spam. This is a practical checklist for agency operators.
@@ -317,7 +314,7 @@ export function LeadCaptureForm() {
 
       {status === "error" ? (
         <p className="text-sm text-red-300" role="alert">
-          {error}
+          {error || "Something went wrong. Please try again or email me directly."}
         </p>
       ) : null}
 

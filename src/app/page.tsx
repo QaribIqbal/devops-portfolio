@@ -1,4 +1,5 @@
 import { CheckCircle2 } from "lucide-react";
+import Image from "next/image";
 
 import { ButtonLink } from "@/components/site/button-link";
 import { LeadCaptureForm } from "@/components/site/lead-capture-form";
@@ -15,6 +16,7 @@ import {
   proofSprintIncludes,
   services,
   siteConfig,
+  testimonialSlots,
 } from "@/lib/site-content";
 import { buildMetadata } from "@/lib/seo";
 
@@ -29,7 +31,7 @@ export default function HomePage() {
     <div className="min-h-[100dvh]">
       <SiteHeader />
       <main>
-        <section className="page-section section-slice section-slice-hero pt-20 sm:pt-28">
+        <section className="page-section section-slice section-slice-hero pt-20 sm:pt-24">
           <div className="shell">
             <div className="hero-panel">
               <p className="section-eyebrow">AI Automation for Marketing Agencies</p>
@@ -41,6 +43,11 @@ export default function HomePage() {
                 Practical systems for lean agency teams that want cleaner workflows, faster response
                 times, and less manual admin.
               </p>
+              <ul className="mt-6 space-y-2 text-sm leading-7 text-[color:var(--text-muted)]">
+                <li>Built for founder-led and operator-led agencies with 10-15 people.</li>
+                <li>Follow-up, reporting, onboarding, and handoff bottlenecks solved first.</li>
+                <li>Faster response, cleaner delivery, and less repeated admin overhead.</li>
+              </ul>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
                 <ButtonLink href="/checklist" className="max-sm:w-full" trackingEvent="hero_checklist_click">
                   {siteConfig.primaryCta}
@@ -52,6 +59,13 @@ export default function HomePage() {
               <p className="mt-5 max-w-[54ch] text-sm leading-7 text-[color:var(--text-subtle)]">
                 {siteConfig.shortCredibility}
               </p>
+              {/*
+                LinkedIn traffic alignment:
+                When sharing the website from LinkedIn Featured or banner,
+                use: https://qaribiqbal.netlify.app/?utm_source=linkedin&utm_medium=profile&utm_campaign=checklist
+                The site does not need to show UTM params to visitors —
+                but analytics tools (Plausible, GA4) will capture them automatically.
+              */}
             </div>
           </div>
         </section>
@@ -61,7 +75,7 @@ export default function HomePage() {
             <SectionHeading
               eyebrow="Problem"
               title="Where lean agencies usually lose time and momentum"
-              description="If these issues feel familiar, your systems are probably ready for cleanup."
+              description="Most growth friction is operational, not strategic. Agencies usually do not need more tooling; they need cleaner execution around one core bottleneck."
             />
             <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
               {homeProblems.map((problem) => (
@@ -78,7 +92,7 @@ export default function HomePage() {
             <SectionHeading
               eyebrow="Services"
               title="What I fix inside agency operations"
-              description="Focused, operational services built around one bottleneck at a time."
+              description="Every service is built around the workflow gap that is already costing your team time."
             />
             <div className="mt-10 grid gap-5 md:grid-cols-2">
               {services.map((service) => (
@@ -100,6 +114,11 @@ export default function HomePage() {
                 </article>
               ))}
             </div>
+            <div className="mt-8">
+              <ButtonLink href="/checklist" trackingEvent="services_checklist_click">
+                {siteConfig.primaryCta}
+              </ButtonLink>
+            </div>
           </div>
         </section>
 
@@ -107,11 +126,39 @@ export default function HomePage() {
           <div className="shell">
             <SectionHeading
               eyebrow="Proof"
-              title="What trust looks like before and during delivery"
-              description="No fake logos. No made-up case studies. Clear scope, clear process, clear deliverables."
+              title="Proof through clear process, real accountability, and visible outputs"
+              description="No fake logos. No made-up case studies. Clear scope and practical execution."
             />
 
-            <div className="mt-10 grid gap-5 lg:grid-cols-3">
+            <div className="mt-10 grid gap-5 lg:grid-cols-2">
+              <article className="panel">
+                <p className="section-eyebrow">About Qarib</p>
+                <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
+                  <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-full border-2 border-[color:var(--accent)]">
+                    {/* TODO: Replace this placeholder with Qarib's real photo */}
+                    {/* Recommended: professional headshot, square crop, 400x400px minimum */}
+                    {/* TODO: Replace profile photo placeholder with real headshot — /assets/images/qarib-profile.jpg */}
+                    {/* Place the image file at: /assets/images/qarib-profile.jpg */}
+                    <Image
+                      src="/assets/images/qarib-profile.jpg"
+                      alt="Qarib Iqbal profile placeholder"
+                      fill
+                      sizes="96px"
+                      className="object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="text-[1.2rem] font-semibold tracking-[-0.02em] text-[color:var(--text-main)]">
+                      Operator-led, implementation-first approach
+                    </h3>
+                    <p className="mt-3 text-sm leading-7 text-[color:var(--text-muted)]">
+                      My job is to find the friction point before writing a single line of
+                      automation.
+                    </p>
+                  </div>
+                </div>
+              </article>
+
               <article className="panel">
                 <h3 className="text-[1.35rem] font-semibold tracking-[-0.03em] text-[color:var(--text-main)]">
                   What the audit includes
@@ -125,10 +172,12 @@ export default function HomePage() {
                   ))}
                 </ul>
               </article>
+            </div>
 
+            <div className="mt-5 grid gap-5 lg:grid-cols-2">
               <article className="panel">
                 <h3 className="text-[1.35rem] font-semibold tracking-[-0.03em] text-[color:var(--text-main)]">
-                  What a sprint includes
+                  Sprint inclusions
                 </h3>
                 <ul className="mt-5 space-y-3">
                   {proofSprintIncludes.map((item) => (
@@ -141,18 +190,31 @@ export default function HomePage() {
               </article>
 
               <article className="panel">
-                <h3 className="text-[1.35rem] font-semibold tracking-[-0.03em] text-[color:var(--text-main)]">
-                  Example deliverables
-                </h3>
-                <ul className="mt-5 space-y-3">
+                <p className="section-eyebrow">Example Deliverables — Sample systems, not client work</p>
+                {/* TODO: Replace example deliverable placeholders with real screenshots when available */}
+                <ul className="space-y-3">
                   {proofDeliverables.map((item) => (
-                    <li key={item} className="flex items-start gap-3">
-                      <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-[color:var(--accent)]" aria-hidden="true" />
-                      <span className="text-sm leading-7 text-[color:var(--text-muted)]">{item}</span>
+                    <li key={item} className="subtle-card text-sm leading-7 text-[color:var(--text-muted)]">
+                      {item}
                     </li>
                   ))}
                 </ul>
               </article>
+            </div>
+
+            <div className="mt-5 grid gap-5 lg:grid-cols-3">
+              {/* TODO: Replace testimonial placeholders with real client testimonials */}
+              {testimonialSlots.map((testimonial, index) => (
+                <article key={`${testimonial.name}-${index}`} className="panel border-l-2 border-l-[color:var(--accent)]">
+                  <p className="text-sm leading-7 text-[color:var(--text-muted)]">“{testimonial.quote}”</p>
+                  <p className="mt-4 text-sm font-semibold text-[color:var(--text-main)]">
+                    {testimonial.name}
+                  </p>
+                  <p className="text-xs tracking-[0.08em] uppercase text-[color:var(--text-subtle)]">
+                    {testimonial.role} at {testimonial.company}
+                  </p>
+                </article>
+              ))}
             </div>
 
             <div className="mt-5 grid gap-5 lg:grid-cols-2">
@@ -188,7 +250,7 @@ export default function HomePage() {
             <SectionHeading
               eyebrow="Process"
               title="Simple 4-step process"
-              description="Diagnosis first. Build second."
+              description="Fix the right bottleneck first. Everything else follows."
             />
             <div className="mt-10 grid gap-4 lg:grid-cols-2">
               {processSteps.map((step, index) => (
@@ -237,8 +299,7 @@ export default function HomePage() {
                     If your agency is still too manual, start with the checklist.
                   </h2>
                   <p className="mt-4 max-w-[58ch] text-[1rem] leading-7 text-[color:var(--text-muted)]">
-                    If you already know the bottleneck, book a free audit and we will map the next
-                    step.
+                    The fastest way forward is a clear diagnosis, not more tooling.
                   </p>
                 </div>
                 <div className="flex flex-col gap-3 sm:flex-row sm:gap-4 lg:flex-col">

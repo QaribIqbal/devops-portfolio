@@ -1,5 +1,12 @@
 "use client";
 
+/*
+  Analytics setup
+  TODO: Add your Plausible or GA4 tracking ID in <head>
+  TODO: Add your Plausible or GA4 tracking ID below
+  For Plausible: Add <script defer data-domain="qaribiqbal.netlify.app" src="https://plausible.io/js/script.js"></script> to <head>
+  For GA4: Add your gtag script to <head> and replace 'GA_MEASUREMENT_ID' below
+*/
 type EventValue = string | number | boolean | undefined;
 
 type EventProperties = Record<string, EventValue>;
@@ -16,10 +23,6 @@ export function trackEvent(eventName: string, properties?: EventProperties) {
     return;
   }
 
-  // Setup note:
-  // - Plausible: load script globally and use window.plausible.
-  // - GA4: initialize gtag globally and this helper will send events to window.gtag.
-  // - Custom: listen for "site:track" events on window.
   const cleanProps = Object.fromEntries(
     Object.entries(properties ?? {}).filter(([, value]) => value !== undefined),
   );

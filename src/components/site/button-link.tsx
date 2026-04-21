@@ -67,7 +67,7 @@ export function ButtonLink({
         }
 
         if (href.includes("linkedin.com")) {
-          trackEvent("linkedin_outbound_click", { source: trackingEvent ?? "button_link" });
+          trackEvent("linkedin_click", { source: trackingEvent ?? "button_link" });
         }
       }}
       className={cn(

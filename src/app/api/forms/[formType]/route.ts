@@ -2,15 +2,24 @@ import { NextResponse } from "next/server";
 
 type FormType = "checklist" | "audit";
 
+// TODO: Replace YOUR_FORM_ID with your real Formspree form ID
+const checklistFallback = "https://formspree.io/f/YOUR_FORM_ID";
+// TODO: Replace YOUR_AUDIT_FORM_ID with your real Formspree audit form ID
+const auditFallback = "https://formspree.io/f/YOUR_AUDIT_FORM_ID";
+
 const sharedEndpoint = process.env.FORMS_ENDPOINT ?? process.env.NEXT_PUBLIC_FORMS_ENDPOINT;
 
 const endpointByType: Record<FormType, string | undefined> = {
   checklist:
     process.env.CHECKLIST_FORM_ENDPOINT ??
     process.env.NEXT_PUBLIC_CHECKLIST_FORM_ENDPOINT ??
-    sharedEndpoint,
+    sharedEndpoint ??
+    checklistFallback,
   audit:
-    process.env.AUDIT_FORM_ENDPOINT ?? process.env.NEXT_PUBLIC_AUDIT_FORM_ENDPOINT ?? sharedEndpoint,
+    process.env.AUDIT_FORM_ENDPOINT ??
+    process.env.NEXT_PUBLIC_AUDIT_FORM_ENDPOINT ??
+    sharedEndpoint ??
+    auditFallback,
 };
 
 function toFormBody(payload: unknown) {
@@ -46,7 +55,7 @@ export async function POST(
   }
 
   const endpoint = endpointByType[formType as FormType];
-  if (!endpoint) {
+  if (!endpoint || endpoint.includes("YOUR_FORM_ID") || endpoint.includes("YOUR_AUDIT_FORM_ID")) {
     // Owner setup note: point this to Formspree, Basin, Tally, Airtable automation,
     // Supabase edge function, or your own endpoint in env variables.
     return NextResponse.json(
