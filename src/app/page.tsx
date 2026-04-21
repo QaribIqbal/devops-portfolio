@@ -296,9 +296,9 @@ export default function HomePage() {
             <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
               <div>
                 <SectionHeading
-                  eyebrow="Free Checklist"
+                  eyebrow="FREE CHECKLIST"
                   title="Not ready to book a call? Start with the checklist."
-                  description="A 10-15 minute self-audit to find the 3-5 workflows wasting the most time each week."
+                  description="A 10–15 minute self‑audit to find the 3–5 workflows wasting the most time each week and see which one is ready for a 21‑Day Agency Automation Sprint."
                 />
                 <div className="mt-6 space-y-3">
                   {checklistHighlights.map((item) => (

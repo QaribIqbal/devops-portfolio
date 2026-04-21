@@ -35,6 +35,7 @@ const initialTouchedState: LeadFormTouched = {
 export function LeadCaptureForm() {
   const showDevHints = process.env.NODE_ENV !== "production";
   const formRef = useRef<HTMLFormElement>(null);
+  const checklistDownloadHref = "/checklists/agency-ai-automation-checklist.pdf";
 
   const [form, setForm] = useState<ChecklistFormValues>(initialState);
   const [errors, setErrors] = useState<LeadFormErrors>({});
@@ -170,13 +171,18 @@ export function LeadCaptureForm() {
         </div>
         <p className="section-eyebrow">Checklist Requested</p>
         <h3 className="text-[1.5rem] font-semibold tracking-[-0.03em] text-[color:var(--text-main)]">
-          Checklist request received. I&apos;ll send it over shortly.
+          Checklist ready. Download it below.
         </h3>
         <p className="text-sm leading-7 text-[color:var(--text-muted)]">
-          Already know your agency has a follow-up, reporting, or onboarding bottleneck? The next
-          step is a Free Automation Audit.
+          Your updated Agency AI Automation Checklist is ready now.
         </p>
-        {/* TODO: Update thank-you copy to match your delivery timeline */}
+        <a
+          href={checklistDownloadHref}
+          download="agency-ai-automation-checklist.pdf"
+          className="button-primary inline-flex w-full justify-center sm:w-auto"
+        >
+          Download the Checklist
+        </a>
         <ButtonLink href="/contact" variant="secondary" className="w-full sm:w-auto">
           Book a Free Automation Audit →
         </ButtonLink>
@@ -294,7 +300,7 @@ export function LeadCaptureForm() {
           </p>
         ) : (
           <p id="checklist-bottleneck-help" className="form-help">
-            Optional: share one workflow issue for better diagnosis. ({form.biggestBottleneck.length}/600)
+            Optional: share one workflow issue for better diagnosis.
           </p>
         )}
       </label>

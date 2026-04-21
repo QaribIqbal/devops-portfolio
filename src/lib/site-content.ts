@@ -137,9 +137,9 @@ export const processSteps: ProcessStep[] = [
 ];
 
 export const checklistHighlights = [
-  "Spot where leads, follow-ups, and handoffs are quietly leaking",
-  "See which workflows are automation-ready vs not worth touching yet",
-  "Walk into a call already knowing what to fix first",
+  "Spot where leads, follow-ups, and handoffs are quietly leaking.",
+  "See which workflows are automation-ready vs not worth touching yet.",
+  "Walk into a call already knowing what to fix first.",
 ];
 
 export const proofAuditIncludes = [
